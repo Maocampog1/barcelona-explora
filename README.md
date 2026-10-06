@@ -2,7 +2,7 @@
 
 Gemelo digital de Barcelona pensado para el turista: datos abiertos de movilidad, alojamiento, gastronomía, lugares de interés y ambiente, con una capa en tiempo real.
 
-Taller de Datos — Tópicos de Sistemas de Información · Replica, con enfoque propio, el ejemplo de Lima que puso el profesor.
+Taller de Datos  · Replica, con enfoque propio, el ejemplo de Lima que puso el profesor.
 
 ## Enfoque
 
@@ -67,7 +67,6 @@ Esta decisión **sigue abierta a replantearse** más adelante, si el equipo encu
 
 ## Lo que no se encontró
 
-- No existe ninguna fuente abierta de **precios de restaurantes** en Barcelona.
 - No se integró todavía una fuente de **metro en tiempo real** (la API de TMB la tiene, pero pide token).
 
 ## Equipo
