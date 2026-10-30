@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barcelona Explora · Tu guía de Barcelona</title>
+  <meta name="description" content="Qué ver en Barcelona, el clima de hoy y cómo moverte, con datos abiertos de la ciudad.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body class="con-hero">
+  <header id="navbar"></header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-titulo">
+      <div class="hero__fondos" id="fondos">
+        <img class="activa" src="assets/img/portada/sagrada-familia.jpg" alt="">
+      </div>
+
+      <div class="contenedor hero__contenido">
+        <div>
+          <p class="hero__saludo" id="saludo">Hola, viajero</p>
+          <h1 id="hero-titulo">Barcelona <em>a todo color</em></h1>
+          <p class="hero__intro">Gaudí, playa, mercados y miradores. Lo que no te puedes perder, el clima de hoy y cómo moverte, sin apps de pago.</p>
+          <div class="hero__acciones">
+            <a class="boton" href="lugares.html">Ver lugares imperdibles →</a>
+            <a class="boton boton--vidrio" href="#explora">Explora el sitio</a>
+          </div>
+        </div>
+
+        <aside class="widget" aria-label="Ahora en Barcelona">
+          <div class="widget__reloj">
+            <svg class="reloj" viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="reloj__cara" cx="50" cy="50" r="46"/>
+              <g id="reloj-marcas"></g>
+              <line class="reloj__aguja reloj__aguja--h" id="aguja-h" x1="50" y1="54" x2="50" y2="28"/>
+              <line class="reloj__aguja reloj__aguja--m" id="aguja-m" x1="50" y1="56" x2="50" y2="16"/>
+              <line class="reloj__aguja reloj__aguja--s" id="aguja-s" x1="50" y1="60" x2="50" y2="12"/>
+              <circle cx="50" cy="50" r="3.5" fill="#f4b942"/>
+            </svg>
+            <div aria-live="off">
+              <div class="widget__etiqueta">Ahora en Barcelona</div>
+              <div class="widget__hora" id="hora-bcn">--:--</div>
+              <div class="widget__fecha" id="fecha-bcn"></div>
+            </div>
+          </div>
+
+          <div class="widget__clima" id="clima">
+            <svg class="clima__icono" id="clima-icono" viewBox="0 0 64 64" aria-hidden="true"></svg>
+            <div>
+              <div class="clima__temp" id="clima-temp">--°</div>
+              <div class="clima__estado" id="clima-estado">Cargando el clima…</div>
+              <div class="clima__sensacion" id="clima-sensacion"></div>
+            </div>
+          </div>
+          <dl class="clima__detalles">
+            <div><dt>Hoy</dt><dd id="clima-minmax">–</dd></div>
+            <div><dt>Humedad</dt><dd id="clima-humedad">–</dd></div>
+            <div><dt>Viento</dt><dd id="clima-viento">–</dd></div>
+          </dl>
+          <p class="widget__fuente" id="clima-fuente">Clima: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · se actualiza cada 10 min</p>
+        </aside>
+      </div>
+
+      <div class="contenedor hero__pie">
+        <p class="hero__credito" id="credito"></p>
+        <div class="hero__puntos" id="puntos" role="group" aria-label="Cambiar foto"></div>
+      </div>
+    </section>
+    <div class="mosaico-franja" aria-hidden="true"></div>
+
+    <div class="contenedor">
+      <section class="sabias" aria-labelledby="sabias-titulo">
+        <div class="sabias__caja" id="sabias">
+          <div class="sabias__lado"><div class="sabias__icono" id="dato-icono"></div></div>
+          <div class="sabias__cuerpo">
+            <p class="sabias__kicker" id="sabias-titulo">¿Sabías que…?</p>
+            <h2 class="sabias__titulo" id="dato-titulo">&nbsp;</h2>
+            <p class="sabias__texto" id="dato-texto" aria-live="polite">Cargando un dato curioso…</p>
+            <div class="sabias__pie">
+              <span class="sabias__fuente" id="dato-fuente"></span>
+              <div class="sabias__nav">
+                <button type="button" id="dato-anterior" aria-label="Dato anterior">←</button>
+                <span class="sabias__contador" id="dato-contador"></span>
+                <button type="button" id="dato-otro" aria-label="Otro dato">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="seccion" aria-labelledby="top-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="top-titulo">Los más buscados</h2>
+            <p>Los lugares de Barcelona que más gente busca en internet. Toca uno para ver qué tiene de especial.</p>
+          </div>
+          <a class="seccion__enlace" href="lugares.html">Ver todos los lugares →</a>
+        </div>
+        <div class="carrusel" id="top"></div>
+      </section>
+
+      <section class="seccion" id="explora" aria-labelledby="explora-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="explora-titulo">Explora el sitio</h2>
+            <p>Todo lo que necesitas para tu viaje, en un solo lugar.</p>
+          </div>
+        </div>
+        <div class="paginas-grid" id="paginas"></div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="pie"></footer>
+
+  <script src="assets/js/navegacion.js"></script>
+  <script src="assets/js/portada.js"></script>
+</body>
+</html>

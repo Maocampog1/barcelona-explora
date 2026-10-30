@@ -1,0 +1,139 @@
+{
+ "generado": "2026-10-30T14:13:39+00:00",
+ "fuentes": {
+  "miradores": {
+   "id": null,
+   "nombre": "Miradores de Barcelona",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/turismo/opendatabcn_NP-NASIA_Miradors-csv.csv"
+  },
+  "museos": {
+   "id": null,
+   "nombre": "Bibliotecas y museos",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/turismo/opendatabcn_cultura_biblioteques-i-museus.csv"
+  },
+  "mercados": {
+   "id": null,
+   "nombre": "Mercados municipales",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/turismo/opendatabcn_mercats-centrescomercials_mercats-municipals.csv"
+  },
+  "arbolado": {
+   "id": null,
+   "nombre": "Arbolado viario",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/ambiente_satelite/arbrat_viari.json"
+  },
+  "bicing": {
+   "id": null,
+   "nombre": "Bicing: ubicación de estaciones (GBFS)",
+   "publicador": "Bicing (feed GBFS oficial)",
+   "licencia": "Datos abiertos del operador",
+   "archivo": "lago/raw/transporte/bicing_ubicacion_2026-10-01.json"
+  },
+  "airbnb": {
+   "id": null,
+   "nombre": "Listados de Airbnb",
+   "publicador": "Inside Airbnb",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/turismo/listings.csv"
+  },
+  "wifi": {
+   "id": null,
+   "nombre": "Puntos WiFi BCN",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/servicios_turista/opendatabcn_Internet_Wifi-BCN-CSV.csv"
+  },
+  "refugios": {
+   "id": null,
+   "nombre": "Red de refugios climáticos",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/servicios_turista/opendatabcn_NP-NASIA_xarxa-refugis-climatics-csv.csv"
+  },
+  "lavabos": {
+   "id": null,
+   "nombre": "Lavabos públicos",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/servicios_turista/opendatabcn_lavabos-csv (1).csv"
+  },
+  "duchas": {
+   "id": null,
+   "nombre": "Duchas en playas",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/servicios_turista/opendatabcn_dutxes-csv.csv"
+  },
+  "barrios": {
+   "id": null,
+   "nombre": "Barrios de Barcelona (polígonos)",
+   "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+   "licencia": "CC BY 4.0",
+   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv"
+  },
+  "wikipedia": {
+   "id": null,
+   "nombre": "Wikipedia y Wikimedia Commons: fotos, resúmenes y visitas por artículo",
+   "publicador": "Fundación Wikimedia",
+   "licencia": "Texto CC BY-SA 4.0 · fotos con la licencia de cada archivo",
+   "archivo": "lago/raw/wikipedia/wikipedia_lugares.json"
+  }
+ },
+ "datos": [
+  {
+   "titulo": "El más buscado",
+   "dato": "Sagrada Família es el lugar de Barcelona que más gente busca: su artículo de Wikipedia se leyó 2.788.000 veces en el último año, en español e inglés.",
+   "icono": "foto",
+   "fuente": "wikipedia"
+  },
+  {
+   "titulo": "Vistas gratis",
+   "dato": "La ciudad tiene 19 miradores oficiales y no cobran entrada. 6 están en Sants-Montjuïc, en la montaña de Montjuïc: perfectos para ver el atardecer sobre el puerto.",
+   "icono": "mirador",
+   "fuente": "miradores"
+  },
+  {
+   "titulo": "Come como un local",
+   "dato": "Hay 43 mercados municipales de comida fresca. La Boqueria es el famoso, pero en Santa Caterina o Sant Antoni también se come muy bien y con menos turistas.",
+   "icono": "mercado",
+   "fuente": "mercados"
+  },
+  {
+   "titulo": "Internet gratis en la calle",
+   "dato": "Barcelona tiene 621 puntos de WiFi público y gratuito en plazas, bibliotecas y museos. Busca la red «Barcelona WiFi».",
+   "icono": "wifi",
+   "fuente": "wifi"
+  },
+  {
+   "titulo": "Paseos a la sombra",
+   "dato": "Las calles tienen 145.034 árboles y casi 28 % son plátanos: por eso las avenidas del Eixample se sienten más frescas en verano.",
+   "icono": "arbol",
+   "fuente": "arbolado"
+  },
+  {
+   "titulo": "Si aprieta el calor",
+   "dato": "La ciudad tiene 550 refugios climáticos: bibliotecas, museos y parques donde puedes entrar a refrescarte gratis en los días de mucho calor.",
+   "icono": "sol",
+   "fuente": "refugios"
+  },
+  {
+   "titulo": "¿Buscas un baño?",
+   "dato": "Hay 166 baños públicos repartidos por la ciudad, muchos en parques y plazas. Pronto los verás en el mapa del sitio.",
+   "icono": "bano",
+   "fuente": "lavabos"
+  },
+  {
+   "titulo": "¿Cuánto cuesta dormir?",
+   "dato": "La mitad de los Airbnb de Barcelona cuesta menos de 178 USD por noche, y 7 de cada 10 son pisos completos, no habitaciones.",
+   "icono": "cama",
+   "fuente": "airbnb"
+  }
+ ]
+}

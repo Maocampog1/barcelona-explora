@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lugares imperdibles · Barcelona Explora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body class="con-hero">
+  <header id="navbar"></header>
+
+  <main>
+    <section class="banner">
+      <img src="assets/img/portada/park-guell.jpg" alt="">
+      <div class="contenedor">
+        <h1>Lugares imperdibles</h1>
+        <p>Gaudí, museos, mercados y miradores con las mejores vistas. Empieza por los más buscados y toca cualquiera para ver qué tiene de especial y cómo llegar.</p>
+      </div>
+      <p class="banner__credito" id="banner-credito"></p>
+    </section>
+    <div class="mosaico-franja" aria-hidden="true"></div>
+
+    <div class="contenedor">
+      <div class="filtros" role="group" aria-label="Filtros">
+        <div class="filtros__chips" id="chips"></div>
+        <select class="campo" id="filtro-distrito" aria-label="Distrito">
+          <option value="">Toda la ciudad</option>
+        </select>
+        <select class="campo" id="orden" aria-label="Ordenar">
+          <option value="popular">Más buscados primero</option>
+          <option value="nombre">De la A a la Z</option>
+        </select>
+        <input class="campo filtros__buscar" id="filtro-texto" type="search" placeholder="Buscar: Gaudí, Gràcia, mercado…" aria-label="Buscar">
+        <span class="filtros__contador" id="contador"></span>
+      </div>
+
+      <div class="lugares-grid" id="lugares"></div>
+    </div>
+  </main>
+
+  <dialog class="ficha" id="ficha" aria-label="Detalle del lugar">
+    <button class="ficha__cerrar" type="button" aria-label="Cerrar">×</button>
+    <div id="ficha-cuerpo"></div>
+  </dialog>
+
+  <footer id="pie"></footer>
+
+  <script src="assets/js/navegacion.js"></script>
+  <script src="assets/js/lugares.js"></script>
+</body>
+</html>

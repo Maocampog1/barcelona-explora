@@ -32,8 +32,35 @@ lago/
     ├── edificios/            ← Catastro / ICGC, para el gemelo 3D
     └── servicios_turista/    ← wifi, baños, duchas, refugios climáticos
 
-ingesta/                      ← scripts que descargan y actualizan cada fuente
+lago/procesado/               ← datos ya limpios que lee el sitio web (salen de ingesta/)
+ingesta/                      ← scripts que descargan, limpian y actualizan cada fuente
 ```
+
+## Sitio web
+
+El sitio es HTML, CSS y JavaScript sin frameworks: Vercel lo publica tal cual desde la raíz del repo, y así el lago también queda en línea (cualquier archivo se puede abrir en `/lago/...`).
+
+```
+index.html                    ← 01 Portada: fotos de Gaudí de fondo, reloj y clima en vivo, dato curioso, los más buscados
+lugares.html                  ← 02 Lugares imperdibles: íconos, museos, mercados y miradores con foto, filtro "Top turísticos" y ficha
+assets/css/estilos.css        ← estándar visual (colores, tipografía, navbar, tarjetas, mosaico trencadís). Todas las páginas lo usan
+assets/js/navegacion.js       ← navbar y pie compartidos + lista de páginas (PAGINAS)
+assets/js/portada.js
+assets/js/lugares.js
+assets/img/portada/           ← fotos grandes de fondo (bajadas de Wikimedia Commons, con autor y licencia)
+```
+
+El sitio está pensado para el turista: la información técnica (fuente, licencia, archivo en el lago) sigue en cada ficha, pero dentro de un desplegable "De dónde salen estos datos", para no estorbar.
+
+**Fotos, resúmenes y "Top turísticos":** salen de Wikipedia y Wikimedia Commons (`ingesta/descargar_wikipedia.py` → `lago/raw/wikipedia/`). La popularidad es el número de visitas al artículo de cada lugar en Wikipedia (español + inglés) en los últimos 12 meses; los 16 primeros forman el filtro "Top turísticos". No usamos las estrellas de Google porque la API de Google Places pide tarjeta de crédito; en su lugar cada ficha trae un botón "Opiniones en Google Maps" que abre el lugar en Google Maps (enlace normal, sin API ni clave). Cada foto muestra su autor y licencia.
+
+**Para agregar una página:** crea `tu-pagina.html` en la raíz copiando la estructura de `lugares.html` (el `<head>`, `<header id="navbar">`, `<footer id="pie">` y los scripts), y en `assets/js/navegacion.js` cambia `lista: false` por `lista: true` en tu página. Los nombres de archivo acordados son `mapa.html`, `alojamiento.html`, `moverte.html`, `clima.html` y `proyecto.html`.
+
+**Para probarlo en local:** `python -m http.server` en la raíz y abrir `http://localhost:8000` (abriendo el .html con doble clic no carga los datos).
+
+**Para regenerar los datos de la Portada y de Lugares:** `python ingesta/procesar_portada_y_lugares.py` (requiere pandas). Si hay que refrescar fotos y visitas de Wikipedia, antes corre `python ingesta/descargar_wikipedia.py` (requiere requests; tarda unos minutos porque Wikimedia limita las consultas, y reutiliza lo ya descargado: para bajar todo de nuevo borra `lago/raw/wikipedia/wikipedia_lugares.json`).
+
+El clima de la Portada se pide en vivo a la API de Open-Meteo desde el navegador (gratis, sin clave).
 
 Cada carpeta corresponde a un tema del diccionario de datos (ver el Excel `Diccionario_de_datos`), donde cada fuente queda identificada con un ID (F01, F02...), su licencia, y la pregunta del sistema que responde.
 
