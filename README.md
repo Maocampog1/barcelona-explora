@@ -43,22 +43,30 @@ El sitio es HTML, CSS y JavaScript sin frameworks: Vercel lo publica tal cual de
 ```
 index.html                    ← 01 Portada: fotos de Gaudí de fondo, reloj y clima en vivo, dato curioso, los más buscados
 lugares.html                  ← 02 Lugares imperdibles: íconos, museos, mercados y miradores con foto, filtro "Top turísticos" y ficha
+mapa.html                     ← 03 Explora el mapa: MapLibre + OpenFreeMap, capas de turismo/restaurantes/Bicing/alojamiento, filtro por distrito, distancia en línea recta
+alojamiento.html               ← 04 Alojamiento: hoteles, viviendas turísticas (HUT) y Airbnb con precio y zona, anfitrión anonimizado, renta de barrio como contexto
 assets/css/estilos.css        ← estándar visual (colores, tipografía, navbar, tarjetas, mosaico trencadís). Todas las páginas lo usan
 assets/js/navegacion.js       ← navbar y pie compartidos + lista de páginas (PAGINAS)
 assets/js/portada.js
 assets/js/lugares.js
+assets/js/mapa.js
+assets/js/alojamiento.js
 assets/img/portada/           ← fotos grandes de fondo (bajadas de Wikimedia Commons, con autor y licencia)
 ```
 
 El sitio está pensado para el turista: la información técnica (fuente, licencia, archivo en el lago) sigue en cada ficha, pero dentro de un desplegable "De dónde salen estos datos", para no estorbar.
 
+**Mapa y alojamiento:** `mapa.html` usa [MapLibre GL JS](https://maplibre.org/) con el estilo gratuito de [OpenFreeMap](https://openfreemap.org/) (sin llave ni tarjeta, a diferencia de Google Maps). La "distancia entre dos puntos" es una línea recta entre los dos puntos que el usuario toca: sirve de referencia, no es una ruta caminable ni usa un servicio de rutas (eso habría necesitado una API con costo). La capa de Bicing en el mapa es el snapshot de prueba del lago, no una lectura en vivo del feed GBFS; cada punto lo deja claro como dato PROXY con su fecha. En Alojamiento, el `host_id`/`host_name`/foto/perfil de cada anuncio de Airbnb nunca se copian al JSON del sitio (ver `ingesta/procesar_mapa_y_alojamiento.py`); solo queda si el mismo anfitrión tiene varios anuncios y si es "superhost", sin identificarlo. La renta por barrio se muestra agregada y marcada como contexto, nunca como señal de a dónde alojarse.
+
 **Fotos, resúmenes y "Top turísticos":** salen de Wikipedia y Wikimedia Commons (`ingesta/descargar_wikipedia.py` → `lago/raw/wikipedia/`). La popularidad es el número de visitas al artículo de cada lugar en Wikipedia (español + inglés) en los últimos 12 meses; los 16 primeros forman el filtro "Top turísticos". No usamos las estrellas de Google porque la API de Google Places pide tarjeta de crédito; en su lugar cada ficha trae un botón "Opiniones en Google Maps" que abre el lugar en Google Maps (enlace normal, sin API ni clave). Cada foto muestra su autor y licencia.
 
-**Para agregar una página:** crea `tu-pagina.html` en la raíz copiando la estructura de `lugares.html` (el `<head>`, `<header id="navbar">`, `<footer id="pie">` y los scripts), y en `assets/js/navegacion.js` cambia `lista: false` por `lista: true` en tu página. Los nombres de archivo acordados son `mapa.html`, `alojamiento.html`, `moverte.html`, `clima.html` y `proyecto.html`.
+**Para agregar una página:** crea `tu-pagina.html` en la raíz copiando la estructura de `lugares.html` (el `<head>`, `<header id="navbar">`, `<footer id="pie">` y los scripts), y en `assets/js/navegacion.js` cambia `lista: false` por `lista: true` en tu página. Los nombres de archivo acordados son `moverte.html`, `clima.html` y `proyecto.html` (`mapa.html` y `alojamiento.html` ya están construidos).
 
 **Para probarlo en local:** `python -m http.server` en la raíz y abrir `http://localhost:8000` (abriendo el .html con doble clic no carga los datos).
 
 **Para regenerar los datos de la Portada y de Lugares:** `python ingesta/procesar_portada_y_lugares.py` (requiere pandas). Si hay que refrescar fotos y visitas de Wikipedia, antes corre `python ingesta/descargar_wikipedia.py` (requiere requests; tarda unos minutos porque Wikimedia limita las consultas, y reutiliza lo ya descargado: para bajar todo de nuevo borra `lago/raw/wikipedia/wikipedia_lugares.json`).
+
+**Para regenerar los datos del Mapa y de Alojamiento:** `python ingesta/procesar_mapa_y_alojamiento.py` (requiere pandas; corre primero `procesar_portada_y_lugares.py`, porque la capa de turismo del mapa reusa `lugares_imperdibles.json`). Genera `lago/procesado/zonas.json` (barrios y distritos), `lago/procesado/mapa.json` y `lago/procesado/alojamiento.json`. Estos dos últimos no van indentados en el JSON (a diferencia de los demás) porque tienen miles de puntos (más de 10.000 restaurantes y más de 24.000 alojamientos); sin indentar, el sitio los descarga más rápido.
 
 El clima de la Portada se pide en vivo a la API de Open-Meteo desde el navegador (gratis, sin clave).
 

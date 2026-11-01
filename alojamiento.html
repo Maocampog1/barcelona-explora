@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alojamiento · Barcelona Explora</title>
+  <meta name="description" content="Hoteles, viviendas turísticas con licencia y Airbnb en Barcelona: precio por noche y zona, con anfitriones anonimizados.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body class="con-hero">
+  <header id="navbar"></header>
+
+  <main>
+    <section class="banner">
+      <img src="assets/img/portada/casa-mila.jpg" alt="">
+      <div class="contenedor">
+        <h1>Alojamiento</h1>
+        <p>Hoteles, viviendas turísticas con licencia y Airbnb, con precio por noche y zona. Los anfitriones de Airbnb no se muestran: son datos de una persona.</p>
+      </div>
+      <p class="banner__credito" id="banner-credito"></p>
+    </section>
+    <div class="mosaico-franja" aria-hidden="true"></div>
+
+    <div class="contenedor">
+      <div class="resumen-aloj" id="resumen"></div>
+
+      <div class="filtros" role="group" aria-label="Filtros">
+        <div class="filtros__chips" id="chips"></div>
+        <select class="campo" id="filtro-distrito" aria-label="Distrito">
+          <option value="">Toda la ciudad</option>
+        </select>
+        <select class="campo" id="orden" aria-label="Ordenar">
+          <option value="precio-asc">Precio: menor a mayor</option>
+          <option value="precio-desc">Precio: mayor a menor</option>
+        </select>
+        <input class="campo filtros__buscar" id="filtro-texto" type="search" placeholder="Buscar: barrio, nombre…" aria-label="Buscar">
+        <span class="filtros__contador" id="contador"></span>
+      </div>
+
+      <div class="lugares-grid" id="alojamientos"></div>
+
+      <section class="seccion" aria-labelledby="renta-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="renta-titulo">Renta por barrio (solo contexto)</h2>
+            <p>Promedio de la renta disponible por persona, de las secciones censales de cada barrio. Es información de contexto: no se usa para recomendar dónde alojarse, y no sustituye el precio real de cada anuncio.</p>
+          </div>
+        </div>
+        <details>
+          <summary>Ver tabla de renta por barrio</summary>
+          <div id="renta-tabla-wrap"></div>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <dialog class="ficha" id="ficha" aria-label="Detalle del alojamiento">
+    <button class="ficha__cerrar" type="button" aria-label="Cerrar">×</button>
+    <div class="ficha__cuerpo" id="ficha-cuerpo"></div>
+  </dialog>
+
+  <footer id="pie"></footer>
+
+  <script src="assets/js/navegacion.js"></script>
+  <script src="assets/js/alojamiento.js"></script>
+</body>
+</html>
