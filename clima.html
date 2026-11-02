@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clima y ambiente · Barcelona Explora</title>
+  <meta name="description" content="Pronóstico por hora en vivo, calidad del aire de las estaciones de Barcelona y arbolado urbano como contexto.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body class="con-hero">
+  <header id="navbar"></header>
+
+  <main>
+    <section class="banner">
+      <img src="assets/img/portada/park-guell.jpg" alt="">
+      <div class="contenedor">
+        <h1>Clima y ambiente</h1>
+        <p>El tiempo que hará hora a hora en Barcelona, en vivo, y cómo está el aire que respiras. Más abajo, el verde urbano de la ciudad como contexto.</p>
+      </div>
+      <p class="banner__credito" id="banner-credito"></p>
+    </section>
+    <div class="mosaico-franja" aria-hidden="true"></div>
+
+    <div class="contenedor">
+      <!-- Pronóstico por hora (en vivo, Open-Meteo) -->
+      <section class="seccion" aria-labelledby="pron-titulo" style="margin-top:40px">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="pron-titulo">Pronóstico por hora</h2>
+            <p>Temperatura y lluvia previstas para las próximas horas en el centro de Barcelona. Se pide en vivo, cada vez que abres la página.</p>
+          </div>
+          <span class="etiqueta etiqueta--mercado" id="pron-vivo">En vivo</span>
+        </div>
+        <div class="pron-horas" id="pron-horas"><p class="aviso">Cargando el pronóstico…</p></div>
+        <details class="dato-origen">
+          <summary>De dónde salen estos datos</summary>
+          <dl id="pron-fuente"></dl>
+        </details>
+      </section>
+
+      <!-- Calidad del aire (batch, estaciones de Barcelona) -->
+      <section class="seccion" aria-labelledby="aire-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="aire-titulo">Calidad del aire</h2>
+            <p>Última lectura de las estaciones de medición en Barcelona. No es un dato de ahora mismo: es el último registro disponible, con su fecha.</p>
+          </div>
+          <span class="etiqueta" id="aire-fecha">—</span>
+        </div>
+        <div class="aire-grid" id="aire-grid"><p class="aviso">Cargando la calidad del aire…</p></div>
+        <details class="dato-origen">
+          <summary>De dónde salen estos datos</summary>
+          <dl id="aire-fuente"></dl>
+        </details>
+      </section>
+
+      <!-- Arbolado (contexto) -->
+      <section class="seccion" aria-labelledby="arbol-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="arbol-titulo">Verde urbano (contexto)</h2>
+            <p>El arbolado viario que inventaría el Ayuntamiento. Se muestra agregado, como contexto del verde de la ciudad.</p>
+          </div>
+          <span class="etiqueta" id="arbol-total">—</span>
+        </div>
+        <div class="arbol-resumen" id="arbol-resumen"></div>
+        <details class="dato-origen">
+          <summary>Especies más comunes y reparto por distrito</summary>
+          <div id="arbol-detalle"></div>
+        </details>
+        <details class="dato-origen">
+          <summary>De dónde salen estos datos</summary>
+          <dl id="arbol-fuente"></dl>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <footer id="pie"></footer>
+
+  <script src="assets/js/navegacion.js"></script>
+  <script src="assets/js/clima.js"></script>
+</body>
+</html>
