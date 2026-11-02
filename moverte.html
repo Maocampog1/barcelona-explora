@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cómo moverte · Barcelona Explora</title>
+  <meta name="description" content="Bicing en vivo, paradas de bus y estaciones de metro de Barcelona en un mapa: filtra por distrito y toca cualquier punto para ver su fuente.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+  <link rel="stylesheet" href="assets/vendor/maplibre-gl/maplibre-gl.css">
+</head>
+<body class="con-hero">
+  <header id="navbar"></header>
+
+  <main>
+    <section class="banner">
+      <img src="assets/img/portada/sagrada-familia.jpg" alt="">
+      <div class="contenedor">
+        <h1>Cómo moverte</h1>
+        <p>Bicing en vivo, paradas de bus y estaciones de metro en un mismo mapa. Toca una estación de Bicing para ver cuántas bicis y anclajes quedan ahora mismo.</p>
+      </div>
+      <p class="banner__credito" id="banner-credito"></p>
+    </section>
+    <div class="mosaico-franja" aria-hidden="true"></div>
+
+    <div class="contenedor">
+      <div class="filtros" role="group" aria-label="Filtros del mapa">
+        <div class="filtros__chips" id="chips-capas"></div>
+        <select class="campo" id="filtro-distrito" aria-label="Distrito">
+          <option value="">Toda la ciudad</option>
+        </select>
+        <span class="filtros__contador" id="contador"></span>
+      </div>
+
+      <div class="mapa-wrap">
+        <div id="mapa" role="application" aria-label="Mapa de transporte de Barcelona"></div>
+        <div class="leyenda" id="leyenda" aria-label="Leyenda del mapa"></div>
+        <div class="mapa-estado" id="estado-bicing" hidden></div>
+      </div>
+
+      <p class="fuente-dato">Mapa: <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> + <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>, sin llave ni tarjeta. Bicing se pide en vivo al feed oficial GBFS; si no responde, se muestra el último snapshot guardado, siempre indicado. Toca cualquier punto para ver su fuente, licencia y fecha.</p>
+    </div>
+  </main>
+
+  <dialog class="ficha" id="ficha" aria-label="Detalle del punto">
+    <button class="ficha__cerrar" type="button" aria-label="Cerrar">×</button>
+    <div class="ficha__cuerpo" id="ficha-cuerpo"></div>
+  </dialog>
+
+  <footer id="pie"></footer>
+
+  <script src="assets/vendor/maplibre-gl/maplibre-gl.js"></script>
+  <script src="assets/js/navegacion.js"></script>
+  <script src="assets/js/moverte.js"></script>
+</body>
+</html>

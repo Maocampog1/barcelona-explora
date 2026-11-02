@@ -1,0 +1,564 @@
+{
+  "generado": "2026-11-02T04:51:57+00:00",
+  "fuentes": {
+    "aire": {
+      "id": null,
+      "nombre": "Calidad del aire: datos de las estaciones de medición (XVPCA)",
+      "publicador": "Generalitat de Catalunya — Xarxa de Vigilància i Previsió de la Contaminació Atmosfèrica",
+      "licencia": "Datos abiertos de la Generalitat",
+      "archivo": "lago/raw/ambiente_satelite/calidad_aire_prueba.json"
+    },
+    "arbolado": {
+      "id": null,
+      "nombre": "Arbolado viario de Barcelona",
+      "publicador": "Open Data BCN (Ajuntament de Barcelona)",
+      "licencia": "CC BY 4.0",
+      "archivo": "lago/raw/ambiente_satelite/arbrat_viari.json"
+    }
+  },
+  "aire": {
+    "fecha": "2026-10-02",
+    "estaciones": [
+      {
+        "id": "08019050",
+        "nombre": "Barcelona (Ciutadella)",
+        "tipo_estacion": "background",
+        "lat": 41.386406,
+        "lon": 2.187398,
+        "altitud_m": 7,
+        "mediciones": [
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 9.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 9.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "O3",
+            "descripcion": "Ozono troposférico",
+            "valor": 43.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          }
+        ]
+      },
+      {
+        "id": "08019043",
+        "nombre": "Barcelona (Eixample)",
+        "tipo_estacion": "traffic",
+        "lat": 41.385315,
+        "lon": 2.1538,
+        "altitud_m": 26,
+        "mediciones": [
+          {
+            "contaminante": "CO",
+            "descripcion": "Monóxido de carbono",
+            "valor": 0.2,
+            "unidad": "mg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 9.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "O3",
+            "descripcion": "Ozono troposférico",
+            "valor": 52.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "PM10",
+            "descripcion": "Partículas en suspensión (PM10)",
+            "valor": 11.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "PM2.5",
+            "descripcion": "Partículas finas (PM2.5)",
+            "valor": 4.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "SO2",
+            "descripcion": "Dióxido de azufre",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          }
+        ]
+      },
+      {
+        "id": "08019044",
+        "nombre": "Barcelona (Gràcia - Sant Gervasi)",
+        "tipo_estacion": "traffic",
+        "lat": 41.398724,
+        "lon": 2.153399,
+        "altitud_m": 61,
+        "mediciones": [
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 2.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 8.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 10.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "O3",
+            "descripcion": "Ozono troposférico",
+            "valor": 53.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "SO2",
+            "descripcion": "Dióxido de azufre",
+            "valor": 2.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          }
+        ]
+      },
+      {
+        "id": "08019060",
+        "nombre": "Barcelona (Navas)",
+        "tipo_estacion": "traffic",
+        "lat": 41.41591,
+        "lon": 2.187094,
+        "altitud_m": 25,
+        "mediciones": [
+          {
+            "contaminante": "CO",
+            "descripcion": "Monóxido de carbono",
+            "valor": 0.2,
+            "unidad": "mg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 3.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 17.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 19.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "O3",
+            "descripcion": "Ozono troposférico",
+            "valor": 32.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "PM10",
+            "descripcion": "Partículas en suspensión (PM10)",
+            "valor": 9.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "PM2.5",
+            "descripcion": "Partículas finas (PM2.5)",
+            "valor": 4.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "SO2",
+            "descripcion": "Dióxido de azufre",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          }
+        ]
+      },
+      {
+        "id": "08019058",
+        "nombre": "Barcelona (Observatori Fabra)",
+        "tipo_estacion": "background",
+        "lat": 41.41843,
+        "lon": 2.123897,
+        "altitud_m": 415,
+        "mediciones": [
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 2.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 2.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "O3",
+            "descripcion": "Ozono troposférico",
+            "valor": 64.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "PM10",
+            "descripcion": "Partículas en suspensión (PM10)",
+            "valor": 11.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          }
+        ]
+      },
+      {
+        "id": "08019057",
+        "nombre": "Barcelona (Palau Reial)",
+        "tipo_estacion": "background",
+        "lat": 41.38749,
+        "lon": 2.1152,
+        "altitud_m": 81,
+        "mediciones": [
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 6.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 5.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "O3",
+            "descripcion": "Ozono troposférico",
+            "valor": 54.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "PM10",
+            "descripcion": "Partículas en suspensión (PM10)",
+            "valor": 7.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "PM2.5",
+            "descripcion": "Partículas finas (PM2.5)",
+            "valor": 3.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "SO2",
+            "descripcion": "Dióxido de azufre",
+            "valor": 2.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          }
+        ]
+      },
+      {
+        "id": "08019054",
+        "nombre": "Barcelona (Parc Vall Hebron)",
+        "tipo_estacion": "background",
+        "lat": 41.42611,
+        "lon": 2.148002,
+        "altitud_m": 136,
+        "mediciones": [
+          {
+            "contaminante": "CO",
+            "descripcion": "Monóxido de carbono",
+            "valor": 0.2,
+            "unidad": "mg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 10.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 10.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "O3",
+            "descripcion": "Ozono troposférico",
+            "valor": 51.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "PM10",
+            "descripcion": "Partículas en suspensión (PM10)",
+            "valor": 8.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "PM2.5",
+            "descripcion": "Partículas finas (PM2.5)",
+            "valor": 3.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "SO2",
+            "descripcion": "Dióxido de azufre",
+            "valor": 2.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          }
+        ]
+      },
+      {
+        "id": "08019004",
+        "nombre": "Barcelona (Poblenou)",
+        "tipo_estacion": "background",
+        "lat": 41.40388,
+        "lon": 2.204501,
+        "altitud_m": 3,
+        "mediciones": [
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 10.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 9.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          },
+          {
+            "contaminante": "PM10",
+            "descripcion": "Partículas en suspensión (PM10)",
+            "valor": 14.0,
+            "unidad": "µg/m³",
+            "hora": "03:00"
+          }
+        ]
+      },
+      {
+        "id": "08019042",
+        "nombre": "Barcelona (Sants)",
+        "tipo_estacion": "background",
+        "lat": 41.37878,
+        "lon": 2.133099,
+        "altitud_m": 35,
+        "mediciones": [
+          {
+            "contaminante": "NO",
+            "descripcion": "Monóxido de nitrógeno (tráfico)",
+            "valor": 1.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NO2",
+            "descripcion": "Dióxido de nitrógeno (tráfico)",
+            "valor": 7.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          },
+          {
+            "contaminante": "NOX",
+            "descripcion": "Óxidos de nitrógeno (tráfico)",
+            "valor": 4.0,
+            "unidad": "µg/m³",
+            "hora": "04:00"
+          }
+        ]
+      }
+    ]
+  },
+  "arbolado": {
+    "total": 145034,
+    "muestra": true,
+    "nota": "Muestra del inventario de arbolado viario (no es el total de árboles de la ciudad). Se usa como contexto del verde urbano, agregado por distrito y especie.",
+    "top_especies": [
+      {
+        "especie": "Plátano",
+        "cantidad": 40067
+      },
+      {
+        "especie": "Almez",
+        "cantidad": 19387
+      },
+      {
+        "especie": "Acacia del Japón",
+        "cantidad": 8164
+      },
+      {
+        "especie": "Palo rosa; tipa blanca",
+        "cantidad": 6635
+      },
+      {
+        "especie": "Melia; cinamomo",
+        "cantidad": 6258
+      },
+      {
+        "especie": "Árbol botella",
+        "cantidad": 5235
+      },
+      {
+        "especie": "Jacaranda",
+        "cantidad": 3236
+      },
+      {
+        "especie": "Aligustre; aligustre de China",
+        "cantidad": 3190
+      },
+      {
+        "especie": "Ciruelo rojo",
+        "cantidad": 2771
+      },
+      {
+        "especie": "Árbol del amor; Árbol de Judas",
+        "cantidad": 2563
+      }
+    ],
+    "por_distrito": [
+      {
+        "distrito": "Sant Martí",
+        "cantidad": 29676
+      },
+      {
+        "distrito": "Eixample",
+        "cantidad": 21276
+      },
+      {
+        "distrito": "Sants - Montjuïc",
+        "cantidad": 14963
+      },
+      {
+        "distrito": "Sant Andreu",
+        "cantidad": 14906
+      },
+      {
+        "distrito": "Nou Barris",
+        "cantidad": 13619
+      },
+      {
+        "distrito": "Sarrià - Sant Gervasi",
+        "cantidad": 12990
+      },
+      {
+        "distrito": "Les Corts",
+        "cantidad": 12277
+      },
+      {
+        "distrito": "Horta - Guinardó",
+        "cantidad": 12100
+      },
+      {
+        "distrito": "Gràcia",
+        "cantidad": 6963
+      },
+      {
+        "distrito": "Ciutat Vella",
+        "cantidad": 6260
+      },
+      {
+        "distrito": "Sin distrito",
+        "cantidad": 4
+      }
+    ]
+  }
+}

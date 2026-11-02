@@ -811,3 +811,123 @@ img { max-width: 100%; display: block; }
 .renta-tabla { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top: 14px; }
 .renta-tabla th, .renta-tabla td { padding: 8px 12px; border-bottom: 1px solid var(--linea); text-align: left; }
 .renta-tabla th { color: var(--tinta-suave); font-weight: 700; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
+
+/* =========================================================================
+   Cómo moverte (05): aviso de estado de Bicing sobre el mapa
+   ========================================================================= */
+.mapa-estado {
+  position: absolute; right: 14px; top: 14px; z-index: 5;
+  max-width: 260px;
+  border-radius: 12px;
+  padding: 9px 13px;
+  font-size: .82rem;
+  font-weight: 600;
+  box-shadow: var(--sombra);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mapa-estado--vivo { background: #e5f2ea; color: var(--tipo-mercado); }
+.mapa-estado--proxy { background: #fbe6e0; color: var(--tipo-icono); }
+.punto-vivo {
+  width: 10px; height: 10px; border-radius: 50%; flex: none;
+  background: var(--tipo-mercado);
+  box-shadow: 0 0 0 0 rgba(62, 142, 94, .5);
+  animation: latido 1.8s ease-out infinite;
+}
+@keyframes latido {
+  0% { box-shadow: 0 0 0 0 rgba(62, 142, 94, .5); }
+  70% { box-shadow: 0 0 0 8px rgba(62, 142, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(62, 142, 94, 0); }
+}
+
+/* =========================================================================
+   Clima y ambiente (06)
+   ========================================================================= */
+
+/* Bloque "De dónde salen estos datos" (reusa estilo de la ficha) */
+.dato-origen { border-top: 1px solid var(--linea); padding: 12px 0; margin-top: 16px; }
+.dato-origen summary { cursor: pointer; font-weight: 700; color: var(--mar); }
+.dato-origen dl { display: grid; grid-template-columns: 180px 1fr; gap: 8px 16px; margin: 14px 0 4px; font-size: .9rem; }
+.dato-origen dt { color: var(--tinta-suave); font-size: .85rem; }
+.dato-origen dd { margin: 0; overflow-wrap: anywhere; }
+@media (max-width: 560px) { .dato-origen dl { grid-template-columns: 1fr; } }
+
+/* Pronóstico por hora: tira horizontal de tarjetas */
+.pron-horas {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 86px;
+  gap: 10px;
+  overflow-x: auto;
+  padding: 6px 2px 16px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+.pron-hora {
+  scroll-snap-align: start;
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: 16px;
+  box-shadow: var(--sombra);
+  padding: 14px 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+.pron-hora__hora { font-size: .8rem; color: var(--tinta-suave); font-weight: 600; }
+.pron-hora__icono { width: 40px; height: 40px; }
+.pron-hora__temp { font-family: var(--fuente-titulos); font-size: 1.4rem; color: var(--mar); }
+.pron-hora__lluvia { font-size: .72rem; color: var(--linea); }
+.pron-hora__lluvia.activa { color: var(--mar-claro); font-weight: 700; }
+
+/* Calidad del aire: tarjetas por estación */
+.aire-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+.aire-card {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 18px 20px;
+}
+.aire-card__cab { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+.aire-card__cab h3 { margin: 0; font-size: 1.15rem; }
+.aire-card__tipo { font-size: .72rem; color: var(--tinta-suave); text-transform: uppercase; letter-spacing: .05em; }
+.aire-card__medidas { display: flex; flex-direction: column; gap: 8px; }
+.aire-medida { display: flex; align-items: center; gap: 10px; font-size: .92rem; }
+.aire-medida__punto { width: 11px; height: 11px; border-radius: 50%; flex: none; }
+.aire-medida__nombre { font-weight: 600; min-width: 48px; }
+.aire-medida__valor { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--mar); }
+.aire-medida__valor small { font-weight: 500; color: var(--tinta-suave); }
+
+/* Arbolado: resumen y listas */
+.arbol-resumen {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 14px;
+  margin-bottom: 8px;
+}
+.arbol-dato {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.arbol-dato strong { font-family: var(--fuente-titulos); font-size: 1.5rem; color: var(--mar); line-height: 1.1; }
+.arbol-dato span { font-size: .85rem; color: var(--tinta-suave); }
+.arbol-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 12px; }
+.arbol-cols h4 { margin: 0 0 8px; color: var(--mar); font-family: var(--fuente-titulos); }
+.arbol-lista { list-style: none; margin: 0; padding: 0; font-size: .9rem; }
+.arbol-lista li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--linea); }
+.arbol-lista li span:last-child { font-variant-numeric: tabular-nums; color: var(--tinta-suave); font-weight: 600; }
+@media (max-width: 560px) { .arbol-cols { grid-template-columns: 1fr; gap: 16px; } }
