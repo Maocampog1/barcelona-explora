@@ -21,7 +21,7 @@ const PAGINAS = [
     descripcion: "Bicing en vivo, paradas de bus y metro." },
   { num: "06", titulo: "Clima y ambiente", archivo: "clima.html", lista: true,
     descripcion: "Pronóstico por hora, calidad del aire y arbolado urbano." },
-  { num: "07", titulo: "Sobre el proyecto", archivo: "proyecto.html", lista: false,
+  { num: "07", titulo: "Sobre el proyecto", archivo: "proyecto.html", lista: true,
     descripcion: "Metodología, fuentes, preguntas respondidas y equipo." },
 ];
 

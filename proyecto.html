@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre el proyecto · Metodología, Fuentes y Ética de Datos · Barcelona Explora</title>
+  <meta name="description" content="Gemelo digital para el turista en Barcelona: arquitectura en 3 capas, 30 fuentes del lago, respuesta a preguntas de la Entrega 1, comparativa técnica y ética de datos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body class="con-hero">
+  <header id="navbar"></header>
+
+  <main>
+    <!-- Encabezado / Hero ilustrado (Estándar visual: fondo azul mar, sin fotografía real) -->
+    <section class="banner--ilustrado" aria-labelledby="proyecto-titulo">
+      <div class="contenedor">
+        <span class="etiqueta etiqueta--pronto" style="background:rgba(23,163,152,0.22); color:#a4f0e7; margin-bottom:12px; border:1px solid rgba(23,163,152,0.4);">
+          Taller de Datos · Universidad EAFIT · Entrega 2
+        </span>
+        <h1 id="proyecto-titulo">Sobre el proyecto</h1>
+        <p>
+          De un catálogo exploratorio de <strong>142 fuentes</strong> a un <strong>gemelo digital híbrido y en vivo</strong> para el turista autosuficiente en Barcelona: metodología, arquitectura en 3 capas, preguntas respondidas, catálogo auditable de las <strong>30 fuentes del lago</strong> y principios éticos de privacidad por diseño.
+        </p>
+
+        <!-- Tarjetas de resumen rápido (KPIs en vivo) -->
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <strong>30 + 1</strong>
+            <span>Fuentes del lago documentadas (<span class="mono">F01–F30 + WIKI</span>)</span>
+          </div>
+          <div class="kpi-card">
+            <strong>4</strong>
+            <span>Pipelines ETL reproducibles en Python (<span class="mono">ingesta/</span>)</span>
+          </div>
+          <div class="kpi-card">
+            <strong>7</strong>
+            <span>Vistas web conectadas sin frameworks ni bundlers</span>
+          </div>
+          <div class="kpi-card">
+            <strong>0 €</strong>
+            <span>Costo de infraestructura: sin llaves pagas ni tarjetas</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="mosaico-franja" aria-hidden="true"></div>
+
+    <div class="contenedor">
+
+      <!-- ===================================================================
+           SECCIÓN 1: Metodología y Arquitectura del Lago a la Web
+           =================================================================== -->
+      <section class="seccion" aria-labelledby="sec-arquitectura">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="sec-arquitectura">1. Metodología y Arquitectura</h2>
+            <p>Cómo fluyen los datos abiertos desde los portales oficiales hasta la pantalla del usuario en un sistema completamente reproducible y auditable.</p>
+          </div>
+        </div>
+
+        <div class="flujo-grid">
+          <article class="flujo-card">
+            <span class="flujo-card__badge">Capa 1 · Almacenamiento</span>
+            <h3>Lago Crudo (<span class="mono">lago/raw/</span>)</h3>
+            <p>
+              Conserva los datos en su formato original tal como llegan del publicador para garantizar la auditabilidad y trazabilidad total:
+            </p>
+            <ul>
+              <li><strong>8 Dominios:</strong> <span class="mono">geo</span>, <span class="mono">transporte</span>, <span class="mono">turismo</span>, <span class="mono">economia_vivienda</span>, <span class="mono">ambiente_satelite</span>, <span class="mono">municipio</span>, <span class="mono">edificios</span>, <span class="mono">servicios_turista</span>.</li>
+              <li><strong>Formatos abiertos:</strong> CSV estructurados, JSON/GeoJSON, XML catastral INSPIRE y calendarios iCalendar (.ics).</li>
+              <li><strong>Snapshots de contingencia:</strong> Capturas fechadas de APIs dinámicas (<span class="mono">bicing_estado_2026-10-01.json</span>, <span class="mono">tiempo_prueba.json</span>).</li>
+            </ul>
+          </article>
+
+          <article class="flujo-card">
+            <span class="flujo-card__badge">Capa 2 · Procesamiento</span>
+            <h3>Ingesta y Limpieza (<span class="mono">ingesta/*.py</span>)</h3>
+            <p>
+              Scripts modulares en Python que homogenizan, cruzan y preparan los datos para el consumo en el frontend:
+            </p>
+            <ul>
+              <li><span class="mono">descargar_wikipedia.py</span>: Extrae resúmenes, autores de fotos y métricas de visitas a 12 meses (español + inglés) desde la API de Wikimedia.</li>
+              <li><span class="mono">procesar_portada_y_lugares.py</span>: Cruza hitos con polígonos de barrios (<button class="tag-fuente" data-fuente="F01">F01</button>), calcula el ranking de popularidad y datos curiosos.</li>
+              <li><span class="mono">procesar_mapa_y_alojamiento.py</span>: Procesa locales (<button class="tag-fuente" data-fuente="F08">F08</button>), hoteles (<button class="tag-fuente" data-fuente="F17">F17</button>), HUTs (<button class="tag-fuente" data-fuente="F18">F18</button>) y anonimiza Airbnb (<button class="tag-fuente" data-fuente="F19">F19</button>).</li>
+              <li><span class="mono">procesar_moverte_y_clima.py</span>: Unifica transporte (<button class="tag-fuente" data-fuente="F05">F05</button>, <button class="tag-fuente" data-fuente="F06">F06</button>), calidad de aire (<button class="tag-fuente" data-fuente="F22">F22</button>) y arbolado (<button class="tag-fuente" data-fuente="F20">F20</button>).</li>
+            </ul>
+          </article>
+
+          <article class="flujo-card">
+            <span class="flujo-card__badge">Capa 3 · Visualización</span>
+            <h3>Cliente Web Híbrido</h3>
+            <p>
+              Sitio web sin dependencias pesadas ni compilación que se sirve estáticamente desde la raíz del repositorio:
+            </p>
+            <ul>
+              <li><strong>Zero Frameworks:</strong> HTML5 nativo, CSS con Custom Properties inspiradas en el trencadís y JavaScript vanilla (ES6+).</li>
+              <li><strong>Motor Cartográfico Libre:</strong> <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a> empaquetado localmente + teselas vectoriales de <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> (sin API key ni tarjeta).</li>
+              <li><strong>Streaming con fallback:</strong> Consultas en vivo en el navegador a <button class="tag-fuente" data-fuente="F03">F03</button> (Bicing GBFS) y <button class="tag-fuente" data-fuente="F21">F21</button> (Open-Meteo) que degradan a <span class="etiqueta" style="background:#fbe6e0; color:var(--tipo-icono)">DATO PROXY</span> si no hay conexión.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SECCIÓN 2: Preguntas de la Entrega 1: Respondidas vs. Abiertas
+           =================================================================== -->
+      <section class="seccion" aria-labelledby="sec-preguntas">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="sec-preguntas">2. Preguntas de la Entrega 1: Respondidas vs. Abiertas</h2>
+            <p>Evaluación rigurosa de las tres preguntas formuladas en la justificación inicial frente a lo implementado en el gemelo digital.</p>
+          </div>
+        </div>
+
+        <div class="preguntas-grid">
+          <!-- Pregunta 1 -->
+          <article class="pregunta-card">
+            <div class="pregunta-card__top">
+              <div>
+                <span class="pregunta-card__categoria">Pregunta 1 · Movilidad Urbana</span>
+                <h3>«¿Cómo me puedo mover por la ciudad haciendo uso ya sea de bicicleta, bus, taxi, o metro, y qué tan lejos estoy de cada opción?»</h3>
+                <p style="margin:4px 0 0; font-size:.85rem; color:var(--tinta-suave);">
+                  Fuentes asignadas: <button class="tag-fuente" data-fuente="F03">F03</button> <button class="tag-fuente" data-fuente="F04">F04</button> <button class="tag-fuente" data-fuente="F05">F05</button> <button class="tag-fuente" data-fuente="F06">F06</button> <button class="tag-fuente" data-fuente="F07">F07</button> · Vistas: <a href="moverte.html">05 Cómo moverte</a> y <a href="mapa.html">03 Explora el mapa</a>
+                </p>
+              </div>
+              <span class="pregunta-card__estado pregunta-card__estado--parcial">Respondida parcialmente (con alcance claro)</span>
+            </div>
+            <div class="pregunta-card__cuerpo">
+              <div>
+                <h4>Qué resuelve hoy el gemelo digital:</h4>
+                <p>
+                  Permite consultar en tiempo real las <strong>543 estaciones de Bicing</strong> (<button class="tag-fuente" data-fuente="F03">F03</button>, <button class="tag-fuente" data-fuente="F04">F04</button>) mostrando cuántas bicicletas y anclajes libres hay en el momento exacto de la consulta con hora UTC visible, trazando rutas ciclistas/peatonales mediante OSRM. Incorpora la red completa de paradas de autobús (<button class="tag-fuente" data-fuente="F06">F06</button>) y las estaciones de metro y tren urbano (<button class="tag-fuente" data-fuente="F05">F05</button>) con filtros interactivos por distrito.
+                </p>
+              </div>
+              <div>
+                <h4>Qué quedó pendiente / abierto y por qué:</h4>
+                <p>
+                  <strong>Llegada del próximo metro en tiempo real:</strong> La API de tiempos de espera en vivo de TMB (Transports Metropolitans de Barcelona) exige token de registro previo y autenticación cerrada. Para no romper la regla de cero dependencias cerradas, las estaciones de metro se muestran con sus accesos físicos y un badge explícito: <span class="etiqueta etiqueta--pronto" style="background:#eef0f3; color:var(--tinta-suave)">Sin tiempo real · pendiente</span>. Asimismo, las paradas de taxi (<button class="tag-fuente" data-fuente="F07">F07</button>) están limpias en el lago pero su capa visual quedó en reserva para no saturar el mapa.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Pregunta 2 -->
+          <article class="pregunta-card">
+            <div class="pregunta-card__top">
+              <div>
+                <span class="pregunta-card__categoria">Pregunta 2 · Atractivos, Gastronomía y Servicios</span>
+                <h3>«¿Qué puedo visitar cerca de mí, como puntos de interés, museos, bibliotecas, miradores o eventos de la agenda?»</h3>
+                <p style="margin:4px 0 0; font-size:.85rem; color:var(--tinta-suave);">
+                  Fuentes asignadas: <button class="tag-fuente" data-fuente="F10">F10</button> <button class="tag-fuente" data-fuente="F11">F11</button> <button class="tag-fuente" data-fuente="F12">F12</button> <button class="tag-fuente" data-fuente="F13">F13</button> <button class="tag-fuente" data-fuente="F14">F14</button> <button class="tag-fuente" data-fuente="F15">F15</button> <button class="tag-fuente" data-fuente="F16">F16</button> <button class="tag-fuente" data-fuente="WIKI">WIKI</button> <button class="tag-fuente" data-fuente="F08">F08</button> <button class="tag-fuente" data-fuente="F30">F30</button> · Vistas: <a href="lugares.html">02 Lugares imperdibles</a>, <a href="index.html">01 Portada</a> y <a href="mapa.html">03 Explora el mapa</a>
+                </p>
+              </div>
+              <span class="pregunta-card__estado pregunta-card__estado--ok">Respondida con curaduría y ranking real</span>
+            </div>
+            <div class="pregunta-card__cuerpo">
+              <div>
+                <h4>Qué resuelve hoy el gemelo digital:</h4>
+                <p>
+                  Integra 78 lugares imperdibles agrupados en Íconos de Gaudí (<button class="tag-fuente" data-fuente="F11">F11</button>), Museos (<button class="tag-fuente" data-fuente="F12">F12</button>), Miradores (<button class="tag-fuente" data-fuente="F14">F14</button>) y Mercados tradicionales (<button class="tag-fuente" data-fuente="F10">F10</button>). Cada lugar cuenta con fotos, ficha técnica con su ID original, resumen histórico y un <strong>ranking de popularidad de 1 a 5 llamas</strong> basado en el número real de visitas al artículo en Wikipedia (<button class="tag-fuente" data-fuente="WIKI">WIKI</button>) en los últimos 12 meses. Además, el mapa incluye más de 10.000 locales de comida y ocio nocturno (<button class="tag-fuente" data-fuente="F08">F08</button>, <button class="tag-fuente" data-fuente="F09">F09</button>) y servicios esenciales en datos curiosos (WiFi <button class="tag-fuente" data-fuente="F26">F26</button>, baños <button class="tag-fuente" data-fuente="F27">F27</button>, duchas <button class="tag-fuente" data-fuente="F28">F28</button> y refugios climáticos <button class="tag-fuente" data-fuente="F29">F29</button>).
+                </p>
+              </div>
+              <div>
+                <h4>Qué quedó pendiente / abierto y por qué:</h4>
+                <p>
+                  <strong>Precios de menú de restaurantes:</strong> No existe ninguna fuente abierta oficial con precios de cartas gastronómicas en Barcelona. Se resolvió mostrando la ubicación exacta de locales en planta baja (<button class="tag-fuente" data-fuente="F08">F08</button>) y conservando en el lago las terrazas con capacidad autorizada de mesas y sillas (<button class="tag-fuente" data-fuente="F30">F30</button>). Los eventos dinámicos (<button class="tag-fuente" data-fuente="F16">F16</button>) y festivos (<button class="tag-fuente" data-fuente="F15">F15</button>) se conservan en el lago para una segunda fase.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Pregunta 3 -->
+          <article class="pregunta-card">
+            <div class="pregunta-card__top">
+              <div>
+                <span class="pregunta-card__categoria">Pregunta 3 · Alojamiento y Contexto Socioeconómico</span>
+                <h3>«¿Dónde me puedo alojar, y cómo es ese barrio en renta, oferta de hoteles, viviendas turísticas o Airbnb?»</h3>
+                <p style="margin:4px 0 0; font-size:.85rem; color:var(--tinta-suave);">
+                  Fuentes asignadas: <button class="tag-fuente" data-fuente="F02">F02</button> <button class="tag-fuente" data-fuente="F17">F17</button> <button class="tag-fuente" data-fuente="F18">F18</button> <button class="tag-fuente" data-fuente="F19">F19</button> · Vistas: <a href="alojamiento.html">04 Alojamiento</a> y <a href="mapa.html">03 Explora el mapa</a>
+                </p>
+              </div>
+              <span class="pregunta-card__estado pregunta-card__estado--ok">Respondida al 100% con protección ética</span>
+            </div>
+            <div class="pregunta-card__cuerpo">
+              <div>
+                <h4>Qué resuelve hoy el gemelo digital:</h4>
+                <p>
+                  Consolida más de 24.000 opciones de hospedaje en un solo buscador: 400+ hoteles oficiales con categoría (<button class="tag-fuente" data-fuente="F17">F17</button>), 9.000+ viviendas de uso turístico legales con número oficial HUTB (<button class="tag-fuente" data-fuente="F18">F18</button>) y más de 15.000 anuncios de Inside Airbnb (<button class="tag-fuente" data-fuente="F19">F19</button>) con precio mediano de 105 USD/noche y filtros cruzados por distrito, tipo de habitación y ordenación por precio.
+                </p>
+              </div>
+              <div>
+                <h4>Manejo ético y contexto de renta:</h4>
+                <p>
+                  Para responder cómo es cada barrio sin estigmatizar, se incorporó la renta disponible de los hogares (<button class="tag-fuente" data-fuente="F02">F02</button>) presentada de forma agregada en una tabla contextual desplegable (<span class="mono">€/persona/año</span>). Se advierte explícitamente al viajero que esta cifra es solo contexto macroeconómico y no una recomendación sobre dónde alojarse ni un indicador de seguridad.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SECCIÓN 3: Protección de Datos, Ética y Decisiones Técnicas
+           =================================================================== -->
+      <section class="seccion" aria-labelledby="sec-etica">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="sec-etica">3. Protección de Datos, Ética y Decisiones Técnicas</h2>
+            <p>Principios de privacidad por diseño, justificación del stack tecnológico y reflexiones críticas del equipo.</p>
+          </div>
+        </div>
+
+        <!-- Privacidad y Trazabilidad -->
+        <div class="reflexion-grid">
+          <article class="reflexion-card">
+            <h3>Privacidad por Diseño (<span class="mono">F19</span> y <span class="mono">F02</span>)</h3>
+            <p>
+              <strong>Anonimización de anfitriones de Airbnb:</strong> El dataset original de Inside Airbnb contiene nombres personales, fotos de perfil y enlaces directos al usuario anfitrión. En <span class="mono">ingesta/procesar_mapa_y_alojamiento.py</span> aplicamos una regla estricta: los campos <span class="mono">host_id</span>, <span class="mono">host_name</span>, <span class="mono">host_url</span> y <span class="mono">host_thumbnail_url</span> se eliminan completamente antes de serializar el JSON web. Solo se conserva si el anfitrión gestiona múltiples anuncios y si tiene categoría superhost, sin identificar a la persona.
+            </p>
+            <p>
+              <strong>No discriminación territorial por renta:</strong> Al cruzar la renta de los hogares (<button class="tag-fuente" data-fuente="F02">F02</button>) con los barrios, se descartó calcular índices de "calidad de barrio" que pudieran sesgar al turista a evitar zonas de menor ingreso como Ciutat Vella o Nou Barris.
+            </p>
+          </article>
+
+          <article class="reflexion-card">
+            <h3>Honestidad y Transparencia en la Información</h3>
+            <p>
+              En lugar de ocultar las fallas de red o las limitaciones de las APIs, el sistema las visibiliza con estándares de trazabilidad:
+            </p>
+            <p>
+              <strong>DATO PROXY vs. En Vivo:</strong> Si el feed en streaming de Bicing (<button class="tag-fuente" data-fuente="F03">F03</button>) o Open-Meteo (<button class="tag-fuente" data-fuente="F21">F21</button>) no responde, el frontend cae automáticamente al snapshot de respaldo del lago y activa una alerta visual roja: <span class="etiqueta" style="background:#fbe6e0; color:var(--tipo-icono)">Snapshot de respaldo</span> indicando la fecha y hora exacta de la captura (<span class="mono">2026-10-01T16:05:52Z</span>).
+            </p>
+            <p>
+              <strong>Metro Pendiente:</strong> Se declara abiertamente que la red de metro (<button class="tag-fuente" data-fuente="F05">F05</button>) no cuenta con tiempos de llegada en vivo debido a las restricciones de autenticación de TMB.
+            </p>
+          </article>
+        </div>
+
+        <!-- Comparativa de Herramientas -->
+        <div style="margin-top: 36px;">
+          <h3 style="font-size:1.4rem; color:var(--mar); margin-bottom:8px;">Bitácora Técnica: Comparativa de Herramientas de Mapas</h3>
+          <p style="color:var(--tinta-suave); margin-top:0;">
+            Evaluamos tres alternativas con el mismo conjunto de datos espaciales del lago (<span class="mono">mapa.json</span> con más de 10.000 puntos).
+          </p>
+
+          <div class="tabla-wrap">
+            <table class="tabla-comparativa">
+              <thead>
+                <tr>
+                  <th style="width:20%;">Criterio de Rúbrica</th>
+                  <th style="width:28%;" class="destacada">MapLibre GL JS + OpenFreeMap (Elegida)</th>
+                  <th style="width:26%;">kepler.gl (Casi elegida / Descartada)</th>
+                  <th style="width:26%;">Google Maps Platform (Descartada)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="destacada">
+                  <td><strong>1. ¿Qué pidió para empezar?</strong></td>
+                  <td>Cero llaves, cero cuentas y cero tarjetas. Descargar el bundle JS/CSS al repo y referenciar el estilo libre de OpenFreeMap.</td>
+                  <td>Node.js/React para integrarlo como componente o crear una cuenta/token de Mapbox si se exportaba la aplicación.</td>
+                  <td>Crear una cuenta en Google Cloud Platform y <strong>asociar obligatoriamente una tarjeta de crédito</strong> bancaria.</td>
+                </tr>
+                <tr>
+                  <td><strong>2. ¿Qué licencia tiene?</strong></td>
+                  <td><span class="mono">BSD 3-Clause</span> (código 100% abierto) + datos OpenStreetMap (<span class="mono">ODbL</span>).</td>
+                  <td><span class="mono">MIT License</span> (código abierto), pero su mapa base habitual depende de tokens de Mapbox.</td>
+                  <td>Propietaria y cerrada, sujeta a cuotas de cobro por consumo por encima del crédito mensual.</td>
+                </tr>
+                <tr>
+                  <td><strong>3. ¿Dónde quedan los datos?</strong></td>
+                  <td>En el propio repositorio GitHub y en el navegador del usuario (<span class="mono">lago/procesado/*.json</span>). Soberanía total.</td>
+                  <td>En memoria del navegador o en un almacenamiento en la nube de Kepler/Mapbox si se publica el mapa web compartido.</td>
+                  <td>En los servidores de Google al enviar las coordenadas y peticiones de geolocalización.</td>
+                </tr>
+                <tr class="destacada">
+                  <td><strong>4. ¿Qué resolvió?</strong></td>
+                  <td>Renderizado vectorial fluido de miles de puntos, control total de capas (turismo, comida, bicis, hoteles), popups a medida y cálculo de distancias y rutas OSRM.</td>
+                  <td>Análisis exploratorio visual rápido en fase de pruebas: mapas de calor, clusters y filtrado temporal dinámico con interfaz visual.</td>
+                  <td>Búsquedas por nombre de local y opiniones de usuarios muy reconocibles para el turista.</td>
+                </tr>
+                <tr>
+                  <td><strong>5. ¿Qué no resolvió?</strong></td>
+                  <td>No tiene una interfaz gráfica integrada para editar capas sin código; todo debe programarse en JavaScript nativo.</td>
+                  <td>Muy pesado de integrar como sitio web personalizado con menús, modales de trazabilidad, routing OSRM y diseño propio Gaudí.</td>
+                  <td>No cumplía la regla básica de cero costo y dependencia de tarjeta exigida en el taller.</td>
+                </tr>
+                <tr class="destacada">
+                  <td><strong>6. ¿Por qué quedó o no?</strong></td>
+                  <td><strong>QUEDÓ:</strong> Es ligera, 100% gratuita, auditable, almacena los datos en el lago y respeta el estándar visual del proyecto.</td>
+                  <td><strong>DESCARTADA:</strong> Excelente herramienta para analistas en local, pero excesivamente rígida y pesada para ser el frontend del viajero.</td>
+                  <td><strong>DESCARTADA:</strong> Bloqueada desde el inicio por exigir tarjeta bancaria y arriesgar cobros por uso.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Postura frente a las 2 Reflexiones del Taller -->
+        <div style="margin-top: 36px;">
+          <h3 style="font-size:1.4rem; color:var(--mar); margin-bottom:8px;">Las 2 Reflexiones del Taller: Datos y Seguridad</h3>
+          <div class="reflexion-grid">
+            <article class="reflexion-card">
+              <h3>Reflexión 1: Sobre los Datos (Curaduría vs. Publicar Todo)</h3>
+              <p>
+                El inicio del proyecto demostró que acumular 142 fuentes de un catálogo generalista no produce un gemelo digital útil, sino una base de datos caótica. Al cambiar la perspectiva hacia el <strong>turista autosuficiente</strong>, aprendimos que la curaduría es un acto de diseño responsable: publicar datos de presupuestos municipales (<span class="mono">Transparencia</span>) o índices de criminalidad no le aporta valor al viajero y en cambio genera desinformación.
+              </p>
+              <p>
+                Además, datos agregados como la renta (<button class="tag-fuente" data-fuente="F02">F02</button>) demuestran que <em>abrir datos sin contexto genera sesgos</em>: si hubiéramos mapeado la renta como un indicador de recomendación turística, el sistema habría promovido la gentrificación en barrios ricos y estigmatizado barrios obreros. La responsabilidad del científico de datos está en saber qué recortar y cómo enmarcar la información.
+              </p>
+            </article>
+
+            <article class="reflexion-card">
+              <h3>Reflexión 2: Sobre la Seguridad y Privacidad (Privacy by Design)</h3>
+              <p>
+                La privacidad no puede ser una capa cosmética en el frontend que se oculta con CSS. Si el archivo JSON descargado por el navegador contiene el nombre o el teléfono del anfitrión de un Airbnb (<button class="tag-fuente" data-fuente="F19">F19</button>), el dato ya fue expuesto y vulnerado. Por ello, aplicamos <strong>Privacy by Design</strong> en el pipeline ETL en Python, destruyendo los identificadores directos antes de que el archivo toque el servidor web.
+              </p>
+              <p>
+                En cuanto a la soberanía tecnológica, evitar herramientas como Google Maps que exigen registrar una tarjeta de crédito protege la independencia del proyecto: un servicio público universitario no puede colapsar porque se agotó una cuota de crédito privado o porque cambiaron los términos de servicio de una multinacional.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Bitácora de IA -->
+        <div style="margin-top: 36px;">
+          <h3 style="font-size:1.4rem; color:var(--mar); margin-bottom:8px;">Bitácora de IA: Aciertos, Errores y Aprendizajes</h3>
+          <div class="reflexion-grid">
+            <article class="reflexion-card" style="border-top-color: var(--oliva);">
+              <h3>Aciertos Clave de la IA</h3>
+              <p>
+                <strong>Validación de Licencias (<span class="mono">F19</span>):</strong> La IA nos alertó de que réplicas de Inside Airbnb en Kaggle e IBM estaban erróneamente etiquetadas como CC0 (dominio público). Nos recomendó acudir directamente al sitio primario donde se constató que la licencia oficial es <span class="mono">CC BY 4.0</span>.
+              </p>
+              <p>
+                <strong>Optimización de Ingesta:</strong> Asistió en la vectorización y empaquetado de <span class="mono">mapa.json</span> y <span class="mono">alojamiento.json</span> sin saltos de línea ni indentación para reducir el peso de descarga de miles de puntos en conexiones móviles.
+              </p>
+            </article>
+
+            <article class="reflexion-card" style="border-top-color: var(--terracota);">
+              <h3>Errores Detectados y Aprendizajes</h3>
+              <p>
+                <strong>El mito de las "APIs automáticas" (<span class="mono">F03</span>):</strong> Al inicio creímos que una API se conectaba sola al repositorio; la IA nos ayudó a entender que descargar un endpoint solo genera un snapshot estático y que para el tiempo real se requiere consultar desde el navegador o programar cron jobs.
+              </p>
+              <p>
+                <strong>Falso negativo en Open Data BCN (<span class="mono">F05</span>):</strong> En una primera consulta, la IA aseguró que no existía dataset de estaciones de metro en Open Data BCN. Al contrastar manualmente encontramos <span class="mono">transports..csv</span>, demostrando que <em>la IA es una guía exploratoria, no la autoridad final de verificación</em>.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           SECCIÓN 4: Catálogo Interactivo de las 30 Fuentes del Lago
+           =================================================================== -->
+      <section class="seccion" aria-labelledby="sec-catalogo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="sec-catalogo">4. Catálogo Auditable de Fuentes (<span class="mono">F01–F30 + WIKI</span>)</h2>
+            <p>Inventario completo de los 31 conjuntos de datos del lago. Toca cualquier tarjeta para abrir su ficha completa de trazabilidad, licencia, fechas de prueba y pregunta que responde.</p>
+          </div>
+        </div>
+
+        <div class="filtros" role="group" aria-label="Filtros del catálogo de fuentes">
+          <div class="filtros__chips" id="chips-fuentes"></div>
+          <input class="campo filtros__buscar" id="buscar-fuentes" type="search" placeholder="Buscar por ID (F01...), nombre, licencia o palabra clave…" aria-label="Buscar fuentes">
+          <span class="filtros__contador" id="contador-fuentes">Cargando fuentes…</span>
+        </div>
+
+        <div class="fuentes-grid" id="catalogo-fuentes"></div>
+      </section>
+
+      <!-- ===================================================================
+           SECCIÓN 5: Equipo y Créditos (Universidad EAFIT)
+           =================================================================== -->
+      <section class="seccion" aria-labelledby="sec-equipo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="sec-equipo">5. Equipo de Desarrollo y Roles</h2>
+            <p>Estudiantes de Tópicos en Sistemas de Información (Taller de Datos), Universidad EAFIT · Semestre 2026-2.</p>
+          </div>
+        </div>
+
+        <div class="equipo-grid">
+          <article class="miembro-card">
+            <h3>María Alejandra Ocampo Giraldo</h3>
+            <span class="miembro-card__rol">Curaduría de Datos & Estándar Visual</span>
+            <p>
+              Diseño de la paleta trencadís y arquitectura visual del sitio. Desarrollo de <a href="index.html">01 Portada</a>, <a href="lugares.html">02 Lugares imperdibles</a> y el script de ingesta de popularidad de Wikipedia (<span class="mono">descargar_wikipedia.py</span>).
+            </p>
+          </article>
+
+          <article class="miembro-card">
+            <h3>Camilo Salazar</h3>
+            <span class="miembro-card__rol">Arquitectura Geoespacial & Alojamiento</span>
+            <p>
+              Implementación del motor cartográfico MapLibre GL JS + OpenFreeMap en <a href="mapa.html">03 Explora el mapa</a>, desarrollo de <a href="alojamiento.html">04 Alojamiento</a>, pipeline de anonimización de Airbnb (<button class="tag-fuente" data-fuente="F19">F19</button>) y herramienta de cálculo de distancias.
+            </p>
+          </article>
+
+          <article class="miembro-card">
+            <h3>César Montoya</h3>
+            <span class="miembro-card__rol">Sistemas en Tiempo Real & Movilidad</span>
+            <p>
+              Integración del feed GBFS en vivo de Bicing (<button class="tag-fuente" data-fuente="F03">F03</button>) con fallback a snapshot, enrutamiento ciclista OSRM en <a href="moverte.html">05 Cómo moverte</a>, y desarrollo de <a href="clima.html">06 Clima y ambiente</a> (Open-Meteo, XVPCA y arbolado).
+            </p>
+          </article>
+
+          <article class="miembro-card">
+            <h3>Luis Ángel Nerio Pereira</h3>
+            <span class="miembro-card__rol">Auditoría, Trazabilidad & Despliegue</span>
+            <p>
+              Estructuración de <a href="proyecto.html">07 Sobre el proyecto</a>, catálogo unificado de metadatos (<button class="tag-fuente" data-fuente="F01">F01</button>–<button class="tag-fuente" data-fuente="F30">F30</button>), documentación de la bitácora de IA y rúbrica de entrega, pruebas de integridad y despliegue continuo en Vercel.
+            </p>
+          </article>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Modal / Diálogo nativo para detalle de cada fuente -->
+  <dialog class="ficha" id="ficha" aria-label="Detalle técnico de la fuente de datos">
+    <button class="ficha__cerrar" type="button" aria-label="Cerrar modal">×</button>
+    <div id="ficha-cuerpo"></div>
+  </dialog>
+
+  <footer id="pie"></footer>
+
+  <script src="assets/js/navegacion.js"></script>
+  <script src="assets/js/proyecto.js"></script>
+</body>
+</html>
+
