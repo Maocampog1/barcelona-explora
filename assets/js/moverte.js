@@ -22,7 +22,15 @@ const CAPAS = [
   { id: "metro", texto: "Metro y FGC", color: "--mar", cluster: true },
 ];
 
-const estado = { capas: new Set(CAPAS.map((c) => c.id)), distrito: "" };
+// Servicio de ruteo en bici: OSRM público (abierto, sin token ni tarjeta, datos de OpenStreetMap).
+const OSRM = "https://router.project-osrm.org/route/v1/bike/";
+
+const estado = {
+  capas: new Set(CAPAS.map((c) => c.id)),
+  distrito: "",
+  ruteando: false,            // ¿está activo el modo "trazar ruta"?
+  puntosRuta: [],             // [{lng, lat}, {lng, lat}] origen y destino
+};
 let datos = { bicing: [], bus: [], metro: [] };   // puntos ya normalizados por capa
 let fuentes = {};                                  // bloque "fuentes" de moverte.json
 let bicingEnVivo = false;                           // ¿se logró leer el feed en vivo?
@@ -178,6 +186,7 @@ function agregarCapa(capa) {
   const idsClic = capa.cluster ? [`${capa.id}-cluster`, `${capa.id}-punto`] : [`${capa.id}-punto`];
   idsClic.forEach((id) => {
     map.on("click", id, (e) => {
+      if (estado.ruteando) return;   // en modo ruta, el clic marca puntos, no abre fichas
       const f = e.features[0];
       if (f.properties.cluster_id !== undefined) {
         map.getSource(capa.id).getClusterExpansionZoom(f.properties.cluster_id).then((zoom) => {
@@ -187,8 +196,8 @@ function agregarCapa(capa) {
         abrirFicha(capa.id, f.properties);
       }
     });
-    map.on("mouseenter", id, () => { map.getCanvas().style.cursor = "pointer"; });
-    map.on("mouseleave", id, () => { map.getCanvas().style.cursor = ""; });
+    map.on("mouseenter", id, () => { if (!estado.ruteando) map.getCanvas().style.cursor = "pointer"; });
+    map.on("mouseleave", id, () => { map.getCanvas().style.cursor = estado.ruteando ? "crosshair" : ""; });
   });
 }
 
@@ -302,6 +311,121 @@ function avisoMapa(mensaje) {
   document.getElementById("mapa").innerHTML = `<p class="aviso" style="margin:16px">${esc(mensaje)}</p>`;
 }
 
+/* ---------- Ruta en bici entre dos puntos (OSRM, datos de OpenStreetMap) ----------
+   El usuario activa el modo y toca dos puntos: origen y destino. Se pide a OSRM una
+   ruta ciclable real (sigue las calles) y se dibuja con su distancia y tiempo. Si el
+   servicio no responde, se dibuja la línea recta PERO avisando que es una aproximación,
+   no una ruta ciclable, para no mezclar un respaldo con el dato real. */
+
+function formatoDistancia(m) {
+  return m >= 1000 ? `${(m / 1000).toFixed(2)} km` : `${Math.round(m)} m`;
+}
+function formatoDuracion(seg) {
+  const min = Math.round(seg / 60);
+  if (min < 60) return `${min} min`;
+  const h = Math.floor(min / 60), r = min % 60;
+  return r ? `${h} h ${r} min` : `${h} h`;
+}
+
+function pintarGeometriaRuta(coordenadas) {
+  map.getSource("ruta").setData({
+    type: "Feature",
+    geometry: { type: "LineString", coordinates: coordenadas },
+    properties: {},
+  });
+}
+function pintarPuntosRuta() {
+  map.getSource("ruta-puntos").setData({
+    type: "FeatureCollection",
+    features: estado.puntosRuta.map((p, i) => ({
+      type: "Feature",
+      geometry: { type: "Point", coordinates: [p.lng, p.lat] },
+      properties: { papel: i === 0 ? "origen" : "destino" },
+    })),
+  });
+}
+function limpiarRuta() {
+  estado.puntosRuta = [];
+  if (map.getSource("ruta")) pintarGeometriaRuta([]);
+  if (map.getSource("ruta-puntos")) map.getSource("ruta-puntos").setData({ type: "FeatureCollection", features: [] });
+}
+
+function pintarPanelRuta(contenido) {
+  const panel = document.getElementById("panel-ruta");
+  panel.hidden = false;
+  panel.innerHTML = contenido;
+  const borrar = panel.querySelector("#btn-borrar-ruta");
+  if (borrar) borrar.addEventListener("click", () => { limpiarRuta(); pintarPanelRuta(textoAyudaRuta()); });
+}
+function textoAyudaRuta() {
+  const n = estado.puntosRuta.length;
+  if (n === 0) return `<div class="mapa-ruta__panel">Modo ruta en bici activo.<br>Toca el <strong>punto de partida</strong> en el mapa.</div>`;
+  if (n === 1) return `<div class="mapa-ruta__panel">Partida marcada.<br>Ahora toca el <strong>destino</strong>.</div>`;
+  return "";
+}
+
+async function calcularRuta() {
+  const [a, b] = estado.puntosRuta;
+  const url = `${OSRM}${a.lng},${a.lat};${b.lng},${b.lat}?overview=full&geometries=geojson`;
+  pintarPanelRuta(`<div class="mapa-ruta__panel">Calculando la ruta en bici…</div>`);
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(r.status);
+    const d = await r.json();
+    if (d.code !== "Ok" || !d.routes || !d.routes.length) throw new Error(d.code || "sin ruta");
+    const ruta = d.routes[0];
+    pintarGeometriaRuta(ruta.geometry.coordinates);
+    pintarPanelRuta(`
+      <div class="mapa-ruta__panel">
+        <strong>${formatoDistancia(ruta.distance)} en bici</strong>
+        Tiempo estimado: ${formatoDuracion(ruta.duration)}.
+        <span class="mapa-ruta__fuente">Ruta ciclable real · OSRM sobre OpenStreetMap</span>
+        <button class="chip" type="button" id="btn-borrar-ruta" style="margin-top:8px">Borrar ruta</button>
+      </div>`);
+  } catch (e) {
+    console.warn("OSRM no disponible, dibujo la línea recta como aproximación:", e.message || e);
+    // Respaldo: línea recta entre los dos puntos, claramente marcada como aproximación.
+    pintarGeometriaRuta([[a.lng, a.lat], [b.lng, b.lat]]);
+    const metros = distanciaRecta(a.lat, a.lng, b.lat, b.lng);
+    pintarPanelRuta(`
+      <div class="mapa-ruta__panel mapa-ruta__panel--aprox">
+        <strong>${formatoDistancia(metros)} en línea recta</strong>
+        ⚠ No se pudo calcular la ruta por calles (servicio de ruteo sin respuesta).
+        Esto es una <strong>aproximación en línea recta</strong>, no una ruta ciclable.
+        <button class="chip" type="button" id="btn-borrar-ruta" style="margin-top:8px">Borrar</button>
+      </div>`);
+  }
+}
+
+function distanciaRecta(lat1, lon1, lat2, lon2) {
+  const R = 6371000;
+  const p1 = (lat1 * Math.PI) / 180, p2 = (lat2 * Math.PI) / 180;
+  const a = Math.sin((p2 - p1) / 2) ** 2 + Math.cos(p1) * Math.cos(p2) * Math.sin(((lon2 - lon1) * Math.PI) / 180 / 2) ** 2;
+  return R * 2 * Math.asin(Math.sqrt(a));
+}
+
+function alternarRuta() {
+  estado.ruteando = !estado.ruteando;
+  limpiarRuta();
+  document.getElementById("btn-ruta").setAttribute("aria-pressed", estado.ruteando);
+  map.getCanvas().style.cursor = estado.ruteando ? "crosshair" : "";
+  if (estado.ruteando) {
+    pintarPanelRuta(textoAyudaRuta());
+  } else {
+    document.getElementById("panel-ruta").hidden = true;
+  }
+}
+
+function clicRuta(e) {
+  if (!estado.ruteando) return;
+  // Un tercer clic reinicia: empieza una ruta nueva desde ese punto.
+  if (estado.puntosRuta.length >= 2) estado.puntosRuta = [];
+  estado.puntosRuta.push(e.lngLat);
+  pintarPuntosRuta();
+  if (estado.puntosRuta.length === 2) calcularRuta();
+  else pintarPanelRuta(textoAyudaRuta());
+}
+
 /* ---------- Arranque ---------- */
 async function iniciar() {
   let zonas, moverte;
@@ -343,6 +467,7 @@ async function iniciar() {
     estado.distrito = e.target.value;
     if (map) actualizarDatos();
   });
+  document.getElementById("btn-ruta").addEventListener("click", () => { if (map) alternarRuta(); });
   const ficha = document.getElementById("ficha");
   ficha.querySelector(".ficha__cerrar").addEventListener("click", () => ficha.close());
   ficha.addEventListener("click", (e) => { if (e.target === ficha) ficha.close(); });
@@ -371,7 +496,28 @@ async function iniciar() {
     map.addLayer({ id: "distritos-relleno", type: "fill", source: "distritos", paint: { "fill-color": var_("--mar"), "fill-opacity": .035 } });
     map.addLayer({ id: "distritos-borde", type: "line", source: "distritos", paint: { "line-color": var_("--mar"), "line-width": 1, "line-opacity": .4 } });
 
+    // Ruta a pie: la línea va debajo de los puntos de las capas; los marcadores origen/destino, encima.
+    map.addSource("ruta", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+    map.addLayer({
+      id: "ruta-linea", type: "line", source: "ruta",
+      layout: { "line-cap": "round", "line-join": "round" },
+      paint: { "line-color": var_("--terracota"), "line-width": 5, "line-opacity": .9 },
+    });
+
     CAPAS.forEach(agregarCapa);
+
+    map.addSource("ruta-puntos", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+    map.addLayer({
+      id: "ruta-puntos-circulo", type: "circle", source: "ruta-puntos",
+      paint: {
+        "circle-radius": 8,
+        "circle-color": ["match", ["get", "papel"], "origen", var_("--oliva"), var_("--terracota")],
+        "circle-stroke-width": 3, "circle-stroke-color": "#fff",
+      },
+    });
+
+    map.on("click", clicRuta);
+
     actualizarContador();
   });
 }
