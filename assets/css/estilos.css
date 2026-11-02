@@ -931,3 +931,19 @@ img { max-width: 100%; display: block; }
 .arbol-lista li { display: flex; justify-content: space-between; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--linea); }
 .arbol-lista li span:last-child { font-variant-numeric: tabular-nums; color: var(--tinta-suave); font-weight: 600; }
 @media (max-width: 560px) { .arbol-cols { grid-template-columns: 1fr; gap: 16px; } }
+
+/* Cómo moverte (05): panel de ruta a pie */
+#btn-ruta[aria-pressed="true"] { background: var(--terracota); border-color: var(--terracota); color: #fff; }
+.mapa-ruta { position: absolute; right: 14px; bottom: 14px; z-index: 6; max-width: 240px; }
+.mapa-ruta__panel {
+  background: var(--mar);
+  color: #fff;
+  border-radius: 14px;
+  padding: 12px 15px;
+  font-size: .85rem;
+  line-height: 1.5;
+  box-shadow: var(--sombra-fuerte);
+}
+.mapa-ruta__panel strong { font-family: var(--fuente-titulos); font-size: 1.25rem; display: block; margin-bottom: 2px; }
+.mapa-ruta__panel--aprox { background: var(--terracota); }
+.mapa-ruta__fuente { display: block; margin-top: 6px; font-size: .72rem; color: rgba(255, 255, 255, .7); }

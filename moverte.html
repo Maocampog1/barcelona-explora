@@ -31,6 +31,7 @@
         <select class="campo" id="filtro-distrito" aria-label="Distrito">
           <option value="">Toda la ciudad</option>
         </select>
+        <button class="chip" type="button" id="btn-ruta" aria-pressed="false">🚲 Trazar ruta en bici</button>
         <span class="filtros__contador" id="contador"></span>
       </div>
 
@@ -38,9 +39,10 @@
         <div id="mapa" role="application" aria-label="Mapa de transporte de Barcelona"></div>
         <div class="leyenda" id="leyenda" aria-label="Leyenda del mapa"></div>
         <div class="mapa-estado" id="estado-bicing" hidden></div>
+        <div class="mapa-ruta" id="panel-ruta" hidden></div>
       </div>
 
-      <p class="fuente-dato">Mapa: <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> + <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>, sin llave ni tarjeta. Bicing se pide en vivo al feed oficial GBFS; si no responde, se muestra el último snapshot guardado, siempre indicado. Toca cualquier punto para ver su fuente, licencia y fecha.</p>
+      <p class="fuente-dato">Mapa: <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> + <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre GL JS</a>, sin llave ni tarjeta. Bicing se pide en vivo al feed oficial GBFS; si no responde, se muestra el último snapshot guardado, siempre indicado. La ruta en bici la calcula <a href="https://project-osrm.org/" target="_blank" rel="noopener">OSRM</a> sobre datos de <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (sin llave ni tarjeta). Toca cualquier punto para ver su fuente, licencia y fecha.</p>
     </div>
   </main>
 
