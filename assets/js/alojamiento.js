@@ -148,8 +148,7 @@ function accionesExternas(a) {
   const llegar = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(destino)}`;
   return `
     <a class="boton" href="${esc(buscar)}" target="_blank" rel="noopener">${a.tipo === "hotel" ? "Ver precios en Google Maps" : "Ver en Google Maps"}</a>
-    <a class="boton boton--secundario" href="${esc(llegar)}" target="_blank" rel="noopener">Cómo llegar</a>
-    ${a.tipo === "airbnb" ? `<a class="boton boton--secundario" href="https://www.airbnb.es/rooms/${encodeURIComponent(a.id)}" target="_blank" rel="noopener">Ver anuncio en Airbnb</a>` : ""}`;
+    <a class="boton boton--secundario" href="${esc(llegar)}" target="_blank" rel="noopener">Cómo llegar</a>`;
 }
 
 function pintarMapaFicha(a) {
@@ -220,7 +219,9 @@ function abrirFicha(id) {
           ${detalle}
           ${creditoFoto}
           ${f ? `<dt>Fuente</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
-          <dt>Archivo en el lago</dt><dd><a href="${esc(f.archivo)}" target="_blank" rel="noopener">${esc(f.archivo)}</a></dd>` : ""}
+          <dt>Archivo en el lago</dt><dd>${f.archivo_publico === false
+            ? `${esc(f.archivo)}. No se publica: el archivo original trae datos de los anfitriones.`
+            : `<a href="${esc(f.archivo)}" target="_blank" rel="noopener">${esc(f.archivo)}</a>`}</dd>` : ""}
           <dt>ID del registro</dt><dd>${esc(a.id)}</dd>
         </dl>
       </details>

@@ -1,5 +1,5 @@
 > **Documento de apoyo, con fecha.** Es la documentación detallada de la Entrega 2, tal como estaba en el último commit de `main`. El documento vigente es el [README principal](../README.md).
-> Algunas cifras cambiaron después (por ejemplo, ahora hay 32 fuentes y 8 vistas). Además, su afirmación de que nadie puede reconstruir la identidad de los anfitriones **no es correcta**, porque `listings.csv` sigue publicado: ver la sección Protección del README.
+> Algunas cifras cambiaron después (por ejemplo, ahora hay 31 fuentes y 8 vistas), y desde el 2026-11-03 el archivo `listings.csv` ya no se publica.
 
 # Barcelona Explora · Gemelo Digital de Barcelona
 

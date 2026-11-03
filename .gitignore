@@ -2,3 +2,9 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Inside Airbnb en crudo: trae nombre, foto y perfil de los anfitriones. Se usa solo en local.
+lago/raw/turismo/listings.csv
+
+# Versiones anteriores de los documentos: el Excel original trae un ejemplo de nombre de anfitrión
+docs/originales/

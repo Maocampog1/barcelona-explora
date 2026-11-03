@@ -64,7 +64,7 @@ FUENTES = {
         "id": None,
         "nombre": "Bicing: ubicación de estaciones (GBFS)",
         "publicador": "Bicing (feed GBFS oficial)",
-        "licencia": "Datos abiertos del operador",
+        "licencia": "no declara",
         "archivo": "lago/raw/transporte/bicing_ubicacion_2026-10-01.json",
     },
     "airbnb": {
@@ -73,6 +73,7 @@ FUENTES = {
         "publicador": "Inside Airbnb",
         "licencia": "CC BY 4.0",
         "archivo": "lago/raw/turismo/listings.csv",
+        "archivo_publico": False,
     },
     "wifi": {
         "id": None,
