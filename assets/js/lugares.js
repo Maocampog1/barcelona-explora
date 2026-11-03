@@ -150,7 +150,7 @@ function abrirFicha(id) {
       <details>
         <summary>De dónde salen estos datos</summary>
         <dl>
-          ${f.id ? `<dt>ID de fuente</dt><dd>${esc(f.id)}</dd>` : ""}
+          ${filasTrazabilidad(f)}
           <dt>Fuente del lugar</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
           <dt>Nombre en la fuente</dt><dd>${esc(l.nombre_fuente)}</dd>
           <dt>ID del registro</dt><dd>${esc(l.id)}</dd>

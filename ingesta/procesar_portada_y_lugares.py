@@ -21,6 +21,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from catalogo import completar_fuentes
+
 from procesar_mapa_y_alojamiento import alojamiento_airbnb
 
 RAIZ = Path(__file__).resolve().parent.parent
@@ -118,6 +120,7 @@ FUENTES = {
         "archivo": "lago/raw/wikipedia/wikipedia_lugares.json",
     },
 }
+completar_fuentes(FUENTES)
 
 # Nombre que ve el turista (el de la fuente queda en "nombre_fuente")
 NOMBRES_TURISTA = {

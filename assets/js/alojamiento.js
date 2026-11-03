@@ -91,7 +91,8 @@ function pintarResumen(resumen) {
   document.getElementById("nota-precios").textContent =
     `El precio por noche solo se muestra en anuncios de Airbnb cotizados para 7 noches o menos (${resumen.airbnb_estancia_corta.toLocaleString("es-ES")}). ` +
     `Los ${resumen.airbnb_estancia_larga.toLocaleString("es-ES")} anuncios de estancia larga tienen descuento, así que se muestran por mes. ` +
-    `Se descartaron ${resumen.airbnb_descartados} anuncios con precios imposibles. Hoteles y HUT no publican precios en datos abiertos.`;
+    `Se descartaron ${resumen.airbnb_descartados} anuncios con precios imposibles. Hoteles y HUT no publican precios en datos abiertos. ` +
+    `Fuentes: ${["hoteles", "hut", "airbnb"].map((k) => `${fuentes[k].id} (${fuentes[k].nombre.split(" (")[0]}, probada el ${fuentes[k].fecha_prueba})`).join(" · ")}.`;
 }
 
 function pintarChips() {
@@ -188,7 +189,7 @@ function abrirFicha(id) {
       <dt>Licencia turística</dt><dd>${esc(a.licencia_hutb || "No publicada en el anuncio")}</dd>
       <dt>Ubicación</dt><dd>Aproximada: Airbnb no publica la dirección exacta.</dd>
       <dt>Anfitrión</dt><dd>No se muestra: es un dato personal. Solo se sabe si administra varios anuncios (${a.anuncios_del_mismo_anfitrion ?? "—"}) y si Airbnb lo marca como "superhost" (${a.superhost_anonimo ? "sí" : "no"}), sin nombre ni identificador.</dd>
-      <dt>Fecha de prueba</dt><dd>${esc(a.actualizado_en_fuente || "—")}</dd>`;
+      <dt>Día en que se leyó el anuncio</dt><dd>${esc(a.actualizado_en_fuente || "—")}</dd>`;
   } else if (a.tipo === "hut") {
     detalle = `<dt>Licencia turística (HUTB)</dt><dd>${esc(a.licencia_hutb)}</dd>
       <dt>Plazas</dt><dd>${a.plazas ?? "—"}</dd>
@@ -218,7 +219,7 @@ function abrirFicha(id) {
         <dl>
           ${detalle}
           ${creditoFoto}
-          ${f ? `<dt>Fuente</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
+          ${f ? `${filasTrazabilidad(f)}<dt>Fuente</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
           <dt>Archivo en el lago</dt><dd>${f.archivo_publico === false
             ? `${esc(f.archivo)}. No se publica: el archivo original trae datos de los anfitriones.`
             : `<a href="${esc(f.archivo)}" target="_blank" rel="noopener">${esc(f.archivo)}</a>`}</dd>` : ""}
@@ -317,7 +318,7 @@ function pintarRenta() {
       <thead><tr><th>Barrio</th><th>Distrito</th><th>Renta media (€/persona/año)</th></tr></thead>
       <tbody>${orden.map((r) => `<tr><td>${esc(r.barrio)}</td><td>${esc(r.distrito)}</td><td>${r.renta_media_euros.toLocaleString("es-ES")}</td></tr>`).join("")}</tbody>
     </table>
-    <p class="fuente-dato">${esc(rentaBarrios[0]?.nota || "")}</p>`;
+    <p class="fuente-dato">${esc(rentaBarrios[0]?.nota || "")} Fuente ${esc(fuentes.renta.id)}, probada el ${esc(fuentes.renta.fecha_prueba)}.</p>`;
 }
 
 async function iniciar() {

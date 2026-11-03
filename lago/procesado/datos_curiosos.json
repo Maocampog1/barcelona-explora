@@ -1,90 +1,102 @@
 {
- "generado": "2026-11-03T14:55:34+00:00",
+ "generado": "2026-11-03T15:11:48+00:00",
  "fuentes": {
   "miradores": {
-   "id": null,
+   "id": "F14",
    "nombre": "Miradores de Barcelona",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/turismo/opendatabcn_NP-NASIA_Miradors-csv.csv"
+   "archivo": "lago/raw/turismo/opendatabcn_NP-NASIA_Miradors-csv.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "museos": {
-   "id": null,
+   "id": "F12",
    "nombre": "Bibliotecas y museos",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/turismo/opendatabcn_cultura_biblioteques-i-museus.csv"
+   "archivo": "lago/raw/turismo/opendatabcn_cultura_biblioteques-i-museus.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "mercados": {
-   "id": null,
+   "id": "F10",
    "nombre": "Mercados municipales",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/turismo/opendatabcn_mercats-centrescomercials_mercats-municipals.csv"
+   "archivo": "lago/raw/turismo/opendatabcn_mercats-centrescomercials_mercats-municipals.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "arbolado": {
-   "id": null,
+   "id": "F20",
    "nombre": "Arbolado viario",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/ambiente_satelite/arbrat_viari.json"
+   "archivo": "lago/raw/ambiente_satelite/arbrat_viari.json",
+   "fecha_prueba": "2026-10-03"
   },
   "bicing": {
-   "id": null,
+   "id": "F04",
    "nombre": "Bicing: ubicación de estaciones (GBFS)",
    "publicador": "Bicing (feed GBFS oficial)",
    "licencia": "no declara",
-   "archivo": "lago/raw/transporte/bicing_ubicacion_2026-10-01.json"
+   "archivo": "lago/raw/transporte/bicing_ubicacion_2026-10-01.json",
+   "fecha_prueba": "2026-10-01"
   },
   "airbnb": {
-   "id": null,
+   "id": "F19",
    "nombre": "Listados de Airbnb",
    "publicador": "Inside Airbnb",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/turismo/listings.csv",
-   "archivo_publico": false
+   "archivo_publico": false,
+   "fecha_prueba": "2026-10-01"
   },
   "wifi": {
-   "id": null,
+   "id": "F26",
    "nombre": "Puntos WiFi BCN",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/servicios_turista/opendatabcn_Internet_Wifi-BCN-CSV.csv"
+   "archivo": "lago/raw/servicios_turista/opendatabcn_Internet_Wifi-BCN-CSV.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "refugios": {
-   "id": null,
+   "id": "F29",
    "nombre": "Red de refugios climáticos",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/servicios_turista/opendatabcn_NP-NASIA_xarxa-refugis-climatics-csv.csv"
+   "archivo": "lago/raw/servicios_turista/opendatabcn_NP-NASIA_xarxa-refugis-climatics-csv.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "lavabos": {
-   "id": null,
+   "id": "F27",
    "nombre": "Lavabos públicos",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/servicios_turista/opendatabcn_lavabos-csv (1).csv"
+   "archivo": "lago/raw/servicios_turista/opendatabcn_lavabos-csv (1).csv",
+   "fecha_prueba": "2026-10-01"
   },
   "duchas": {
-   "id": null,
+   "id": "F28",
    "nombre": "Duchas en playas",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/servicios_turista/opendatabcn_dutxes-csv.csv"
+   "archivo": "lago/raw/servicios_turista/opendatabcn_dutxes-csv.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "barrios": {
-   "id": null,
+   "id": "F01",
    "nombre": "Barrios de Barcelona (polígonos)",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv"
+   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "wikipedia": {
-   "id": null,
+   "id": "WIKI",
    "nombre": "Wikipedia y Wikimedia Commons: fotos, resúmenes y visitas por artículo",
    "publicador": "Fundación Wikimedia",
    "licencia": "Texto CC BY-SA 4.0 · fotos con la licencia de cada archivo",
-   "archivo": "lago/raw/wikipedia/wikipedia_lugares.json"
+   "archivo": "lago/raw/wikipedia/wikipedia_lugares.json",
+   "fecha_prueba": "2026-10-30"
   }
  },
  "datos": [

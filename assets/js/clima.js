@@ -39,6 +39,7 @@ const ICONOS_CLIMA = {
 };
 
 const filaFuente = (f) => f ? `
+  ${filasTrazabilidad(f)}
   <dt>Fuente</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
   <dt>Archivo en el lago</dt><dd><a href="${esc(f.archivo)}" target="_blank" rel="noopener">${esc(f.archivo)}</a></dd>` : "";
 
@@ -81,6 +82,7 @@ async function cargarPronostico() {
       </div>`).join("");
 
     document.getElementById("pron-fuente").innerHTML = `
+      ${filasTrazabilidad({ id: "F21", fecha_prueba: "2026-10-01" })}
       <dt>Fuente</dt><dd><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · API de pronóstico (gratis, sin clave)</dd>
       <dt>En vivo</dt><dd>Sí: se pide al abrir la página. Es un pronóstico, no una medición.</dd>
       <dt>Punto</dt><dd>Centro de Barcelona (${BCN.lat}, ${BCN.lon})</dd>`;

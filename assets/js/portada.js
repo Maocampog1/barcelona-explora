@@ -84,7 +84,7 @@ async function cargarClima() {
     document.getElementById("clima-viento").textContent = `${Math.round(c.wind_speed_10m)} km/h`;
     document.getElementById("clima-icono").innerHTML = ICONOS_CLIMA[icono](c.is_day === 1);
     document.getElementById("clima-fuente").innerHTML =
-      `Clima: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · medido a las ${c.time.slice(11, 16)} · se actualiza cada 10 min`;
+      `Clima: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> (F21) · medido a las ${c.time.slice(11, 16)} · se actualiza cada 10 min`;
   } catch (e) {
     document.getElementById("clima-estado").textContent = "No se pudo cargar el clima ahora.";
   }
@@ -153,7 +153,7 @@ function mostrarDato(paso = 0) {
     document.getElementById("dato-icono").innerHTML = icono(d.icono);
     document.getElementById("dato-titulo").textContent = d.titulo;
     document.getElementById("dato-texto").textContent = d.dato;
-    document.getElementById("dato-fuente").textContent = `Dato: ${f.publicador}`;
+    document.getElementById("dato-fuente").textContent = `Dato: ${f.publicador} · ${f.id} · probado el ${f.fecha_prueba}`;
     document.getElementById("dato-contador").textContent = `${indice + 1} / ${datos.length}`;
     caja.classList.remove("sabias--cambiando");
   }, paso ? 220 : 0);

@@ -1,26 +1,29 @@
 {
- "generado": "2026-11-03T14:55:53+00:00",
+ "generado": "2026-11-03T15:12:09+00:00",
  "fuentes": {
   "barrios": {
    "id": "F01",
    "nombre": "Barrios y distritos de Barcelona",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv"
+   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv",
+   "fecha_prueba": "2026-10-01"
   },
   "festivos": {
    "id": "F15",
    "nombre": "Calendario de festivos de Barcelona",
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/turismo/calendarifestius_es.ics"
+   "archivo": "lago/raw/turismo/calendarifestius_es.ics",
+   "fecha_prueba": "2026-10-01"
   },
   "contexto": {
    "id": "CTX",
    "nombre": "Cifras e historia de Barcelona (cada dato cita su fuente oficial)",
    "publicador": "Ajuntament de Barcelona, Idescat, BOE y otras",
    "licencia": "Datos públicos citados con su fuente",
-   "archivo": "lago/raw/contexto/contexto_barcelona.json"
+   "archivo": "lago/raw/contexto/contexto_barcelona.json",
+   "fecha_prueba": "2026-11-03"
   }
  },
  "foto_banner": {
@@ -42,7 +45,8 @@
    "anio_referencia": "1 de enero de 2026",
    "fuente": "Ajuntament de Barcelona, Informe del Padrón Municipal de Habitantes",
    "url": "https://dades.ajuntament.barcelona.cat/informe-padro-poblacio/en/seccio_2.html",
-   "fecha_consulta": "2026-11-03"
+   "fecha_consulta": "2026-11-03",
+   "id_fuente": "CTX"
   },
   {
    "id": "visitantes",
@@ -54,7 +58,8 @@
    "nota": "Cifra publicada ya redondeada. Incluye a quienes se alojan en establecimientos reglados y no reglados, y en casa de amigos y familiares. De ellos, 13,5 millones de turistas se alojaron en establecimientos reglados.",
    "fuente": "Ajuntament de Barcelona, Turismo",
    "url": "https://ajuntament.barcelona.cat/turisme/ca/actualitat/noticies/barcelona-registra-16-milions-de-visitants-el-2025-un-29-mes-que-lany-anterior-1597944",
-   "fecha_consulta": "2026-11-03"
+   "fecha_consulta": "2026-11-03",
+   "id_fuente": "CTX"
   },
   {
    "id": "superficie",
@@ -64,7 +69,8 @@
    "anio_referencia": "2025",
    "fuente": "Idescat, Indicadores demográficos y de territorio",
    "url": "https://www.idescat.cat/pub/?id=inddt&n=396&geo=mun:080193&lang=es",
-   "fecha_consulta": "2026-11-03"
+   "fecha_consulta": "2026-11-03",
+   "id_fuente": "CTX"
   },
   {
    "id": "distritos",
@@ -74,7 +80,9 @@
    "anio_referencia": "Lago",
    "fuente": "Barrios y distritos de Barcelona, Open Data BCN (Ajuntament de Barcelona)",
    "url": null,
-   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv"
+   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv",
+   "id_fuente": "F01",
+   "fecha_consulta": "2026-10-01"
   },
   {
    "id": "barrios",
@@ -84,7 +92,9 @@
    "anio_referencia": "Lago",
    "fuente": "Barrios y distritos de Barcelona, Open Data BCN (Ajuntament de Barcelona)",
    "url": null,
-   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv"
+   "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv",
+   "id_fuente": "F01",
+   "fecha_consulta": "2026-10-01"
   },
   {
    "id": "nacidos_extranjero",
@@ -95,7 +105,8 @@
    "fuente": "Ajuntament de Barcelona, Informe del Padrón Municipal de Habitantes",
    "url": "https://dades.ajuntament.barcelona.cat/informe-padro-poblacio/en/seccio_2.html",
    "fecha_consulta": "2026-11-03",
-   "nota": "Equivale al 36,2 % del padrón (cálculo propio)."
+   "nota": "Equivale al 36,2 % del padrón (cálculo propio).",
+   "id_fuente": "CTX"
   },
   {
    "id": "nacionalidades",
@@ -105,7 +116,8 @@
    "anio_referencia": "1 de enero de 2026",
    "fuente": "Ajuntament de Barcelona, Informe del Padrón Municipal de Habitantes",
    "url": "https://dades.ajuntament.barcelona.cat/informe-padro-poblacio/en/seccio_2.html",
-   "fecha_consulta": "2026-11-03"
+   "fecha_consulta": "2026-11-03",
+   "id_fuente": "CTX"
   },
   {
    "id": "lenguas_oficiales",
@@ -117,7 +129,8 @@
    "nota": "El aranés también es oficial en Cataluña, aunque es la lengua propia del Valle de Arán, en los Pirineos.",
    "fuente": "Estatuto de Autonomía de Cataluña, artículo 6 (BOE)",
    "url": "https://www.boe.es/buscar/act.php?id=BOE-A-2006-13087",
-   "fecha_consulta": "2026-11-03"
+   "fecha_consulta": "2026-11-03",
+   "id_fuente": "CTX"
   }
  ],
  "eras": [
