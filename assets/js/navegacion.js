@@ -5,23 +5,25 @@
    1. Crea tu archivo .html en la raíz del repo con el nombre de "archivo".
    2. Copia el <head>, el <header id="navbar"> y los <script> de lugares.html.
    3. Cambia "lista: false" por "lista: true" en tu página aquí abajo.
-   Con eso aparece activa en la navbar y en las tarjetas de la Portada.
+   Con eso aparece activa en la navbar y en las tarjetas de Inicio.
    ========================================================================= */
 
 const PAGINAS = [
-  { num: "01", titulo: "Portada", archivo: "index.html", lista: true,
+  { num: "01", titulo: "Inicio", archivo: "index.html", lista: true,
     descripcion: "Dato curioso de Barcelona, clima de ahora y accesos a todo el sitio." },
-  { num: "02", titulo: "Lugares imperdibles", archivo: "lugares.html", lista: true,
+  { num: "02", titulo: "Sobre Barcelona", archivo: "sobre-barcelona.html", lista: true,
+    descripcion: "La ciudad en cifras, su historia desde Barcino y cómo es la vida cotidiana de sus habitantes." },
+  { num: "03", titulo: "Lugares imperdibles", archivo: "lugares.html", lista: true,
     descripcion: "Gaudí, museos, mercados y miradores: los más buscados, con fotos y cómo llegar." },
-  { num: "03", titulo: "Explora el mapa", archivo: "mapa.html", lista: true,
+  { num: "04", titulo: "Explora el mapa", archivo: "mapa.html", lista: true,
     descripcion: "Mapa con capas de turismo, restaurantes, Bicing y alojamiento, filtros y distancia entre puntos." },
-  { num: "04", titulo: "Alojamiento", archivo: "alojamiento.html", lista: true,
-    descripcion: "Precios por zona y anfitriones anonimizados." },
-  { num: "05", titulo: "Cómo moverte", archivo: "moverte.html", lista: true,
+  { num: "05", titulo: "Alojamiento", archivo: "alojamiento.html", lista: true,
+    descripcion: "Hoteles y Airbnb en el mapa, con fotos, precios en euros y anfitriones anonimizados." },
+  { num: "06", titulo: "Cómo moverte", archivo: "moverte.html", lista: true,
     descripcion: "Bicing en vivo, paradas de bus y metro." },
-  { num: "06", titulo: "Clima y ambiente", archivo: "clima.html", lista: true,
+  { num: "07", titulo: "Clima y ambiente", archivo: "clima.html", lista: true,
     descripcion: "Pronóstico por hora, calidad del aire y arbolado urbano." },
-  { num: "07", titulo: "Sobre el proyecto", archivo: "proyecto.html", lista: true,
+  { num: "08", titulo: "Sobre el proyecto", archivo: "proyecto.html", lista: true,
     descripcion: "Metodología, fuentes, preguntas respondidas y equipo." },
 ];
 

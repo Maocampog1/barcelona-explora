@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Alojamiento · Barcelona Explora</title>
-  <meta name="description" content="Hoteles, viviendas turísticas con licencia y Airbnb en Barcelona: precio por noche y zona, con anfitriones anonimizados.">
+  <meta name="description" content="Hoteles, viviendas turísticas con licencia y Airbnb en Barcelona: mapa, fotos y precios en euros, con anfitriones anonimizados.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/vendor/maplibre-gl/maplibre-gl.css">
   <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 <body class="con-hero">
@@ -18,7 +19,7 @@
       <img src="assets/img/portada/casa-mila.jpg" alt="">
       <div class="contenedor">
         <h1>Alojamiento</h1>
-        <p>Hoteles, viviendas turísticas con licencia y Airbnb, con precio por noche y zona. Los anfitriones de Airbnb no se muestran: son datos de una persona.</p>
+        <p>Hoteles, viviendas turísticas con licencia y Airbnb, en un mapa y con precios en euros. Los anfitriones de Airbnb no se muestran: son datos de una persona.</p>
       </div>
       <p class="banner__credito" id="banner-credito"></p>
     </section>
@@ -33,12 +34,21 @@
           <option value="">Toda la ciudad</option>
         </select>
         <select class="campo" id="orden" aria-label="Ordenar">
+          <option value="destacados">Destacados: hoteles primero</option>
           <option value="precio-asc">Precio: menor a mayor</option>
           <option value="precio-desc">Precio: mayor a menor</option>
         </select>
         <input class="campo filtros__buscar" id="filtro-texto" type="search" placeholder="Buscar: barrio, nombre…" aria-label="Buscar">
         <span class="filtros__contador" id="contador"></span>
       </div>
+
+      <p class="fuente-dato" id="nota-precios"></p>
+
+      <div class="mapa-wrap">
+        <div id="mapa-alojamiento" role="application" aria-label="Mapa de los alojamientos que cumplen los filtros"></div>
+        <div class="leyenda" id="leyenda" aria-label="Leyenda del mapa"></div>
+      </div>
+      <p class="fuente-dato">Mapa: <a href="https://openfreemap.org/" target="_blank" rel="noopener">OpenFreeMap</a> + <a href="https://maplibre.org/" target="_blank" rel="noopener">MapLibre</a>. Muestra lo mismo que los filtros. Toca un punto para ver su ficha; desde la ficha puedes abrirlo en Google Maps.</p>
 
       <div class="lugares-grid" id="alojamientos"></div>
 
@@ -59,11 +69,12 @@
 
   <dialog class="ficha" id="ficha" aria-label="Detalle del alojamiento">
     <button class="ficha__cerrar" type="button" aria-label="Cerrar">×</button>
-    <div class="ficha__cuerpo" id="ficha-cuerpo"></div>
+    <div id="ficha-cuerpo"></div>
   </dialog>
 
   <footer id="pie"></footer>
 
+  <script src="assets/vendor/maplibre-gl/maplibre-gl.js"></script>
   <script src="assets/js/navegacion.js"></script>
   <script src="assets/js/alojamiento.js"></script>
 </body>

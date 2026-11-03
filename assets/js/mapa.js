@@ -233,7 +233,8 @@ function abrirFicha(capaId, p) {
     etiqueta = TIPOS_ALOJAMIENTO[p.tipo] || "Alojamiento";
     cuerpo = `
       <dt>Barrio</dt><dd>${esc(p.barrio)} · ${esc(p.distrito)}</dd>
-      <dt>Precio por noche</dt><dd>${p.precio_noche_usd != null ? `${p.precio_noche_usd.toFixed(0)} USD` : "No publicado"}</dd>`;
+      <dt>Precio</dt><dd>${p.precio_noche_eur != null ? `${p.precio_noche_eur.toFixed(0)} € por noche`
+        : p.precio_mes_eur != null ? `${p.precio_mes_eur.toLocaleString("es-ES")} € al mes (estancia larga)` : "No publicado en la fuente"}</dd>`;
     extra = `<div class="ficha__acciones"><a class="boton" href="alojamiento.html#alojamiento-${encodeURIComponent(p.id)}">Ver en Alojamiento →</a></div>`;
   }
 

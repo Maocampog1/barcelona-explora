@@ -34,6 +34,9 @@ RAIZ = Path(__file__).resolve().parent.parent
 RAW = RAIZ / "lago" / "raw"
 PROCESADO = RAIZ / "lago" / "procesado"
 
+# Fotos de hoteles y barrios (las descarga ingesta/descargar_fotos_alojamiento.py)
+FOTOS = json.loads((RAW / "wikipedia" / "fotos_alojamiento.json").read_text(encoding="utf-8"))
+
 FUENTES = {
     "censo_locales": {
         "id": None,
@@ -55,6 +58,13 @@ FUENTES = {
         "publicador": "Open Data BCN (Ajuntament de Barcelona)",
         "licencia": "CC BY 4.0",
         "archivo": "lago/raw/turismo/hut_comunicacio_opendata.csv",
+    },
+    "fotos": {
+        "id": None,
+        "nombre": "Fotos de hoteles y barrios",
+        "publicador": "Wikimedia Commons",
+        "licencia": "Licencia abierta de cada archivo",
+        "archivo": "lago/raw/wikipedia/fotos_alojamiento.json",
     },
     "airbnb": {
         "id": None,
@@ -287,7 +297,8 @@ def alojamiento_hoteles():
             "distrito": f["addresses_district_name"],
             "lat": round(float(f["geo_epgs_4326_lat"]), 6),
             "lon": round(float(f["geo_epgs_4326_lon"]), 6),
-            "precio_noche_usd": None,
+            "precio_noche_eur": None,
+            "foto": FOTOS["hoteles"].get(f["register_id"]),
             "fuente": "hoteles",
         })
     return salida
@@ -322,7 +333,7 @@ def alojamiento_hut():
             "distrito": distrito_por_codigo.get(f["CODI_DISTRICTE"], f["NOM_DISTRICTE"]),
             "lat": round(float(f["LATITUD_Y"]), 6),
             "lon": round(float(f["LONGITUD_X"]), 6),
-            "precio_noche_usd": None,
+            "precio_noche_eur": None,
             "fuente": "hut",
         })
     return salida
@@ -333,21 +344,49 @@ def alojamiento_hut():
 ALIAS_BARRIO_AIRBNB = {"el Poble Sec": "el Poble-sec"}
 
 
+# Límites de la limpieza de precios de Airbnb (ver docstring de alojamiento_airbnb)
+NOCHES_ESTANCIA_CORTA = 7
+PRECIO_MIN_NOCHE_EUR = 15     # Por debajo son errores o anuncios de prueba, como una habitación a 3,50 €
+PRECIO_MAX_PERSONA_EUR = 400  # Por encima son errores, como un piso para 4 personas a 4.463 € la noche
+PRECIO_MAX_LARGA_EUR = 500    # Estancia larga, por noche: equivale a más de 15.000 € al mes
+ANUNCIOS_DESCARTADOS = {}
+
+
+def precio_plausible(precio, capacidad, corta):
+    personas = capacidad if pd.notna(capacidad) and capacidad > 0 else 1
+    if precio < PRECIO_MIN_NOCHE_EUR or precio / personas > PRECIO_MAX_PERSONA_EUR:
+        return False
+    return corta or precio <= PRECIO_MAX_LARGA_EUR
+
+
 def alojamiento_airbnb():
     """
     Anonimización: de las ~90 columnas del listado solo se copian las que no
     identifican a una persona (ni host_id, host_name, host_url, fotos o perfil
     del anfitrión). calculated_host_listings_count es un conteo, no un dato
     personal: dice si el mismo anfitrión administra varios anuncios.
+
+    Precios: la columna "price" lleva "$" pero está en euros (price_quote_raw dice
+    "currency": "EUR" en todos los anuncios). Y no siempre es el precio de una noche:
+    es lo cotizado por noche para la estancia de price_quote_checkin/checkout, que puede
+    ser de 250 noches con descuento. Por eso solo la cotización de hasta
+    NOCHES_ESTANCIA_CORTA noches se publica como precio por noche; el resto se publica
+    como precio mensual de estancia larga. Ver precio_plausible para lo que se descarta.
     """
     cols = ["id", "name", "neighbourhood_cleansed", "neighbourhood_group_cleansed",
             "latitude", "longitude", "room_type", "property_type", "accommodates",
             "bedrooms", "beds", "price", "minimum_nights", "number_of_reviews",
             "review_scores_rating", "host_is_superhost", "calculated_host_listings_count",
-            "license", "last_scraped"]
+            "license", "last_scraped", "price_quote_checkin_date", "price_quote_checkout_date"]
     df = pd.read_csv(RAIZ / FUENTES["airbnb"]["archivo"], usecols=cols, low_memory=False)
-    df["precio_usd"] = pd.to_numeric(df["price"].str.replace(r"[$,]", "", regex=True), errors="coerce")
-    df = df.dropna(subset=["latitude", "longitude", "precio_usd"])
+    df["precio_eur"] = pd.to_numeric(df["price"].str.replace(r"[$,]", "", regex=True), errors="coerce")
+    df = df.dropna(subset=["latitude", "longitude", "precio_eur"])
+    df["noches_cotizadas"] = (pd.to_datetime(df["price_quote_checkout_date"], errors="coerce")
+                              - pd.to_datetime(df["price_quote_checkin_date"], errors="coerce")).dt.days
+    df["corta"] = df["noches_cotizadas"] <= NOCHES_ESTANCIA_CORTA
+    con_precio = len(df)
+    df = df[[precio_plausible(*fila) for fila in zip(df["precio_eur"], df["accommodates"], df["corta"])]]
+    ANUNCIOS_DESCARTADOS["airbnb"] = con_precio - len(df)
     salida = []
     for _, f in df.iterrows():
         hutb = re.search(r"HUTB-?\d+", str(f["license"]) if pd.notna(f["license"]) else "")
@@ -363,7 +402,10 @@ def alojamiento_airbnb():
             "distrito": f["neighbourhood_group_cleansed"],
             "lat": round(float(f["latitude"]), 6),
             "lon": round(float(f["longitude"]), 6),
-            "precio_noche_usd": round(float(f["precio_usd"]), 2),
+            "estancia": "corta" if f["corta"] else "larga",
+            "noches_cotizadas": int(f["noches_cotizadas"]),
+            "precio_noche_eur": round(float(f["precio_eur"]), 2) if f["corta"] else None,
+            "precio_mes_eur": None if f["corta"] else round(float(f["precio_eur"]) * 30),
             "min_noches": int(f["minimum_nights"]) if pd.notna(f["minimum_nights"]) else None,
             "reseñas": int(f["number_of_reviews"]) if pd.notna(f["number_of_reviews"]) else 0,
             "calificacion": float(f["review_scores_rating"]) if pd.notna(f["review_scores_rating"]) else None,
@@ -391,16 +433,19 @@ def renta_por_barrio():
 
 
 def resumen_precios(alojamientos):
-    precios = pd.Series([a["precio_noche_usd"] for a in alojamientos if a.get("precio_noche_usd")])
+    precios = pd.Series([a["precio_noche_eur"] for a in alojamientos if a.get("precio_noche_eur")])
     por_tipo = {}
     for tipo in ["hotel", "hut", "airbnb"]:
         por_tipo[tipo] = sum(1 for a in alojamientos if a["tipo"] == tipo)
     return {
         "total": len(alojamientos),
         "por_tipo": por_tipo,
-        "precio_mediana_usd": round(precios.median(), 2) if len(precios) else None,
-        "precio_p25_usd": round(precios.quantile(.25), 2) if len(precios) else None,
-        "precio_p75_usd": round(precios.quantile(.75), 2) if len(precios) else None,
+        "airbnb_estancia_corta": sum(1 for a in alojamientos if a.get("estancia") == "corta"),
+        "airbnb_estancia_larga": sum(1 for a in alojamientos if a.get("estancia") == "larga"),
+        "airbnb_descartados": ANUNCIOS_DESCARTADOS["airbnb"],
+        "precio_mediana_eur": round(precios.median(), 2) if len(precios) else None,
+        "precio_p25_eur": round(precios.quantile(.25), 2) if len(precios) else None,
+        "precio_p75_eur": round(precios.quantile(.75), 2) if len(precios) else None,
     }
 
 
@@ -449,7 +494,7 @@ def main():
                 "id": a["id"], "tipo": a["tipo"], "nombre": a["nombre"],
                 "barrio": a["barrio"], "distrito": a["distrito"],
                 "lat": a["lat"], "lon": a["lon"],
-                "precio_noche_usd": a["precio_noche_usd"], "fuente": a["fuente"],
+                "precio_noche_eur": a["precio_noche_eur"], "precio_mes_eur": a.get("precio_mes_eur"), "fuente": a["fuente"],
             } for a in alojamientos],
         },
     }
@@ -460,9 +505,13 @@ def main():
     print(f"mapa.json: {len(turismo)} turismo, {len(restaurantes)} restaurantes, "
           f"{len(bicing['estaciones'])} bicing, {len(alojamientos)} alojamiento")
 
+    ruta_lugares = PROCESADO / "lugares_imperdibles.json"
+    fondos = json.loads(ruta_lugares.read_text(encoding="utf-8"))["fondos"] if ruta_lugares.exists() else []
     alojamiento_json = {
         "generado": AHORA,
-        "fuentes": {k: FUENTES[k] for k in ["hoteles", "hut", "airbnb", "renta"]},
+        "fuentes": {k: FUENTES[k] for k in ["hoteles", "hut", "airbnb", "renta", "fotos"]},
+        "fotos_barrios": FOTOS["barrios"],
+        "foto_banner": next((f for f in fondos if f["archivo"] == "assets/img/portada/casa-mila.jpg"), None),
         "resumen": resumen_precios(alojamientos),
         "renta_barrios": renta_por_barrio(),
         "alojamientos": alojamientos,

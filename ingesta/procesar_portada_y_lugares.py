@@ -1,5 +1,5 @@
 """
-Procesa datos del lago para la Portada y la página "Lugares imperdibles".
+Procesa datos del lago para la Inicio y la página "Lugares imperdibles".
 
 Lee de:   lago/raw/...  (incluye lago/raw/wikipedia/, que baja ingesta/descargar_wikipedia.py)
 Escribe:  lago/procesado/lugares_imperdibles.json
@@ -20,6 +20,8 @@ from html import unescape
 from pathlib import Path
 
 import pandas as pd
+
+from procesar_mapa_y_alojamiento import alojamiento_airbnb
 
 RAIZ = Path(__file__).resolve().parent.parent
 RAW = RAIZ / "lago" / "raw"
@@ -157,7 +159,7 @@ ICONOS_DE_LA_FUENTE = {
     "Casa Vicens",
 }
 
-# Nombre que se muestra en el crédito de cada foto de fondo de la Portada
+# Nombre que se muestra en el crédito de cada foto de fondo de la Inicio
 NOMBRES_FONDO = {
     "sagrada-familia.jpg": "Sagrada Família",
     "casa-batllo.jpg": "Casa Batlló",
@@ -477,12 +479,13 @@ def datos_curiosos(lugares):
         "fuente": "lavabos",
     })
 
-    abnb = pd.read_csv(RAIZ / FUENTES["airbnb"]["archivo"], usecols=["price", "room_type"], low_memory=False)
-    precio = pd.to_numeric(abnb["price"].str.replace(r"[$,]", "", regex=True), errors="coerce").dropna()
+    # Mismo precio por noche que la vista Alojamiento: el dato sale de allí, para que no se contradigan
+    precio = pd.Series([a["precio_noche_eur"] for a in alojamiento_airbnb() if a["precio_noche_eur"]])
+    abnb = pd.read_csv(RAIZ / FUENTES["airbnb"]["archivo"], usecols=["room_type"], low_memory=False)
     casas = (abnb["room_type"] == "Entire home/apt").mean() * 10
     datos.append({
         "titulo": "¿Cuánto cuesta dormir?",
-        "dato": f"La mitad de los Airbnb de Barcelona cuesta menos de {precio.median():.0f} USD por noche, "
+        "dato": f"La mitad de los Airbnb de Barcelona cuesta menos de {precio.median():.0f} € por noche, "
                 f"y {casas:.0f} de cada 10 son pisos completos, no habitaciones.",
         "icono": "cama",
         "fuente": "airbnb",

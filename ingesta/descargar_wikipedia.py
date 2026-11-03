@@ -4,7 +4,7 @@ foto, descripción corta, resumen y popularidad (visitas al artículo en el últ
 
 Lee de:   las listas TITULOS e ICONOS de este archivo
 Escribe:  lago/raw/wikipedia/wikipedia_lugares.json   (respuesta cruda, la usa procesar_portada_y_lugares.py)
-          assets/img/portada/*.jpg                      (fotos grandes del fondo de la Portada)
+          assets/img/portada/*.jpg                      (fotos grandes del fondo de la Inicio)
 
 Uso (desde la raíz del repo):
     python ingesta/descargar_wikipedia.py
@@ -102,7 +102,7 @@ ICONOS = {
     "Poble Espanyol": "Pueblo Español (Barcelona)",
 }
 
-# Fotos grandes para el fondo de la Portada: (archivo local, artículo del que sale la foto)
+# Fotos grandes para el fondo de la Inicio: (archivo local, artículo del que sale la foto)
 FONDOS = [
     ("sagrada-familia.jpg", "Templo Expiatorio de la Sagrada Familia"),
     ("casa-batllo.jpg", "Casa Batlló"),

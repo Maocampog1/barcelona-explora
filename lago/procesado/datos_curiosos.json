@@ -1,5 +1,5 @@
 {
- "generado": "2026-10-30T14:13:39+00:00",
+ "generado": "2026-11-03T14:04:16+00:00",
  "fuentes": {
   "miradores": {
    "id": null,
@@ -131,7 +131,7 @@
   },
   {
    "titulo": "¿Cuánto cuesta dormir?",
-   "dato": "La mitad de los Airbnb de Barcelona cuesta menos de 178 USD por noche, y 7 de cada 10 son pisos completos, no habitaciones.",
+   "dato": "La mitad de los Airbnb de Barcelona cuesta menos de 258 € por noche, y 7 de cada 10 son pisos completos, no habitaciones.",
    "icono": "cama",
    "fuente": "airbnb"
   }
