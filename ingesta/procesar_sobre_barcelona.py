@@ -100,6 +100,7 @@ def main():
     for c in tarjetas:
         fuente = FUENTES["barrios"] if c["id"] in del_lago else FUENTES["contexto"]
         c["id_fuente"] = fuente["id"]
+        c["vigencia"] = fuente["vigencia"] if c["id"] in del_lago else c["anio_referencia"]
         c.setdefault("fecha_consulta", fuente["fecha_prueba"])
 
     # Un enlace a un lugar que ya no existe se vería como una ficha que no abre

@@ -92,7 +92,7 @@ function pintarResumen(resumen) {
     `El precio por noche solo se muestra en anuncios de Airbnb cotizados para 7 noches o menos (${resumen.airbnb_estancia_corta.toLocaleString("es-ES")}). ` +
     `Los ${resumen.airbnb_estancia_larga.toLocaleString("es-ES")} anuncios de estancia larga tienen descuento, así que se muestran por mes. ` +
     `Se descartaron ${resumen.airbnb_descartados} anuncios con precios imposibles. Hoteles y HUT no publican precios en datos abiertos. ` +
-    `Fuentes: ${["hoteles", "hut", "airbnb"].map((k) => `${fuentes[k].id} (${fuentes[k].nombre.split(" (")[0]}, probada el ${fuentes[k].fecha_prueba})`).join(" · ")}.`;
+    `Fuentes: ${["hoteles", "hut", "airbnb"].map((k) => `${fuentes[k].id} (${fuentes[k].nombre.split(" (")[0]}; ${fuentes[k].vigencia}; probada el ${fuentes[k].fecha_prueba})`).join(" · ")}.`;
 }
 
 function pintarChips() {
@@ -318,7 +318,7 @@ function pintarRenta() {
       <thead><tr><th>Barrio</th><th>Distrito</th><th>Renta media (€/persona/año)</th></tr></thead>
       <tbody>${orden.map((r) => `<tr><td>${esc(r.barrio)}</td><td>${esc(r.distrito)}</td><td>${r.renta_media_euros.toLocaleString("es-ES")}</td></tr>`).join("")}</tbody>
     </table>
-    <p class="fuente-dato">${esc(rentaBarrios[0]?.nota || "")} Fuente ${esc(fuentes.renta.id)}, probada el ${esc(fuentes.renta.fecha_prueba)}.</p>`;
+    <p class="fuente-dato">${esc(rentaBarrios[0]?.nota || "")} Fuente ${esc(fuentes.renta.id)}. Vigencia: ${esc(fuentes.renta.vigencia)}. Probada el ${esc(fuentes.renta.fecha_prueba)}.</p>`;
 }
 
 async function iniciar() {

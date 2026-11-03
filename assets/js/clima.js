@@ -82,7 +82,7 @@ async function cargarPronostico() {
       </div>`).join("");
 
     document.getElementById("pron-fuente").innerHTML = `
-      ${filasTrazabilidad({ id: "F21", fecha_prueba: "2026-10-01" })}
+      ${filasTrazabilidad({ id: "F21", vigencia: "Pronóstico por horas · Actualización: tiempo real", fecha_prueba: "2026-10-01" })}
       <dt>Fuente</dt><dd><a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a> · API de pronóstico (gratis, sin clave)</dd>
       <dt>En vivo</dt><dd>Sí: se pide al abrir la página. Es un pronóstico, no una medición.</dd>
       <dt>Punto</dt><dd>Centro de Barcelona (${BCN.lat}, ${BCN.lon})</dd>`;

@@ -1,5 +1,5 @@
 {
-  "generado": "2026-11-03T15:12:07+00:00",
+  "generado": "2026-11-03T15:19:48+00:00",
   "fuentes": {
     "aire": {
       "id": "F22",
@@ -7,7 +7,8 @@
       "publicador": "Generalitat de Catalunya — Xarxa de Vigilància i Previsió de la Contaminació Atmosfèrica",
       "licencia": "See Terms of Use",
       "archivo": "lago/raw/ambiente_satelite/calidad_aire_prueba.json",
-      "fecha_prueba": "2026-10-03"
+      "fecha_prueba": "2026-10-03",
+      "vigencia": "Lectura del 2026-10-02 en el lago · Actualización: tiempo real (según el operador)"
     },
     "arbolado": {
       "id": "F20",
@@ -15,7 +16,8 @@
       "publicador": "Open Data BCN (Ajuntament de Barcelona)",
       "licencia": "CC BY 4.0",
       "archivo": "lago/raw/ambiente_satelite/arbrat_viari.json",
-      "fecha_prueba": "2026-10-03"
+      "fecha_prueba": "2026-10-03",
+      "vigencia": "Desde 2021-03-24 · Actualización: trimestral"
     }
   },
   "aire": {

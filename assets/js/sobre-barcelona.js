@@ -15,6 +15,7 @@ function pintarCifras(cifras) {
       <details class="cifra-bcn__fuente">
         <summary>Fuente</summary>
         <p>ID de fuente: <strong>${esc(c.id_fuente)}</strong></p>
+        <p>Vigencia: ${esc(c.vigencia)}</p>
         ${c.nota ? `<p>${esc(c.nota)}</p>` : ""}
         <p>${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.fuente)}</a>` : `${esc(c.fuente)}. <a href="${esc(c.archivo)}" target="_blank" rel="noopener">Archivo en el lago</a>`}${c.fecha_consulta ? `. Consultado el ${esc(c.fecha_consulta)}` : ""}.</p>
       </details>
@@ -78,7 +79,7 @@ function pintarFestivos(festivos, fuente) {
     ? proximos.map((f) => `<li><strong>${esc(f.nombre)}</strong><span>${esc(formato.format(new Date(`${f.fecha}T00:00:00Z`)))}</span></li>`).join("")
     : "<li>El calendario del lago ya no tiene fechas futuras.</li>";
   document.getElementById("festivos-fuente").innerHTML =
-    `Fuente ${esc(fuente.id)}, probada el ${esc(fuente.fecha_prueba)}: ${esc(fuente.nombre)}, ${esc(fuente.publicador)} (${esc(fuente.licencia)}). <a href="${esc(fuente.archivo)}" target="_blank" rel="noopener">Archivo en el lago</a>.`;
+    `Fuente ${esc(fuente.id)}. Vigencia: ${esc(fuente.vigencia)}. Probada el ${esc(fuente.fecha_prueba)}: ${esc(fuente.nombre)}, ${esc(fuente.publicador)} (${esc(fuente.licencia)}). <a href="${esc(fuente.archivo)}" target="_blank" rel="noopener">Archivo en el lago</a>.`;
 }
 
 async function iniciar() {

@@ -77,10 +77,12 @@ def verificar_catalogo():
     for f in filas:
         if not (RAIZ / f["archivo"]).exists() and f["id"] != "F19":
             faltan.append(f"{f['id']}: {f['archivo']}")
+        if not f["periodo_que_cubre"] or not f["frecuencia"]:
+            sin_datos.append(f["id"])
         if not f["licencia_tal_como_aparece"] or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", f["fecha_de_prueba"]) or not f["url_origen"]:
             sin_datos.append(f["id"])
     revisar("Cada fuente del catálogo tiene su archivo en el lago", faltan, f"{len(filas)} fuentes")
-    revisar("Cada fuente tiene licencia, fecha real de prueba y URL", sin_datos)
+    revisar("Cada fuente tiene licencia, vigencia, fecha real de prueba y URL", sin_datos)
     ids = [f["id"] for f in filas]
     revisar("No hay ID de fuente repetidos", sorted({i for i in ids if ids.count(i) > 1}))
     return filas
@@ -221,20 +223,22 @@ def verificar_fuentes_publicadas(filas):
                 problemas.append(f"{p.name}/{clave}: ID «{f.get('id')}»")
             if not f.get("fecha_prueba"):
                 problemas.append(f"{p.name}/{clave}: sin fecha de prueba")
+            if not f.get("vigencia") or "None" in f["vigencia"]:
+                problemas.append(f"{p.name}/{clave}: sin vigencia")
             if not (RAIZ / f["archivo"]).exists() and f.get("archivo_publico") is not False:
                 enlaces.append(f"{p.name}/{clave}: {f['archivo']}")
-    revisar("Cada fuente publicada tiene ID del catálogo y fecha de prueba", problemas, f"{vistas} referencias")
+    revisar("Cada fuente publicada tiene ID del catálogo, vigencia y fecha de prueba", problemas, f"{vistas} referencias")
     revisar("Los enlaces a archivos del lago llevan a un archivo real", enlaces)
     sin = [f.name for f in (RAIZ / "assets" / "js").glob("*.js") if f.name in ("alojamiento.js", "lugares.js", "mapa.js", "moverte.js", "clima.js")
            and "filasTrazabilidad(" not in f.read_text(encoding="utf-8")]
-    revisar("Todas las fichas muestran el ID y la fecha de prueba", sin)
+    revisar("Todas las fichas muestran el ID, la vigencia y la fecha de prueba", sin)
     fecha_f21 = next(f["fecha_de_prueba"] for f in filas if f["id"] == "F21")
     clima = (RAIZ / "assets" / "js" / "clima.js").read_text(encoding="utf-8")
     revisar("La fecha de Open-Meteo en la web coincide con el catálogo", [] if fecha_f21 in clima else [fecha_f21])
 
     cifras = json_de("sobre_barcelona.json")["cifras"]
-    sin_fuente = [c["id"] for c in cifras if not (c.get("id_fuente") and c.get("fuente") and c.get("fecha_consulta") and (c.get("url") or c.get("archivo")))]
-    revisar("Cada cifra de Sobre Barcelona tiene ID, fuente y fecha", sin_fuente, f"{len(cifras)} cifras")
+    sin_fuente = [c["id"] for c in cifras if not (c.get("id_fuente") and c.get("vigencia") and c.get("fuente") and c.get("fecha_consulta") and (c.get("url") or c.get("archivo")))]
+    revisar("Cada cifra de Sobre Barcelona tiene ID, fuente, vigencia y fecha", sin_fuente, f"{len(cifras)} cifras")
 
 
 def verificar_sitio():

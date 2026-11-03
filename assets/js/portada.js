@@ -153,7 +153,7 @@ function mostrarDato(paso = 0) {
     document.getElementById("dato-icono").innerHTML = icono(d.icono);
     document.getElementById("dato-titulo").textContent = d.titulo;
     document.getElementById("dato-texto").textContent = d.dato;
-    document.getElementById("dato-fuente").textContent = `Dato: ${f.publicador} · ${f.id} · probado el ${f.fecha_prueba}`;
+    document.getElementById("dato-fuente").textContent = `Dato: ${f.publicador} · ${f.id} · Vigencia: ${f.vigencia} · Probado el ${f.fecha_prueba}`;
     document.getElementById("dato-contador").textContent = `${indice + 1} / ${datos.length}`;
     caja.classList.remove("sabias--cambiando");
   }, paso ? 220 : 0);

@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-03T15:11:48+00:00",
+ "generado": "2026-11-03T15:19:35+00:00",
  "fuentes": {
   "miradores": {
    "id": "F14",
@@ -7,7 +7,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/turismo/opendatabcn_NP-NASIA_Miradors-csv.csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Publicado 2021-07-27 · Actualización: no se sabe"
   },
   "museos": {
    "id": "F12",
@@ -15,7 +16,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/turismo/opendatabcn_cultura_biblioteques-i-museus.csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Publicado 2021-03-25 · Actualización: no se sabe"
   },
   "mercados": {
    "id": "F10",
@@ -23,7 +25,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/turismo/opendatabcn_mercats-centrescomercials_mercats-municipals.csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Publicado 2021-04-21 · Actualización: no se sabe"
   },
   "arbolado": {
    "id": "F20",
@@ -31,7 +34,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/ambiente_satelite/arbrat_viari.json",
-   "fecha_prueba": "2026-10-03"
+   "fecha_prueba": "2026-10-03",
+   "vigencia": "Desde 2021-03-24 · Actualización: trimestral"
   },
   "bicing": {
    "id": "F04",
@@ -39,7 +43,8 @@
    "publicador": "Bicing (feed GBFS oficial)",
    "licencia": "no declara",
    "archivo": "lago/raw/transporte/bicing_ubicacion_2026-10-01.json",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Según cambios en la red · Actualización: tiempo real"
   },
   "airbnb": {
    "id": "F19",
@@ -48,7 +53,8 @@
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/turismo/listings.csv",
    "archivo_publico": false,
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Foto del 2026-06-24 · Actualización: trimestral"
   },
   "wifi": {
    "id": "F26",
@@ -56,7 +62,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/servicios_turista/opendatabcn_Internet_Wifi-BCN-CSV.csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Desde 2013-03-18 · Actualización: no se sabe"
   },
   "refugios": {
    "id": "F29",
@@ -64,7 +71,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/servicios_turista/opendatabcn_NP-NASIA_xarxa-refugis-climatics-csv.csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Publicado 2021-07-21 · Actualización: no se sabe"
   },
   "lavabos": {
    "id": "F27",
@@ -72,7 +80,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/servicios_turista/opendatabcn_lavabos-csv (1).csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Publicado 2021-05-28 · Actualización: no se sabe"
   },
   "duchas": {
    "id": "F28",
@@ -80,7 +89,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/servicios_turista/opendatabcn_dutxes-csv.csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Publicado 2021-03-24 · Actualización: no se sabe"
   },
   "barrios": {
    "id": "F01",
@@ -88,7 +98,8 @@
    "publicador": "Open Data BCN (Ajuntament de Barcelona)",
    "licencia": "CC BY 4.0",
    "archivo": "lago/raw/geo/BarcelonaCiutat_Barris.csv",
-   "fecha_prueba": "2026-10-01"
+   "fecha_prueba": "2026-10-01",
+   "vigencia": "Vigente (publicado 2019-12-13) · Actualización: no se sabe"
   },
   "wikipedia": {
    "id": "WIKI",
@@ -96,7 +107,8 @@
    "publicador": "Fundación Wikimedia",
    "licencia": "Texto CC BY-SA 4.0 · fotos con la licencia de cada archivo",
    "archivo": "lago/raw/wikipedia/wikipedia_lugares.json",
-   "fecha_prueba": "2026-10-30"
+   "fecha_prueba": "2026-10-30",
+   "vigencia": "Visitas: 2025-10 a 2026-09 · Actualización: no se sabe"
   }
  },
  "datos": [

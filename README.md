@@ -13,7 +13,7 @@ Enlace: <https://barcelona-explora.vercel.app> · Repositorio: <https://github.c
 3. **Cómo protegemos los datos:** los anfitriones de Airbnb no llegan a la web, el archivo original no se publica, y la renta se muestra como promedio por barrio y solo como contexto.
 4. **Cómo tratamos lo aproximado y lo que falta:** los respaldos de Bicing muestran su fecha, las fotos de barrio dicen «Foto de la zona», y un precio que no existe abierto se declara en vez de inventarse.
 
-**Nota sobre la vigencia:** cada ficha muestra el ID de la fuente y la fecha de prueba. La vigencia y la frecuencia de actualización están en el [diccionario](docs/Diccionario_de_datos_Barcelona_Explora.xlsx) (columnas «Periodo que cubre» y «Frecuencia de actualización») y en el catálogo de `Sobre el proyecto`. Decidimos no repetirlas en cada ficha porque ese dato no le sirve al turista.
+**Trazabilidad:** cada ficha muestra a un clic la fuente con su ID, su vigencia y la fecha de prueba. Salen de [catalogo/fuentes.csv](catalogo/fuentes.csv), y `ingesta/verificar_lago.py` comprueba que estén.
 
 ## Para quién y qué pregunta
 
