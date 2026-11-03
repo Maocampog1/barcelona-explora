@@ -1,0 +1,982 @@
+{
+ "descargado": "2026-11-03T13:49:58+00:00",
+ "hoteles": {
+  "99400293106": {
+   "nombre": "Hotel Vincci Bit",
+   "archivo_local": "assets/img/alojamiento/hotel-99400293106.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Vincci_Bit.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Vincci Bit.jpg"
+  },
+  "75990359062": {
+   "nombre": "Hotel Roma Reial",
+   "archivo_local": "assets/img/alojamiento/hotel-75990359062.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_Reial,_11_Restaurant_Roma_Reial.jpg",
+   "autor": "Jordiferrer",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Plaça Reial, 11 Restaurant Roma Reial.jpg"
+  },
+  "75990098232": {
+   "nombre": "Hotel Renaissance Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-75990098232.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Renaissance_Barcelona_Hotel.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Renaissance Barcelona Hotel.jpg"
+  },
+  "75990080203": {
+   "nombre": "Alexandra Barcelona, Curio Collection by Hilton Hotel",
+   "archivo_local": "assets/img/alojamiento/hotel-75990080203.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Alexandra_Barcelona_Hotel,_Curio_Collection_by_Hilton.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Alexandra Barcelona Hotel, Curio Collection by Hilton.jpg"
+  },
+  "99400078779": {
+   "nombre": "Hotel Silken Concordia",
+   "archivo_local": "assets/img/alojamiento/hotel-99400078779.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Concordia_(1).jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Concordia (1).jpg"
+  },
+  "92168172323": {
+   "nombre": "Hotel U232",
+   "archivo_local": "assets/img/alojamiento/hotel-92168172323.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:U232_Hotel.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "U232 Hotel.jpg"
+  },
+  "99400328305": {
+   "nombre": "Hotel Olivia Balmes",
+   "archivo_local": "assets/img/alojamiento/hotel-99400328305.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Olivia_Balmes_Hotel.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Olivia Balmes Hotel.jpg"
+  },
+  "1068120923": {
+   "nombre": "Hotel Barcelona Universal",
+   "archivo_local": "assets/img/alojamiento/hotel-1068120923.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barcelona_101DSC_0306_(49192014378).jpg",
+   "autor": "János Korom Dr.  &gt;17 Million views from Wien, Austria",
+   "licencia": "CC BY-SA 2.0",
+   "archivo_commons": "Barcelona 101DSC 0306 (49192014378).jpg"
+  },
+  "99400174636": {
+   "nombre": "Hotel H10 Casanova",
+   "archivo_local": "assets/img/alojamiento/hotel-99400174636.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:H10_Casanova.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "H10 Casanova.jpg"
+  },
+  "99400098501": {
+   "nombre": "Hotel SB Icària Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-99400098501.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_SB_Icaria_Barcelona.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel SB Icaria Barcelona.jpg"
+  },
+  "99400281608": {
+   "nombre": "Hotel Catalonia Rigoletto",
+   "archivo_local": "assets/img/alojamiento/hotel-99400281608.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Catalonia_Rigoletto.jpg",
+   "autor": "Brunnaiz",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Hotel Catalonia Rigoletto.jpg"
+  },
+  "273135303": {
+   "nombre": "Abba Sants Hotel",
+   "archivo_local": "assets/img/alojamiento/hotel-273135303.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Abba_Sants.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Abba Sants.jpg"
+  },
+  "99400692556": {
+   "nombre": "Hotel Paxton Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-99400692556.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Paxton_Barcelona.jpg",
+   "autor": "Cataleirxs",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Paxton Barcelona.jpg"
+  },
+  "99400021619": {
+   "nombre": "Hotel H10 Montcada",
+   "archivo_local": "assets/img/alojamiento/hotel-99400021619.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Casa_Luis_Figueras_Doti_i_Valls_-_Via_Laietana_24_-20200903_140340.jpg",
+   "autor": "pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Casa Luis Figueras Doti i Valls - Via Laietana 24 -20200903 140340.jpg"
+  },
+  "75990407878": {
+   "nombre": "Hotel Intercontinental Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-75990407878.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Intercontinental_Barcelona.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Intercontinental Barcelona.jpg"
+  },
+  "99400549624": {
+   "nombre": "Hotel SB Glow",
+   "archivo_local": "assets/img/alojamiento/hotel-99400549624.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_SB_Glow_****_Sup.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel SB Glow **** Sup.jpg"
+  },
+  "75990272392": {
+   "nombre": "Hotel Catalonia Atenas",
+   "archivo_local": "assets/img/alojamiento/hotel-75990272392.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Catalonia_Atenas.jpg",
+   "autor": "Samthony",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Catalonia Atenas.jpg"
+  },
+  "99400037547": {
+   "nombre": "Hotel Vincci Marítimo",
+   "archivo_local": "assets/img/alojamiento/hotel-99400037547.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Vincci_Mar%C3%ADtimo.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Vincci Marítimo.jpg"
+  },
+  "99400063429": {
+   "nombre": "Hotel Melia Barcelona Sky",
+   "archivo_local": "assets/img/alojamiento/hotel-99400063429.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Melia_Barcelona_Sky_4*_Sup.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Melia Barcelona Sky 4* Sup.jpg"
+  },
+  "99400224453": {
+   "nombre": "Hotel SB Diagonal Zero",
+   "archivo_local": "assets/img/alojamiento/hotel-99400224453.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_SB_Diagonal_Zero_Barcelona.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel SB Diagonal Zero Barcelona.jpg"
+  },
+  "99400308521": {
+   "nombre": "Hotel Catalonia Gran Via",
+   "archivo_local": "assets/img/alojamiento/hotel-99400308521.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Catalonia_Gran_Via_BCN.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Catalonia Gran Via BCN.jpg"
+  },
+  "99400225785": {
+   "nombre": "Hotel & Spa Villa Olimpic@ Suites",
+   "archivo_local": "assets/img/alojamiento/hotel-99400225785.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_%26_Spa_Villa_Ol%C3%ADmpic@_Suites.jpg",
+   "autor": "Cataleirxs",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel & Spa Villa Olímpic@ Suites.jpg"
+  },
+  "99400040581": {
+   "nombre": "Hotel Pere IV",
+   "archivo_local": "assets/img/alojamiento/hotel-99400040581.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Sall%C3%A9s_Hotel_Pere_IV.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Sallés Hotel Pere IV.jpg"
+  },
+  "99400153356": {
+   "nombre": "Hotel Eurostars Anglí",
+   "archivo_local": "assets/img/alojamiento/hotel-99400153356.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Eurostars_Angli.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Eurostars Angli.jpg"
+  },
+  "75990061694": {
+   "nombre": "Hotel Hilton Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-75990061694.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hilton_Barcelona_(Avinguda_Diagonal_589)_2017.jpg",
+   "autor": "Jordiferrer",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Hilton Barcelona (Avinguda Diagonal 589) 2017.jpg"
+  },
+  "99400164659": {
+   "nombre": "Hotel Pestana Arena Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-99400164659.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pestana_Arena_Barcelona.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Pestana Arena Barcelona.jpg"
+  },
+  "99400084307": {
+   "nombre": "AC Hotel Barcelona Fòrum",
+   "archivo_local": "assets/img/alojamiento/hotel-99400084307.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:AC_Hotel_Barcelona_F%C3%B3rum_by_Marriott.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "AC Hotel Barcelona Fórum by Marriott.jpg"
+  },
+  "99400171714": {
+   "nombre": "Hotel Villa Emilia by Katja & Antoine",
+   "archivo_local": "assets/img/alojamiento/hotel-99400171714.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Villa_Emilia.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Villa Emilia.jpg"
+  },
+  "99400644065": {
+   "nombre": "Hotel Seventy",
+   "archivo_local": "assets/img/alojamiento/hotel-99400644065.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Seventy_Barcelona.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Seventy Barcelona.jpg"
+  },
+  "75990714805": {
+   "nombre": "Hotel H10 Marina Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-75990714805.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:H10_Marina_Barcelona_Hotel.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "H10 Marina Barcelona Hotel.jpg"
+  },
+  "92168172158": {
+   "nombre": "Hotel Balmoral",
+   "archivo_local": "assets/img/alojamiento/hotel-92168172158.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Balmoral.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Balmoral.jpg"
+  },
+  "97274121355": {
+   "nombre": "Hotel  HG City Suites Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-97274121355.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:HG_City_Suites_Barcelona.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "HG City Suites Barcelona.jpg"
+  },
+  "92164150624": {
+   "nombre": "Hotel Barceló Sants",
+   "archivo_local": "assets/img/alojamiento/hotel-92164150624.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barcelo_Sants,_Barcelona.JPG",
+   "autor": "Jørgen Løken (Løken)",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Barcelo Sants, Barcelona.JPG"
+  },
+  "99400096617": {
+   "nombre": "Hotel Acevi Villarroel",
+   "archivo_local": "assets/img/alojamiento/hotel-99400096617.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Acevi_Villarroel.jpg",
+   "autor": "Cataleirxs",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Acevi Villarroel.jpg"
+  },
+  "99400549620": {
+   "nombre": "Hotel Golden Tulip",
+   "archivo_local": "assets/img/alojamiento/hotel-99400549620.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Golden_Tulip_Barcelona.jpg",
+   "autor": "Cataleirxs",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Golden Tulip Barcelona.jpg"
+  },
+  "99400075766": {
+   "nombre": "Hotel Barcelona Princess",
+   "archivo_local": "assets/img/alojamiento/hotel-99400075766.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barcelona_Princess.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Barcelona Princess.jpg"
+  },
+  "99400120573": {
+   "nombre": "Hotel Eurostars Monumental",
+   "archivo_local": "assets/img/alojamiento/hotel-99400120573.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Eurostars_Monumental.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Eurostars Monumental.jpg"
+  },
+  "99400233630": {
+   "nombre": "Hotel AC Sants",
+   "archivo_local": "assets/img/alojamiento/hotel-99400233630.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:AC_Hotel_Sants_by_Marriott.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "AC Hotel Sants by Marriott.jpg"
+  },
+  "99400233894": {
+   "nombre": "Hotel Novotel Barcelona City",
+   "archivo_local": "assets/img/alojamiento/hotel-99400233894.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Novotel_Barcelona_City.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Novotel Barcelona City.jpg"
+  },
+  "1080172434": {
+   "nombre": "Hotel Catalonia La Pedrera",
+   "archivo_local": "assets/img/alojamiento/hotel-1080172434.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Catalonia_La_Pedrera.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Catalonia La Pedrera.jpg"
+  },
+  "99400343857": {
+   "nombre": "Hotel Vincci Gala",
+   "archivo_local": "assets/img/alojamiento/hotel-99400343857.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Vincci_Gala.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Vincci Gala.jpg"
+  },
+  "75990281449": {
+   "nombre": "Arenas Atiram Hotel",
+   "archivo_local": "assets/img/alojamiento/hotel-75990281449.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Arenas_Atiram_Hotels.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Arenas Atiram Hotels.jpg"
+  },
+  "99400173600": {
+   "nombre": "Hotel NH Collection Constanza",
+   "archivo_local": "assets/img/alojamiento/hotel-99400173600.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:NH_Collection_Barcelona_Constanza.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "NH Collection Barcelona Constanza.jpg"
+  },
+  "99400002916": {
+   "nombre": "Hotel Four Points By Sheraton Barcelona Diagonal",
+   "archivo_local": "assets/img/alojamiento/hotel-99400002916.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Four_Points_by_Sheraton_Barcelona_Diagonal.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Four Points by Sheraton Barcelona Diagonal.jpg"
+  },
+  "99400155935": {
+   "nombre": "Hotel Wilson Boutique",
+   "archivo_local": "assets/img/alojamiento/hotel-99400155935.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Wilson_Boutique_Hotel.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Wilson Boutique Hotel.jpg"
+  },
+  "75990099532": {
+   "nombre": "Hotel Monegal",
+   "archivo_local": "assets/img/alojamiento/hotel-75990099532.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Monegal.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Monegal.jpg"
+  },
+  "99400735988": {
+   "nombre": "Hotel AC Victoria Suites",
+   "archivo_local": "assets/img/alojamiento/hotel-99400735988.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:AC_Hotel_Victoria_Suites_by_Marriott.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "AC Hotel Victoria Suites by Marriott.jpg"
+  },
+  "99400167767": {
+   "nombre": "Hotel Catalonia Ramblas",
+   "archivo_local": "assets/img/alojamiento/hotel-99400167767.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Catalonia_Ramblas_4*_Sup.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Catalonia Ramblas 4* Sup.jpg"
+  },
+  "99400551032": {
+   "nombre": "Hotel Grand Hyatt Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-99400551032.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:010_Hotel_Grand_Hyatt,_pl._Pius_XII_4_(Barcelona),_antic_Hotel_Sofia.jpg",
+   "autor": "Enric",
+   "licencia": "CC BY 4.0",
+   "archivo_commons": "010 Hotel Grand Hyatt, pl. Pius XII 4 (Barcelona), antic Hotel Sofia.jpg"
+  },
+  "75990019711": {
+   "nombre": "Hotel Via Augusta",
+   "archivo_local": "assets/img/alojamiento/hotel-75990019711.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Via_Augusta.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Via Augusta.jpg"
+  },
+  "75990124952": {
+   "nombre": "Hotel NH Barcelona Stadium",
+   "archivo_local": "assets/img/alojamiento/hotel-75990124952.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:NH_Barcelona_Stadium.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "NH Barcelona Stadium.jpg"
+  },
+  "99400092475": {
+   "nombre": "Hotel Miramar",
+   "archivo_local": "assets/img/alojamiento/hotel-99400092475.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:20241231_Hotel_Miramar_(Barcelona).jpg",
+   "autor": "Masquer11",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "20241231 Hotel Miramar (Barcelona).jpg"
+  },
+  "99400118643": {
+   "nombre": "Hotel Barcelona Condal Mar by Meliá",
+   "archivo_local": "assets/img/alojamiento/hotel-99400118643.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Barcelona_Condal_Mar_Affiliated_by_Meli%C3%A1.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Barcelona Condal Mar Affiliated by Meliá.jpg"
+  },
+  "99154123757": {
+   "nombre": "Midmost Hotel",
+   "archivo_local": "assets/img/alojamiento/hotel-99154123757.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Midmost.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Midmost.jpg"
+  },
+  "75990271849": {
+   "nombre": "Hotel Barcelona Apolo",
+   "archivo_local": "assets/img/alojamiento/hotel-75990271849.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Barcelona_Apolo,_Affiliated_by_Meli%C3%A1.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Hotel Barcelona Apolo, Affiliated by Meliá.jpg"
+  },
+  "75990262564": {
+   "nombre": "Hotel Catalonia Barcelona Plaza",
+   "archivo_local": "assets/img/alojamiento/hotel-75990262564.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Hotel_Plaza_BCN.JPG",
+   "autor": "Canaan",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Hotel Plaza BCN.JPG"
+  },
+  "75990094165": {
+   "nombre": "Hotel NH Sants Barcelona",
+   "archivo_local": "assets/img/alojamiento/hotel-75990094165.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:NH_Sants_Barcelona.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "NH Sants Barcelona.jpg"
+  },
+  "75990070505": {
+   "nombre": "Hotel Avenida Palace",
+   "archivo_local": "assets/img/alojamiento/hotel-75990070505.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:El_Avenida_Palace_Hotel.jpg",
+   "autor": "Arturo Francisco Barbero",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "El Avenida Palace Hotel.jpg"
+  }
+ },
+ "barrios": {
+  "Baró de Viver": {
+   "archivo_local": "assets/img/alojamiento/barrio-baro-de-viver.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_del_Bar%C3%B3_de_Viver_02.JPG",
+   "autor": "Jordiferrer",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Plaça_del_Baró_de_Viver_02.JPG"
+  },
+  "Can Baró": {
+   "archivo_local": "assets/img/alojamiento/barrio-can-baro.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:MasiadeCanBar%C3%B3.jpg",
+   "autor": "Petre",
+   "licencia": "Public domain",
+   "archivo_commons": "MasiadeCanBaró.jpg"
+  },
+  "Can Peguera": {
+   "archivo_local": "assets/img/alojamiento/barrio-can-peguera.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barri_de_Can_Peguera_P1520552.jpg",
+   "autor": "pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Barri_de_Can_Peguera_P1520552.jpg"
+  },
+  "Canyelles": {
+   "archivo_local": "assets/img/alojamiento/barrio-canyelles.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Canyellesaerea.jpg",
+   "autor": "Joan Ggk",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Canyellesaerea.jpg"
+  },
+  "Ciutat Meridiana": {
+   "archivo_local": "assets/img/alojamiento/barrio-ciutat-meridiana.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Plazaroja.jpg",
+   "autor": "Tresbarris",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Plazaroja.jpg"
+  },
+  "Diagonal Mar i el Front Marítim del Poblenou": {
+   "archivo_local": "assets/img/alojamiento/barrio-diagonal-mar-i-el-front-maritim-del-poblenou.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:P1030943.JPG",
+   "autor": "Power max",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "P1030943.JPG"
+  },
+  "Horta": {
+   "archivo_local": "assets/img/alojamiento/barrio-horta.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:(Horta)_Barri_d%27Horta_des_del_Tur%C3%B3_de_la_Rovira_(cropped).jpg",
+   "autor": "Jey86",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "(Horta)_Barri_d'Horta_des_del_Turó_de_la_Rovira_(cropped).jpg"
+  },
+  "Hostafrancs": {
+   "archivo_local": "assets/img/alojamiento/barrio-hostafrancs.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Catalonia_Barcelona_Mercat_DHostrafranchs_Angle.jpg",
+   "autor": "Friviere",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Catalonia_Barcelona_Mercat_DHostrafranchs_Angle.jpg"
+  },
+  "Montbau": {
+   "archivo_local": "assets/img/alojamiento/barrio-montbau.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Gir%C3%A1ldez-L%C3%B3pez-Sub%C3%ADas_Montbau_03.JPG",
+   "autor": "Fredericg",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Giráldez-López-Subías_Montbau_03.JPG"
+  },
+  "Navas": {
+   "archivo_local": "assets/img/alojamiento/barrio-navas.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Esgl%C3%A9sia_parroquial_de_Sant_Joan_Bosco_(barri_de_Navas).JPG",
+   "autor": "Jordiferrer",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Església_parroquial_de_Sant_Joan_Bosco_(barri_de_Navas).JPG"
+  },
+  "Pedralbes": {
+   "archivo_local": "assets/img/alojamiento/barrio-pedralbes.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Creu_de_Pedralbes_P1130767.JPG",
+   "autor": "Pere López",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Creu_de_Pedralbes_P1130767.JPG"
+  },
+  "Provençals del Poblenou": {
+   "archivo_local": "assets/img/alojamiento/barrio-provencals-del-poblenou.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Poble_nou-_barcelona_-_panoramio.jpg",
+   "autor": "Gerardo nuñez",
+   "licencia": "CC BY 3.0",
+   "archivo_commons": "Poble_nou-_barcelona_-_panoramio.jpg"
+  },
+  "Sant Andreu": {
+   "archivo_local": "assets/img/alojamiento/barrio-sant-andreu.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:358_Esgl%C3%A9sia_de_Sant_Andreu_de_Palomar_(Barcelona),_angle_nord-oest.jpg",
+   "autor": "Enric",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "358_Església_de_Sant_Andreu_de_Palomar_(Barcelona),_angle_nord-oest.jpg"
+  },
+  "Sant Genís dels Agudells": {
+   "archivo_local": "assets/img/alojamiento/barrio-sant-genis-dels-agudells.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:SantGen%C3%ADsConjunt2.JPG",
+   "autor": "Toni Garcia-Die",
+   "licencia": "CC BY 3.0",
+   "archivo_commons": "SantGenísConjunt2.JPG"
+  },
+  "Sant Gervasi - Galvany": {
+   "archivo_local": "assets/img/alojamiento/barrio-sant-gervasi-galvany.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Mercat_de_Galvany.jpg",
+   "autor": "Pere López",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Mercat_de_Galvany.jpg"
+  },
+  "Sant Gervasi - la Bonanova": {
+   "archivo_local": "assets/img/alojamiento/barrio-sant-gervasi-la-bonanova.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Esgl%C3%A9sia_de_la_Bonanova.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Església_de_la_Bonanova.jpg"
+  },
+  "Sant Martí de Provençals": {
+   "archivo_local": "assets/img/alojamiento/barrio-sant-marti-de-provencals.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Esgl%C3%A9sia_de_Sant_Mart%C3%AD_de_Proven%C3%A7als_-_20220803_201741.jpg",
+   "autor": "Pere López Brosa",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Església_de_Sant_Martí_de_Provençals_-_20220803_201741.jpg"
+  },
+  "Sant Pere, Santa Caterina i la Ribera": {
+   "archivo_local": "assets/img/alojamiento/barrio-sant-pere-santa-caterina-i-la-ribera.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Passeig_del_Born_Barcelona_Catalonia.JPG",
+   "autor": "1997",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Passeig_del_Born_Barcelona_Catalonia.JPG"
+  },
+  "Sants": {
+   "archivo_local": "assets/img/alojamiento/barrio-sants.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Festa_Major_de_Sants_2008_P1200915.JPG",
+   "autor": "Pere López",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Festa_Major_de_Sants_2008_P1200915.JPG"
+  },
+  "Sarrià": {
+   "archivo_local": "assets/img/alojamiento/barrio-sarria.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_de_Sarri%C3%A0.jpg",
+   "autor": "Oliver-Bonjoch",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Plaça_de_Sarrià.jpg"
+  },
+  "Torre Baró": {
+   "archivo_local": "assets/img/alojamiento/barrio-torre-baro.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Torre_Bar%C3%B3-a2.jpg",
+   "autor": "Deosringas",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Torre_Baró-a2.jpg"
+  },
+  "Vallbona": {
+   "archivo_local": "assets/img/alojamiento/barrio-vallbona.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rec_Comtal_Vallbona.JPG",
+   "autor": "Canaan",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Rec_Comtal_Vallbona.JPG"
+  },
+  "Vallcarca i els Penitents": {
+   "archivo_local": "assets/img/alojamiento/barrio-vallcarca-i-els-penitents.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Vallcarca_-1907_a.jpg",
+   "autor": "Adolf Mas i Ginestà",
+   "licencia": "Public domain",
+   "archivo_commons": "Vallcarca_-1907_a.jpg"
+  },
+  "Vallvidrera, el Tibidabo i les Planes": {
+   "archivo_local": "assets/img/alojamiento/barrio-vallvidrera-el-tibidabo-i-les-planes.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:VistasTibidabo.jpg",
+   "autor": "No machine-readable author provided. Atarom assumed (based on copyright claims).",
+   "licencia": "Public domain",
+   "archivo_commons": "VistasTibidabo.jpg"
+  },
+  "Verdun": {
+   "archivo_local": "assets/img/alojamiento/barrio-verdun.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barri_de_Verdum_vist_des_de_la_Carretera_Alta_de_Roquetes.jpg",
+   "autor": "joan ggk",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Barri_de_Verdum_vist_des_de_la_Carretera_Alta_de_Roquetes.jpg"
+  },
+  "Vilapicina i la Torre Llobeta": {
+   "archivo_local": "assets/img/alojamiento/barrio-vilapicina-i-la-torre-llobeta.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Virreiamat_001.JPG",
+   "autor": "Javierito92",
+   "licencia": "CC BY 3.0",
+   "archivo_commons": "Virreiamat_001.JPG"
+  },
+  "el Baix Guinardó": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-baix-guinardo.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Casa_de_les_Altures_-_Fa%C3%A7ana.jpg",
+   "autor": "KRLS",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Casa_de_les_Altures_-_Façana.jpg"
+  },
+  "el Besòs i el Maresme": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-besos-i-el-maresme.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rambla_de_Prim,_seen_from_Hotel_Princess.jpg",
+   "autor": "Sean MacEntee",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Rambla_de_Prim,_seen_from_Hotel_Princess.jpg"
+  },
+  "el Bon Pastor": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-bon-pastor.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cases_barates_2004_bn.jpg",
+   "autor": "Carola Pagani - 2004 - www.ruidophoto.com]",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Cases_barates_2004_bn.jpg"
+  },
+  "el Camp d'en Grassot i Gràcia Nova": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-camp-d-en-grassot-i-gracia-nova.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:BCN-CampEuropa-4888.jpg",
+   "autor": "Amadalvarez",
+   "licencia": "CC BY 3.0",
+   "archivo_commons": "BCN-CampEuropa-4888.jpg"
+  },
+  "el Camp de l'Arpa del Clot": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-camp-de-l-arpa-del-clot.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Font_de_l%27%C3%80nec_-_002.jpg",
+   "autor": "Mutari",
+   "licencia": "Public domain",
+   "archivo_commons": "Font_de_l'Ànec_-_002.jpg"
+  },
+  "el Carmel": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-carmel.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rutes_Hist%C3%B2riques_a_Horta-Guinard%C3%B3-biblioteca_joan_marse_05.jpg",
+   "autor": "Districte d'Horta Guinardó",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Rutes_Històriques_a_Horta-Guinardó-biblioteca_joan_marse_05.jpg"
+  },
+  "el Clot": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-clot.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Falques-mercatClot-0488r.jpg",
+   "autor": "ca:User:Amadalvarez",
+   "licencia": "CC BY 3.0",
+   "archivo_commons": "Falques-mercatClot-0488r.jpg"
+  },
+  "el Coll": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-coll.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Elogi_de_l%27aigua_02.JPG",
+   "autor": "Xaxat",
+   "licencia": "CC BY-SA 3.0 es",
+   "archivo_commons": "Elogi_de_l'aigua_02.JPG"
+  },
+  "el Congrés i els Indians": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-congres-i-els-indians.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barri_Congr%C3%A9s_plaza.jpg",
+   "autor": "No machine-readable author provided. A.Guerrero~commonswiki assumed (based on copyright claims).",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Barri_Congrés_plaza.jpg"
+  },
+  "el Fort Pienc": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-fort-pienc.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_del_Fort_Pienc.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Plaça_del_Fort_Pienc.jpg"
+  },
+  "el Guinardó": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-guinardo.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Mas_Guinard%C3%B3_06.JPG",
+   "autor": "Jordiferrer",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Mas_Guinardó_06.JPG"
+  },
+  "el Parc i la Llacuna del Poblenou": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-parc-i-la-llacuna-del-poblenou.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Parc_de_les_Gl%C3%B2ries1.jpg",
+   "autor": "Canaan",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Parc_de_les_Glòries1.jpg"
+  },
+  "el Poble-sec": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-poble-sec.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Poble_Sec_capvespre.jpg",
+   "autor": "Pere López",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Poble_Sec_capvespre.jpg"
+  },
+  "el Poblenou": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-poblenou.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Playa_Bogatell,_Barcelona_-_panoramio_(1).jpg",
+   "autor": "Carlos Cunha",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Playa_Bogatell,_Barcelona_-_panoramio_(1).jpg"
+  },
+  "el Putxet i el Farró": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-putxet-i-el-farro.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Entrance_Park_Putxet_Barcelona_August_2014.jpg",
+   "autor": "Cyclingralph",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Entrance_Park_Putxet_Barcelona_August_2014.jpg"
+  },
+  "el Turó de la Peira": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-turo-de-la-peira.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:TUR%C3%93_DE_LA_PEIRA.JPG",
+   "autor": "JM92",
+   "licencia": "Public domain",
+   "archivo_commons": "TURÓ_DE_LA_PEIRA.JPG"
+  },
+  "l'Antiga Esquerra de l'Eixample": {
+   "archivo_local": "assets/img/alojamiento/barrio-l-antiga-esquerra-de-l-eixample.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cases_Sayrach.jpg",
+   "autor": "Pere López",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Cases_Sayrach.jpg"
+  },
+  "la Barceloneta": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-barceloneta.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Aerial_view_of_Barceloneta_Beach_and_Port_Vell_in_Barcelona,_Spain_(51226238126).jpg",
+   "autor": "dronepicr",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Aerial_view_of_Barceloneta_Beach_and_Port_Vell_in_Barcelona,_Spain_(51226238126).jpg"
+  },
+  "la Bordeta": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-bordeta.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Can_Batll%C3%B3_(la_Bordeta,_Barcelona).jpg",
+   "autor": "Jordi D. A.",
+   "licencia": "CC BY-SA 2.0",
+   "archivo_commons": "Can_Batlló_(la_Bordeta,_Barcelona).jpg"
+  },
+  "la Clota": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-clota.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Plaza_La_Clota,_Barcelona,_2016.jpg",
+   "autor": "Anastasiia Khvatova",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Plaza_La_Clota,_Barcelona,_2016.jpg"
+  },
+  "la Dreta de l'Eixample": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-dreta-de-l-eixample.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Passeig_de_Gr%C3%A0cia_des-de_la_terrassa_de_l%27Hotel_Condes_de_Barcelona.jpg",
+   "autor": "PepPepet",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Passeig_de_Gràcia_des-de_la_terrassa_de_l'Hotel_Condes_de_Barcelona.jpg"
+  },
+  "la Font d'en Fargues": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-font-d-en-fargues.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:CanFargas-Barcelona_(Catalonia).jpg",
+   "autor": "Puigalder",
+   "licencia": "CC0",
+   "archivo_commons": "CanFargas-Barcelona_(Catalonia).jpg"
+  },
+  "la Font de la Guatlla": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-font-de-la-guatlla.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:F%C3%A0brica_Casaramona_-_terrats.jpg",
+   "autor": "Pere López",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Fàbrica_Casaramona_-_terrats.jpg"
+  },
+  "la Guineueta": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-guineueta.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Parc_Central_de_Nou_Barris_P1520535.jpg",
+   "autor": "pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Parc_Central_de_Nou_Barris_P1520535.jpg"
+  },
+  "la Marina de Port": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-marina-de-port.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Mercat_de_la_Marina_Barcelona.JPG",
+   "autor": "No machine-readable author provided. 1997 assumed (based on copyright claims).",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Mercat_de_la_Marina_Barcelona.JPG"
+  },
+  "la Marina del Prat Vermell": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-marina-del-prat-vermell.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:La_Marina_del_Prat_Vermell,_Barcelona.JPG",
+   "autor": "Jordiferrer",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "La_Marina_del_Prat_Vermell,_Barcelona.JPG"
+  },
+  "la Maternitat i Sant Ramon": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-maternitat-i-sant-ramon.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Cementiri_de_les_corts.JPG",
+   "autor": "Jordiferrer",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Cementiri_de_les_corts.JPG"
+  },
+  "la Nova Esquerra de l'Eixample": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-nova-esquerra-de-l-eixample.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barcelona_-_Centro_Comercial_Las_Arenas_2.jpg",
+   "autor": "Zarateman",
+   "licencia": "CC0",
+   "archivo_commons": "Barcelona_-_Centro_Comercial_Las_Arenas_2.jpg"
+  },
+  "la Prosperitat": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-prosperitat.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_de_la_Zona_Verda.jpg",
+   "autor": "DaniG",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Plaça_de_la_Zona_Verda.jpg"
+  },
+  "la Sagrada Família": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-sagrada-familia.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Bird_view_(7448562738).jpg",
+   "autor": "Martin Abegglen from Bern, Switzerland",
+   "licencia": "CC BY-SA 2.0",
+   "archivo_commons": "Bird_view_(7448562738).jpg"
+  },
+  "la Sagrera": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-sagrera.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Edificio_Meridiana_O._Bohigas1.jpg",
+   "autor": "MarisaLR",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Edificio_Meridiana_O._Bohigas1.jpg"
+  },
+  "la Salut": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-salut.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Uphill_to_Parc_G%C3%BCell.jpg",
+   "autor": "Niklas Gustavsson",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Uphill_to_Parc_Güell.jpg"
+  },
+  "la Teixonera": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-teixonera.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rutes_Hist%C3%B2riques_a_Horta-Guinard%C3%B3-cc_taxonera%2Bescales_01.jpg",
+   "autor": "Districte d'Horta Guinardó",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Rutes_Històriques_a_Horta-Guinardó-cc_taxonera+escales_01.jpg"
+  },
+  "la Trinitat Nova": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-trinitat-nova.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Parc_de_l%27Amistat.jpg",
+   "autor": "Wikiwiki",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Parc_de_l'Amistat.jpg"
+  },
+  "la Trinitat Vella": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-trinitat-vella.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Trinitat_Vella.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Trinitat_Vella.jpg"
+  },
+  "la Vall d'Hebron": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-vall-d-hebron.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rutes_Hist%C3%B2riques_a_Horta-Guinard%C3%B3-can_braso_01.jpg",
+   "autor": "Districte d'Horta Guinardó",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Rutes_Històriques_a_Horta-Guinardó-can_braso_01.jpg"
+  },
+  "la Verneda i la Pau": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-verneda-i-la-pau.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:El_Llarg_Viatge_-_001.jpg",
+   "autor": "Mutari",
+   "licencia": "Public domain",
+   "archivo_commons": "El_Llarg_Viatge_-_001.jpg"
+  },
+  "la Vila Olímpica del Poblenou": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-vila-olimpica-del-poblenou.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Port_Olympic_in_Barcelona,_Spain_(51226239136).jpg",
+   "autor": "dronepicr",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Port_Olympic_in_Barcelona,_Spain_(51226239136).jpg"
+  },
+  "les Corts": {
+   "archivo_local": "assets/img/alojamiento/barrio-les-corts.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Exterior_Camp_nou.jpg",
+   "autor": "Desconocido",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Exterior_Camp_nou.jpg"
+  },
+  "les Roquetes": {
+   "archivo_local": "assets/img/alojamiento/barrio-les-roquetes.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barcelona_barris_El_Verdum,_Trinitat,_Quaranta_Metros.jpg",
+   "autor": "joan ggk",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Barcelona_barris_El_Verdum,_Trinitat,_Quaranta_Metros.jpg"
+  },
+  "les Tres Torres": {
+   "archivo_local": "assets/img/alojamiento/barrio-les-tres-torres.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Les_Tres_Torres_P1250838.JPG",
+   "autor": "Pere López",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Les_Tres_Torres_P1250838.JPG"
+  },
+  "Porta": {
+   "archivo_local": "assets/img/alojamiento/barrio-porta.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Can_Baste_1_-_Barcelona_(Catalonia)-08019.2884.jpg",
+   "autor": "Puigalder",
+   "licencia": "CC0",
+   "archivo_commons": "Can Baste 1 - Barcelona (Catalonia)-08019.2884.jpg"
+  },
+  "Sant Antoni": {
+   "archivo_local": "assets/img/alojamiento/barrio-sant-antoni.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Mercat_de_Sant_Antoni,_Barcelona.jpg",
+   "autor": "Julian Lupyan",
+   "licencia": "CC0",
+   "archivo_commons": "Mercat de Sant Antoni, Barcelona.jpg"
+  },
+  "Sants - Badal": {
+   "archivo_local": "assets/img/alojamiento/barrio-sants-badal.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rambla_de_Badal.jpg",
+   "autor": "Pere prlpz",
+   "licencia": "CC BY-SA 3.0",
+   "archivo_commons": "Rambla de Badal.jpg"
+  },
+  "el Barri Gòtic": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-barri-gotic.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Barcelona_-_Barri_Gotic._Carrer_d%27Aviny%C3%B3.jpg",
+   "autor": "Fred Romero",
+   "licencia": "CC BY 2.0",
+   "archivo_commons": "Barcelona - Barri Gotic. Carrer d'Avinyó.jpg"
+  },
+  "el Raval": {
+   "archivo_local": "assets/img/alojamiento/barrio-el-raval.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Rambla_del_Raval_2014.jpg",
+   "autor": "Janko Hoener from Bonn, Germany",
+   "licencia": "CC BY-SA 2.0",
+   "archivo_commons": "Rambla del Raval 2014.jpg"
+  },
+  "la Vila de Gràcia": {
+   "archivo_local": "assets/img/alojamiento/barrio-la-vila-de-gracia.jpg",
+   "pagina": "https://commons.wikimedia.org/wiki/File:Pla%C3%A7a_de_la_Vila_de_Gr%C3%A0cia_13_-_20230123_111637.jpg",
+   "autor": "Pere López Brosa",
+   "licencia": "CC BY-SA 4.0",
+   "archivo_commons": "Plaça de la Vila de Gràcia 13 - 20230123 111637.jpg"
+  }
+ }
+}

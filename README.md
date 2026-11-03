@@ -1,135 +1,153 @@
-# Barcelona Explora · Gemelo Digital de Barcelona
+# Barcelona · sistema de información
 
-> **Tópicos en Sistemas de Información · Taller de Datos (Entrega 2)**  
-> **Universidad EAFIT · Semestre 2026-2**  
-> **Sistema publicado:** [https://barcelona-explora.vercel.app](https://barcelona-explora.vercel.app) *(o desplegable en local con `python -m http.server`)*  
-> **Repositorio del lago y código:** [https://github.com/Maocampog1/barcelona-explora](https://github.com/Maocampog1/barcelona-explora)
+Grupo: María Alejandra Ocampo Giraldo (curaduría de datos, estándar visual, Inicio, Sobre Barcelona, Lugares imperdibles e ingesta de Wikipedia) · Camilo Salazar (arquitectura geoespacial, mapa, Alojamiento y anonimización) · César Montoya (tiempo real, Bicing, rutas, Cómo moverte y Clima y ambiente) · Luis Ángel Nerio Pereira (auditoría del catálogo, Sobre el proyecto, bitácora de IA y despliegue)
 
-### Equipo de Desarrollo
-- **María Alejandra Ocampo Giraldo** · Curaduría de datos, estándar visual trencadís, Portada, Lugares imperdibles e ingesta de Wikipedia.
-- **Camilo Salazar** · Arquitectura geoespacial, MapLibre + OpenFreeMap, Alojamiento, anonimización de anfitriones y distancias.
-- **César Montoya** · Sistemas en tiempo real, Bicing GBFS en vivo + fallback, enrutamiento OSRM, bus, metro y Clima y ambiente.
-- **Luis Ángel Nerio Pereira** · Auditoría y trazabilidad del catálogo de fuentes (`F01–F30`), Sobre el proyecto, bitácora de IA y despliegue.
+Enlace: <https://barcelona-explora.vercel.app> · Repositorio: <https://github.com/Maocampog1/barcelona-explora> · Revisado: 2026-11-03
 
----
+## Para quién y qué pregunta
 
-## 1. Resumen de Decisiones (en pocas líneas)
+- **Usuario:** un turista autosuficiente que visita Barcelona y quiere moverse, dormir, comer y planear su día sin apps de pago.
+- **Preguntas:**
+  1. ¿Cómo me muevo en bici, bus, taxi o metro, y qué tan lejos estoy de cada opción? → `Cómo moverte`, `Explora el mapa`
+  2. ¿Qué puedo visitar y qué servicios tengo cerca? → `Lugares imperdibles`, `Explora el mapa`
+  3. ¿Dónde me puedo alojar, a qué precio, y cómo es ese barrio? → `Alojamiento`
+  4. ¿Qué clima y qué aire voy a encontrar hoy? → `Clima y ambiente`
+  5. ¿Qué conviene saber de la ciudad y de quienes la habitan antes de salir? → `Sobre Barcelona`
 
-- **Qué decidimos mostrar y qué dejamos fuera:** Redujimos el catálogo inicial exploratorio de **142 fuentes en 16 categorías** a **30 fuentes consolidadas en el lago** y **17+ activas en pantalla**, enfocando el sistema al 100% en el **turista autosuficiente** que necesita resolver movilidad, alojamiento, atractivos, clima y servicios básicos sin pagar por aplicaciones. Descartamos deliberadamente presupuestos municipales, contratos públicos y delitos por carecer de valor para este usuario y arriesgar desinformación.
-- **Si los datos se pueden usar (Licencias):** El 100% de los datos provienen de fuentes abiertas y reutilizables: licencia **Creative Commons Attribution 4.0 (CC BY 4.0)** en Open Data BCN, Inside Airbnb y Open-Meteo; **CC BY-SA 4.0** en textos de Wikipedia y licencias libres de Wikimedia Commons; datos abiertos del operador en Bicing (feed estándar **GBFS v3.0**) y datos abiertos de la Generalitat de Catalunya para calidad del aire (**XVPCA**).
-- **Cómo protegimos los datos (Pregunta 5 de la Entrega 1):** Aplicamos **Privacidad por Diseño (Privacy by Design)** en los scripts de ingesta en Python: suprimimos radicalmente `host_id`, `host_name`, foto y URL de los anfitriones de Airbnb (`F19`) antes de serializar el JSON web. Asimismo, la renta disponible por habitante (`F02`) se presenta agregada por barrio exclusivamente como contexto macroeconómico, advirtiendo al usuario que no debe usarse para juzgar la seguridad de una zona ni estigmatizar vecindarios.
-- **Manejo de datos PROXY y pendientes:** Honestidad y trazabilidad técnica en la interfaz. Cuando las APIs en streaming (`F03` Bicing o `F21` Open-Meteo) sufren caídas de red o restricciones CORS, el sitio degrada automáticamente al último snapshot fechado del lago marcado con una etiqueta visible: `DATO PROXY / Snapshot de respaldo (2026-10-01T16:05:52Z)`. La red de metro (`F05`) se declara abiertamente como `Sin tiempo real · pendiente` debido a la exigencia de token cerrado de TMB.
+  Las preguntas 1 a 3 vienen de la Entrega 1. Las preguntas 4 y 5 corresponden a vistas agregadas después.
+- **Escala y comparación:** ciudad, 10 distritos y 73 barrios. Se compara entre zonas de Barcelona con filtros por distrito y una tabla de renta por barrio. No se compara con otras ciudades ni se construyen rankings de barrios.
+- **Lo que decidimos no mostrar, y por qué:**
+  - Delitos, presupuestos y contratos municipales: estaban en el ejemplo de Lima, pero no le sirven a este usuario.
+  - Anfitriones de Airbnb: son datos personales. En los JSON de la web no hay nombre, foto ni perfil, pero ver el problema abierto en [Protección](#protección).
+  - Renta como señal de dónde alojarse: solo aparece como contexto, para no estigmatizar barrios.
+  - Fotos de anuncios de Airbnb: son viviendas privadas sin licencia abierta.
+  - Precios que no existen o no son creíbles: hoteles y viviendas turísticas no publican precio abierto y no se inventa. Se descartaron 76 anuncios de Airbnb con precios imposibles.
 
----
+## La réplica
 
-## 2. Bitácora de Exploración de Herramientas: Mapas
+- **Qué replicamos tal cual del ejemplo y qué tuvimos que cambiar para nuestra ciudad:** del ejemplo de Lima replicamos la idea del lago por temas y el catálogo amplio inicial (16 categorías y más de 140 fuentes). Cambiamos el foco a un solo usuario, el turista, lo que dejó fuera seguridad y gobernanza. Para Barcelona añadimos Inside Airbnb y viviendas turísticas con licencia, y usamos la XVPCA de la Generalitat para la calidad del aire y el feed GBFS del operador de Bicing, porque el de Open Data BCN pedía token y fallaba.
+- **Fuentes catalogadas · integradas · caídas · descartadas:** 142 catalogadas en la exploración inicial · 32 en el lago, de las cuales 26 integradas y 6 solo en el lago · 0 caídas confirmadas · 110 descartadas. Detalle y comprobación en [catalogo/fuentes.csv](catalogo/fuentes.csv).
+  - Comprobación del 2026-11-03: 11 enlaces de nuestro catálogo dan 404 (F07, F08, F09, F11, F12, F13, F14, F15, F16, F17 y F23). Hay que corregirlos: no sabemos si cambió la dirección o si estaba mal anotada, pero sus datos están en el lago. No los contamos como caídas.
+  - El listado de las 142 fuentes está en el Excel `Diccionario_de_datos`, que no está en este repositorio.
+- **Huecos: lo que buscamos y no existe abierto para esta ciudad:**
+  - Llegadas de metro en tiempo real: la API de TMB pide token, así que el metro se muestra como ubicación fija con la etiqueta `Sin tiempo real · pendiente`.
+  - Precios de hoteles y de viviendas turísticas: las fichas enlazan a Google Maps para consultarlos.
+  - Precios de carta de restaurantes.
+  - Fotos abiertas de la mayoría de los hoteles: 58 de 446 tienen foto propia, y los demás muestran una foto de su barrio rotulada como "Foto de la zona".
 
-Probamos el mismo conjunto de datos espaciales del lago (`lago/procesado/mapa.json`, con más de 10.000 puntos de gastronomía, turismo, alojamiento y movilidad) en tres plataformas diferentes para justificar la elección técnica final:
+## ¿Se puede usar?
 
-| Criterio de Rúbrica | 1) MapLibre GL JS + OpenFreeMap <br>*(Elegida)* | 2) kepler.gl <br>*(Casi elegida / Descartada)* | 3) Google Maps Platform <br>*(Descartada)* |
-| :--- | :--- | :--- | :--- |
-| **1. ¿Qué pidió para empezar?** | Cero llaves, cero cuentas y cero tarjetas. Únicamente descargar el paquete JS/CSS localmente (`assets/vendor/maplibre-gl/`) y apuntar al estilo libre de OpenFreeMap. | Node.js/React para integrarlo como componente o crear una cuenta y token de acceso en Mapbox si se exportaba la aplicación compartida. | Crear una cuenta en Google Cloud Platform y **asociar obligatoriamente una tarjeta de crédito** bancaria. |
-| **2. ¿Qué licencia tiene?** | Código: **BSD 3-Clause** (100% libre). Cartografía: **ODbL** (OpenStreetMap). | Código: **MIT License**. Sin embargo, sus estilos de mapa base predeterminados dependen de tokens comerciales de Mapbox. | Propietaria y cerrada, sujeta a cuotas y límites de consumo por encima del crédito de facturación. |
-| **3. ¿Dónde quedan los datos al publicar?** | En el propio repositorio GitHub y en el navegador del usuario. Soberanía e integridad total del lago. | En la memoria del cliente o en buckets cloud de Kepler/Mapbox si se genera el enlace exportado. | En los servidores de Google al enviar las peticiones y coordenadas de búsqueda. |
-| **4. ¿Qué resolvió?** | Renderizado vectorial WebGL de alto rendimiento para miles de puntos, control granular de capas, popups personalizados con estándar Gaudí, cálculo de distancia recta y rutas ciclistas/peatonales OSRM. | Excelente entorno de análisis visual exploratorio: mapas de calor, filtrado interactivo por rangos de precio con deslizadores y visualización 3D rápida. | Búsquedas de lugares y cálculo de rutas sumamente familiares para el público general. |
-| **5. ¿Qué no resolvió?** | No cuenta con panel gráfico "no-code": toda capa, filtro y evento debe programarse manualmente en JavaScript. | Muy rígido y pesado para personalizar como sitio web multipágina: difícil de acoplar a nuestra navbar compartida, modales de trazabilidad y estética Gaudí. | Incumplía la regla de oro del taller: requería tarjeta de crédito bancaria para operar sin cortes. |
-| **6. ¿Por qué quedó o no quedó?** | **QUEDÓ:** Es ligera, 100% gratuita, auditable, almacena los datos en el lago y respeta el estándar visual del proyecto. | **DESCARTADA:** Gran herramienta para el analista de datos en su computador; inadecuada para el turista móvil en un sitio interactivo a medida. | **DESCARTADA:** Descartada de raíz por barrera financiera (exigencia de tarjeta bancaria). |
+Resumen por grupo. Las 32 fuentes, una por una, están en [catalogo/fuentes.csv](catalogo/fuentes.csv).
 
----
+| Fuente | Licencia | Personas | Estado | Condición |
+|---|---|---|---|---|
+| Open Data BCN: geografía, transporte, cultura, mercados, miradores, festivos y servicios (F01, F05, F06, F09–F15, F17, F20, F26–F29) | CC BY 4.0 | No | Integradas | Atribuir |
+| Open Data BCN: renta por sección censal (F02) | CC BY 4.0 | Agregada, sin individuos | Integrada | Atribuir. Se muestra por barrio y solo como contexto |
+| Open Data BCN: censo de locales (F08) | CC BY 4.0 | Nombres de negocios | Integrada | Atribuir. Solo locales de comida y ocio |
+| Open Data BCN: viviendas turísticas con licencia (F18) | CC BY 4.0 | Dirección de una vivienda, sin nombre | Integrada | Atribuir. La dirección ya es pública en el registro oficial |
+| Open Data BCN: taxi, agenda, salud y terrazas (F07, F16, F23, F30) | CC BY 4.0 | No revisado a fondo | Solo en el lago | Atribuir si se integran |
+| Inside Airbnb (F19) | CC BY 4.0 | **Sí:** nombre, foto y perfil del anfitrión | Integrada sin esos campos | Atribuir. **El archivo crudo sigue público: ver Protección** |
+| Bicing, feed GBFS (F03, F04) | Datos abiertos del operador | No | Integradas, en vivo | Respaldo fechado si el feed falla |
+| Open-Meteo (F21) | CC BY 4.0 | No | Integrada, en vivo | Atribuir. Gratis para uso no comercial |
+| Calidad del aire XVPCA (F22) | Datos abiertos de la Generalitat | No | Integrada | Citar la fuente |
+| Catastro INSPIRE e ICGC (F24, F25) | CC BY 4.0 | No revisado a fondo | Solo en el lago | Atribuir si se integran |
+| Wikipedia y Wikimedia Commons (WIKI) | Texto: CC BY-SA 4.0. Fotos: licencia de cada archivo | Autores de fotos | Integrada | Crédito con autor y licencia en cada ficha |
+| Cifras e historia de la ciudad (CTX) | Datos públicos, cada uno con su fuente | No | Integrada | Citar fuente, URL y fecha de consulta |
+| Mapa base OpenStreetMap vía OpenFreeMap | ODbL | No | Integrada | Atribución visible en el mapa |
 
-## 3. Preguntas de la Entrega 1: Respondidas vs. Pendientes
+## Bitácora de exploración
 
-| Pregunta de la Entrega 1 | Fuentes Asociadas | Estado de Cumplimiento | Qué resuelve hoy en el sitio web | Qué queda pendiente / abierto |
-| :--- | :--- | :--- | :--- | :--- |
-| **1. Movilidad:** *¿Cómo me puedo mover por la ciudad haciendo uso de bicicleta, bus, taxi o metro, y qué tan lejos estoy de cada opción?* | `F03`, `F04`, `F05`, `F06`, `F07` | **Respondida parcialmente (con alcance claro)** en `05 Cómo moverte` y `03 Explora el mapa` | Consulta en tiempo real de **543 estaciones de Bicing** (`F03`, `F04`) vía GBFS oficial con hora UTC, trazado de rutas en bici OSRM, paradas de autobús (`F06`) y estaciones de metro/FGC (`F05`) en mapa con filtros por distrito. | **Llegadas de metro en tiempo real:** La API de TMB exige token cerrado; las estaciones se muestran con ubicación estática y badge `Sin tiempo real · pendiente`. Las paradas de taxi (`F07`) están en el lago crudo. |
-| **2. Atractivos y Servicios:** *¿Qué puedo visitar cerca de mí, como puntos de interés, museos, bibliotecas, miradores o eventos de la agenda?* | `F10`, `F11`, `F12`, `F13`, `F14`, `F15`, `F16`, `F08`, `F09`, `F30`, `WIKI` | **Respondida con curaduría y ranking real** en `02 Lugares imperdibles`, `01 Portada` y `03 Explora el mapa` | 78 hitos curados (Gaudí `F11`, museos `F12`, miradores `F14`, mercados `F10`) clasificados por **popularidad real de visitas en Wikipedia a 12 meses** (`WIKI`), 10.000+ locales de comida (`F08`, `F09`) y servicios al turista en datos curiosos (WiFi `F26`, baños `F27`, duchas `F28`, refugios `F29`). | **Precios de carta de restaurantes:** No existe fuente pública abierta; se suple mostrando locales en planta baja (`F08`) y terrazas autorizadas con capacidad (`F30`). Eventos de agenda (`F16`) y festivos (`F15`) se reservan en el lago. |
-| **3. Alojamiento:** *¿Dónde me puedo alojar, y cómo es ese barrio en renta, oferta de hoteles, viviendas turísticas o Airbnb?* | `F02`, `F17`, `F18`, `F19` | **Respondida al 100% con protección ética** en `04 Alojamiento` y `03 Explora el mapa` | Consolidación de más de 24.000 registros: 400+ hoteles oficiales (`F17`), 9.000+ viviendas turísticas con licencia HUTB (`F18`) y 15.000+ anuncios de Inside Airbnb (`F19`) con precio por noche, zona, y tabla de renta por habitante (`F02`) como contexto. | Ninguno. Se respondió completamente integrando la advertencia explícita de no usar la renta como ranking de seguridad. |
+"Estado del proyecto" es el estado de la herramienta, según GitHub, el 2026-11-03.
 
----
+| Tramo | Herramienta | Qué pidió para empezar | Licencia | Dónde quedan los datos | ¿Se rehace con un comando? | Estado del proyecto | Qué resolvió | Qué no pudo | ¿Quedó? ¿Por qué? |
+|---|---|---|---|---|---|---|---|---|---|
+| Lago y procesamiento | Python + pandas | Instalar `pandas` y `requests` | BSD-3 (pandas) | `lago/raw` y `lago/procesado`, en el repositorio | Sí, ver [Cómo correrlo](#anexo-cómo-correrlo) | Activo | Limpieza, cruces y anonimización | Las fotos no se rehacen igual si Commons está saturado | **Quedó.** Es auditable y sin costo |
+| Mapa | MapLibre GL JS 4.7.1 + OpenFreeMap | Nada: sin cuenta, clave ni tarjeta | BSD-3; mapa ODbL | Repositorio y navegador | Sí: `python ingesta/procesar_mapa_y_alojamiento.py` | Activo | Miles de puntos, capas, fichas propias y distancias | No tiene panel visual: todo se programa | **Quedó.** Cumple lo que había que mostrar y proteger |
+| Mapa | kepler.gl | Node/React, o token de Mapbox para su mapa base | MIT | Navegador, o nube si se exporta enlace | No lo documentamos | Activo | Exploración rápida, mapas de calor, filtros | Difícil de acoplar a un sitio multipágina con fichas propias | **No quedó.** Fue la descartada por poco |
+| Mapa | Google Maps Platform | Cuenta y tarjeta de crédito | Propietaria | Servidores de Google | No | Servicio comercial | Búsqueda y rutas familiares | Operar sin tarjeta | **No quedó como motor.** Solo enlaces públicos que no piden clave |
+| Rutas en bici | OSRM público | Nada | BSD-2; datos ODbL | Servidor público de OSRM | No aplica: es en vivo | Activo | Ruta entre dos puntos | No garantizamos que el servidor público siempre responda | **Quedó.** Sin clave ni tarjeta |
+| Tiempo real | Feed GBFS de Bicing | Nada | Datos abiertos del operador | Navegador, con respaldo en el lago | Solo el respaldo: `python ingesta/procesar_moverte_y_clima.py` | Activo | 543 estaciones en vivo | Falta el metro | **Quedó.** El de Open Data BCN pedía token y fallaba |
+| Tiempo real | API de TMB | Registro y token | No revisada | No se usó | No | No revisado | Nada: no la integramos | Abrirse sin token | **No quedó.** El metro se declara sin tiempo real |
+| Satélite | Imágenes de la NASA | Registro no documentado | No revisada | No se usó | No | No revisado | Sirven a escala de ciudad | Ver calle o edificio | **No quedó.** No alcanza la resolución para este usuario |
+| Fotos | Wikipedia, Commons y Wikidata | Nada | Abierta, por archivo | `assets/img/alojamiento` y `lago/raw/wikipedia` | Sí: `python ingesta/descargar_fotos_alojamiento.py`, con resultado variable | Activo | Fotos con autor y licencia | La búsqueda se saturó el 2026-11-03 y paramos con 58 hoteles | **Quedó.** Google Places pide tarjeta |
+| Publicación | Vercel | Cuenta conectada al repositorio | Propietaria | Vercel y GitHub | Sí: se despliega al subir a `main` | Servicio comercial | Sitio estático sin compilación | Publica todo el repositorio si no se excluye nada: ver Protección | **Quedó.** Sin costo para este proyecto |
 
-## 4. Bitácora de IA Actualizada (Aciertos y Errores)
+## Protección
 
-A lo largo de las Entregas 1 y 2, documentamos el papel de los asistentes de Inteligencia Artificial (Claude / ChatGPT) en la toma de decisiones:
+- **Nivel:** abierto para los datos de ciudad · solo agregados para la renta · **no se publica** debería ser el nivel de los datos de anfitriones, pero hoy **no se cumple** (ver abajo).
+- **Qué protegemos, y de quién:** la identidad de los anfitriones de Airbnb, frente a cualquier visitante o programa que descargue nuestros archivos. También protegemos a los barrios de ser estigmatizados por su renta, y evitamos publicar credenciales.
+- **Pruebas de terminal o de ventana privada** (2026-11-03, sin sesión iniciada):
 
-- **Acierto #1 (Verificación de Licencia F19):** Al consultar por listados de Airbnb, la IA alertó que las réplicas en Kaggle e IBM declaraban erróneamente CC0, mientras que el portal primario oficial (*Inside Airbnb*) establecía claramente la licencia **CC BY 4.0**. Esto evitó un problema de atribución legal desde el día 1.
-- **Acierto #2 (ETL y compresión para producción):** La IA asistió en la vectorización matemática de coordenadas geográficas (reproyección de EPSG:25831 a EPSG:4326) y en la técnica de serialización compacta (JSON sin saltos de línea ni indentación para `mapa.json` y `alojamiento.json`), ahorrando megabytes de transferencia móvil.
-- **Error / Aprendizaje #1 (APIs en streaming vs. Snapshots estáticos):** En las primeras reuniones creímos que una API como Bicing (`F03`) o Open-Meteo (`F21`) se "vinculaba" al repositorio y quedaba actualizándose sola. Comprendimos que descargar el endpoint solo genera un archivo estático fechado, y que para lograr el tiempo real verdadero se debía programar un cliente `fetch` en el navegador del usuario respaldado por snapshots de contingencia en el lago.
-- **Error #2 (Falso negativo en Open Data BCN - F05):** Al preguntarle a la IA si el Ayuntamiento disponía de un dataset con todas las paradas de metro y tren urbano, respondió inicialmente que no existía. Al contrastar manualmente en el catálogo encontramos `transports..csv`. Esto reafirmó que la IA es una herramienta de asistencia exploratoria, pero nunca el auditor final de verdad.
-- **Error #3 (Desfase de identificadores en borradores tempranos):** En las primeras pruebas de código algunos scripts empleaban claves arbitrarias; auditamos el código completo para que cada referencia en el frontend (`abrirFicha`) empate de forma unívoca con los identificadores `F01` a `F30` del diccionario Excel oficial.
+| Prueba | Resultado | Lectura |
+|---|---|---|
+| Buscar `host_id`, `host_name`, `host_url`, `host_picture` y `picture_url` en los 8 JSON de `lago/procesado` | 0 coincidencias | ✅ La anonimización funciona en lo que usa la web |
+| `curl https://barcelona-explora.vercel.app/lago/raw/turismo/listings.csv` | **206, descarga con `host_name`, `host_url` y `host_picture_url`** | ❌ **Datos de anfitriones expuestos** |
+| El mismo archivo en `raw.githubusercontent.com`, repositorio público | **206, descargable** | ❌ **Expuesto, y en el historial desde el 2026-10-01** |
+| Ficha de Airbnb en `Alojamiento` | Enlaza a ese archivo en "Archivo en el lago" | ❌ El propio sitio lleva al archivo |
+| `curl .../.env` y `curl .../.git/config` en producción | 404 | ✅ No se publican |
+| Buscar correos y teléfonos en los JSON | Solo créditos de foto y teléfonos de instituciones | ✅ Revisado por campo |
+| Nombres de anuncios de Airbnb, que son texto libre | 81 de 13.279 parecen incluir un nombre de persona | ⚠️ Riesgo sin resolver |
+| Identificador de Airbnb en cada anuncio | La ficha enlaza al anuncio original, donde Airbnb muestra al anfitrión | ⚠️ Decisión por revisar |
 
----
+  **Problema abierto:** anonimizamos bien lo que muestra la web, pero `listings.csv` sigue publicado. Inside Airbnb ya difunde esos datos, pero eso no cambia lo que afirmamos proteger. Para cerrarlo hay que quitar el archivo del repositorio y de Vercel, quitar el enlace de la ficha y limpiar el historial de git.
 
-## 5. Posición del Equipo frente a las 2 Reflexiones del Taller
+- **Revisión de secretos en el historial:** `.env` está en `.gitignore`, nunca entró al historial (0 commits) y da 404 en GitHub y en producción. Solo contiene `BICING_TOKEN`, que ningún archivo de `ingesta/` ni del sitio usa. Una búsqueda de patrones de claves (AWS, GitHub, OpenAI, Google, Slack, llaves privadas y asignaciones de `api_key`, `secret` o `password`) en todo el historial dio 0 coincidencias en los archivos de código y texto (`.py`, `.js`, `.html`, `.md`, `.css`, `.txt`, `.yml`). No cubre los archivos de `lago/`, y la hicimos con `git log -G`, no con una herramienta especializada.
 
-### Reflexión 1: Sobre los Datos (Curaduría con propósito vs. Publicar todo)
-El ejercicio de arrancar con 142 fuentes y descartar más de 110 nos enseñó que **un lago de datos sin un usuario claro es un vertedero digital**. En el sector público existe la tentación de "liberar todo sin procesar", pero arrojar tablas de presupuestos o series estadísticas complejas a un ciudadano común produce desinterés o malas interpretaciones.  
-Al enfocar el gemelo digital en el turista autosuficiente, la curaduría se convirtió en una responsabilidad ética: abrir la renta disponible por habitante (`F02`) a nivel de sección censal sin filtros hubiera permitido generar rankings amarillistas de "barrios pobres", estigmatizando sectores populares de Barcelona. Decidimos procesar los datos con un propósito claro, agregando la información donde era necesario y enmarcándola con advertencias para evitar sesgos territoriales.
+## Herramienta elegida para las vistas
 
-### Reflexión 2: Sobre la Seguridad y Privacidad (Privacy by Design y Soberanía)
-La transparencia urbana no puede construirse a costa de la intimidad de las personas. Los anuncios de alquiler temporal (`F19`) incluían fotos, nombres de pila y enlaces de perfiles de vecinos de la ciudad. El equipo adoptó una postura tajante: **la privacidad se resuelve en el pipeline de datos (backend/ETL), jamás con estilos cosméticos en el navegador**. Si un dato personal viaja en el JSON al cliente, la privacidad ya fue vulnerada. Suprimir los identificadores en `procesar_mapa_y_alojamiento.py` garantiza que nadie pueda reconstruir la identidad de los anfitriones inspeccionando el código de la página.  
-Asimismo, la soberanía tecnológica exige no atar un proyecto público a tarjetas de crédito bancarias ni monopolios privados: utilizar MapLibre GL JS y OpenFreeMap garantiza que el sistema siga operando indefinidamente a costo cero, sin riesgo de apagón por vencimiento de créditos.
+- **Qué necesitábamos mostrar:** un sitio de 8 vistas para celular, con más de 34.000 puntos en mapa, capas, filtros, fichas con su fuente y datos en vivo de Bicing y del clima.
+- **Qué teníamos que proteger:** los datos de anfitriones, que no debían llegar al navegador, y el proyecto, que no debía depender de claves ni tarjetas.
+- **Por qué esta herramienta cumple las dos cosas, y cuál descartamos por poco:** elegimos **HTML, CSS y JavaScript sin frameworks, con MapLibre GL JS y OpenFreeMap**. El navegador solo recibe los JSON que dejamos pasar en `lago/procesado`, así que la anonimización ocurre antes de publicar, y no pide cuenta, clave ni tarjeta. Descartamos por poco **kepler.gl**: es muy buena para explorar, pero difícil de acoplar a un sitio multipágina con fichas propias. Esta elección protege lo que llega por la web, no lo que se publica aparte en el repositorio: eso es justo el problema abierto de [Protección](#protección).
 
----
+## Nuestra posición
 
-## 6. Guía para la Presentación en Vivo (Las 3 preguntas de clase)
+- **Gestión y gobierno de datos: un dato abierto no es un dato listo para usar.** Pasar de 142 fuentes a 32 nos mostró que catalogar sin un usuario claro produce un inventario, no un sistema. Y que un campo con formato correcto puede significar otra cosa: la columna `price` de Inside Airbnb lleva `$`, pero `price_quote_raw` dice `EUR` en los 13.355 anuncios con precio, y parte de esos precios son descuentos de estancias de hasta 250 noches. El sitio llegó a mostrar habitaciones a 4 USD la noche hasta que una integrante del equipo notó que no era creíble. **Evidencia:** ahora el precio por noche solo sale de cotizaciones de hasta 7 noches (de 28 € a 6.151 €, mediana 258 €), 5.288 anuncios se muestran por mes, y 76 se descartan con reglas escritas en `ingesta/procesar_mapa_y_alojamiento.py`.
+- **Ciberseguridad: proteger la vista no es proteger el dato.** Creíamos resuelta la privacidad porque el JSON de la web no trae anfitriones, y esa parte es cierta: 0 coincidencias. Pero al probar como lo haría un atacante, el archivo crudo se descargó desde la dirección pública, sin sesión y con un enlace en nuestro propio sitio. **Evidencia:** las pruebas de [Protección](#protección). Lo que tomamos de esto es que hay que probar el sistema publicado desde afuera, y que un lago público no puede guardar lo que la vista promete ocultar. La revisión de secretos sí salió bien porque `.env` se ignoró desde el inicio.
 
-1. **¿Qué herramienta descartaron que casi eligen?**  
-   **kepler.gl:** Estuvo a punto de ser nuestro motor cartográfico. Es fantástica para el análisis exploratorio rápido (mapas de calor de Airbnb, filtros temporales), pero la descartamos porque era demasiado rígida y pesada para ensamblar una experiencia turística integral: no permitía incrustar fácilmente nuestro menú de navegación, modales de trazabilidad técnica, cálculo de rutas OSRM ni el estándar visual trencadís. Elegimos **MapLibre GL JS + OpenFreeMap**.
-2. **¿Qué decidieron no mostrar?**  
-   - Los datos personales de los anfitriones de Airbnb (`F19`: nombres, fotos, perfiles).
-   - La renta por sección censal desagregada como un indicador de inseguridad o "zonas no recomendadas" (`F02`).
-   - El catálogo inicial de 112 fuentes no turísticas (delitos, contratos municipales, presupuestos de gobierno).
-3. **¿Qué tendría que cambiar para que la respuesta fuera otra?**  
-   - Si Transports Metropolitans de Barcelona (TMB) abriera un endpoint público sin token cerrado de registro, el metro pasaría inmediatamente de ser un dato estático a un widget en tiempo real como Bicing.
-   - Si existiera una API abierta de hostelería con precios reales de menús, la habríamos incorporado para sustituir la estimación basada en terrazas (`F30`) y censo de locales (`F08`).
-   - Si el público objetivo fuera el Departamento de Urbanismo del Ayuntamiento en lugar del turista, herramientas analíticas densas como **kepler.gl** habrían tenido pleno sentido.
+## Bitácora de IA
 
----
+En los tramos de la Entrega 1 y 2 no quedó registrado qué asistente se usó en cada caso.
 
-## 7. Estructura del Lago de Datos y Repositorio
+| Tramo | Herramienta | Qué le encargamos | Qué entregó | Qué le corregimos |
+|---|---|---|---|---|
+| Licencias (Entrega 1) | Claude o ChatGPT | Revisar la licencia de los datos de Airbnb | Alertó que las copias en Kaggle e IBM decían CC0 y remitió a la fuente original (CC BY 4.0) | Lo confirmamos en el sitio de Inside Airbnb |
+| Exploración de fuentes (Entrega 1) | Claude o ChatGPT | Buscar si había datos de paradas de metro y tren | Dijo que no existían | Los encontramos a mano en Open Data BCN (`transports..csv`) |
+| Tiempo real (Entrega 2) | Claude o ChatGPT | Ayudar a conectar las APIs en vivo | Explicó que descargar un endpoint solo da una foto fechada | Cambiamos a consultas desde el navegador, con respaldo en el lago |
+| Procesamiento (Entrega 2) | Claude o ChatGPT | Reproyectar coordenadas y aligerar los JSON | Conversión de EPSG:25831 a EPSG:4326 y JSON compacto | Revisamos el resultado en el mapa |
+| Código temprano (Entrega 2) | Claude o ChatGPT | Escribir los primeros scripts | Código con claves de fuente arbitrarias | Las alineamos con los ID `F01`–`F30` del diccionario |
+| Precios de Alojamiento (2026-11-03) | Claude Code | Corregir los precios absurdos, y agregar fotos y mapa | Causa (moneda y estancias largas), reglas de limpieza, mapa y fichas | Una integrante detectó el error. La página aún no se probó en producción |
+| Fotos (2026-11-03) | Claude Code | Conseguir fotos abiertas de hoteles y barrios | 73 barrios y 60 hoteles | Al revisar a ojo se cambiaron la foto de Porta (una puerta en Lleida) y la del Raval, y se quitaron 2 de hoteles. También señaló por error la foto de Navas, que era correcta |
+| Sobre Barcelona (2026-11-03) | Claude Code | Crear la página con cifras oficiales, historia y cultura | Página, datos con fuente y script | Pendiente de revisión del equipo: el contenido cultural general no tiene fuente oficial |
+| Este README (2026-11-03) | Claude Code | Llenar la plantilla del curso | Este documento y las pruebas de Protección | Encontró la exposición de `listings.csv`. Pendiente de revisión del equipo |
 
-```text
-lago/
-├── raw/                      ← Datos originales crudos tal como llegan del publicador
-│   ├── geo/                  ← F01: Unidades administrativas, barrios y distritos (llave maestra)
-│   ├── transporte/           ← F03–F07: Bicing (en vivo y snapshot), bus, metro/FGC, taxi
-│   ├── turismo/              ← F08–F19, F30: Hoteles, HUTs, Airbnb, locales, miradores, terrazas
-│   ├── economia_vivienda/    ← F02: Renta disponible por persona (sección censal)
-│   ├── ambiente_satelite/    ← F20–F22: Arbolado viario, Open-Meteo y calidad de aire XVPCA
-│   ├── municipio/            ← F23: Hospitales y centros de atención primaria
-│   ├── edificios/            ← F24, F25: Catastro INSPIRE e ICGC para el gemelo 3D
-│   ├── servicios_turista/    ← F26–F29: WiFi municipal, baños públicos, duchas y refugios climáticos
-│   └── wikipedia/            ← WIKI: Resúmenes, autores de fotos y visitas de Wikipedia a 12 meses
-└── procesado/                ← JSONs optimizados listos para consumo web (salen de ingesta/)
-```
+## Revisión cruzada
 
-### El Sitio Web (Arquitectura en 7 Vistas)
-- `index.html` — **01 Portada:** Reloj y clima en vivo de Barcelona, carrusel de datos curiosos y accesos rápidos.
-- `lugares.html` — **02 Lugares imperdibles:** 78 hitos curados, filtros por tipo, ranking por visitas en Wikipedia y ficha de fuente.
-- `mapa.html` — **03 Explora el mapa:** MapLibre + OpenFreeMap, capas activables de turismo, restaurantes, Bicing y hoteles, y medición de distancias.
-- `alojamiento.html` — **04 Alojamiento:** 24.000+ opciones (hoteles, HUTs, Airbnb anonimizado) y tabla de contexto de renta.
-- `moverte.html` — **05 Cómo moverte:** Bicing en tiempo real vía GBFS oficial con fallback a snapshot, paradas de bus, estaciones de metro y rutas ciclistas OSRM.
-- `clima.html` — **06 Clima y ambiente:** Pronóstico meteorológico por hora en vivo (Open-Meteo), calidad del aire de estaciones XVPCA y arbolado viario.
-- `proyecto.html` — **07 Sobre el proyecto:** Arquitectura en 3 capas, respuestas a la Entrega 1, comparativa técnica, bitácora de IA y catálogo interactivo de las 30 fuentes del lago.
+> **Pendiente:** no hay registro de esta revisión en el repositorio. El equipo debe completar los dos primeros puntos cuando se haga, sin dar por hechos sus resultados.
 
----
+- **Tres cifras auditadas por el grupo `<X>`:** pendiente. Candidatas: 1.729.963 habitantes, 258 € de mediana por noche y 24.446 alojamientos.
+- **Ataque del grupo `<Y>`:** pendiente. Nosotros ya encontramos la exposición de `listings.csv` en una prueba propia.
+- **Vueltas atrás en la ruta:**
+  - De las vistas al catálogo: empezamos replicando Lima sin usuario claro y volvimos a recortar el catálogo pensando en el turista.
+  - De la vista de Alojamiento a la ingesta: un precio de 4 USD nos hizo volver a revisar qué significaba la columna `price`.
+  - De la documentación a la publicación: al revisar la protección para este README, encontramos que el crudo estaba expuesto. El arreglo sigue pendiente.
 
-## 8. Guía de Ejecución y Reproducibilidad
+## Anexo: cómo correrlo
 
-### Probar el sitio en local
-Dado que el frontend realiza peticiones locales `fetch` a la carpeta `lago/procesado/`, debe servirse mediante un servidor HTTP local (abrir con doble clic bloquea las peticiones por seguridad CORS):
+El sitio necesita un servidor local, porque carga los JSON con `fetch`:
+
 ```bash
 python -m http.server 8000
 ```
-Abrir `http://localhost:8000` en cualquier navegador moderno.
 
-### Regenerar los datos del lago (ETL en Python)
-Todos los scripts se ejecutan desde la raíz del repositorio:
-1. **Refrescar popularidad y fotos de Wikipedia:**  
-   `python ingesta/descargar_wikipedia.py` *(requiere `requests`)*
-2. **Procesar Portada y Lugares imperdibles:**  
-   `python ingesta/procesar_portada_y_lugares.py` *(requiere `pandas`)*
-3. **Procesar Mapa y Alojamiento (anonimización de Airbnb y polígonos):**  
-   `python ingesta/procesar_mapa_y_alojamiento.py` *(requiere `pandas`)*
-4. **Procesar Moverte y Clima/Ambiente:**  
-   `python ingesta/procesar_moverte_y_clima.py` *(utiliza exclusivamente la librería estándar de Python)*
+Luego abre <http://localhost:8000>. Para regenerar los datos, desde la raíz del repositorio y con `pandas` y `requests` instalados:
+
+```bash
+python ingesta/descargar_wikipedia.py            # opcional: refresca fotos y visitas de Wikipedia
+python ingesta/descargar_fotos_alojamiento.py    # opcional: refresca fotos de hoteles y barrios
+python ingesta/procesar_portada_y_lugares.py
+python ingesta/procesar_mapa_y_alojamiento.py
+python ingesta/procesar_sobre_barcelona.py
+python ingesta/procesar_moverte_y_clima.py
+```
+
+Los cuatro `procesar_*` se ejecutaron el 2026-11-03 sin errores. La documentación detallada de la Entrega 2 está en [docs/entrega2-detalle.md](docs/entrega2-detalle.md).

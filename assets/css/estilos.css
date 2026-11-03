@@ -114,7 +114,7 @@ img { max-width: 100%; display: block; }
 .navbar__marca span { color: var(--sol); font-style: italic; }
 .navbar__lista {
   display: flex;
-  gap: 4px;
+  gap: 2px;
   list-style: none;
   margin: 0 0 0 auto;
   padding: 0;
@@ -126,11 +126,11 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 13px;
+  padding: 8px 8px;
   border-radius: 999px;
   color: rgba(255, 255, 255, .9);
   text-decoration: none;
-  font-size: .9rem;
+  font-size: .85rem;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -153,7 +153,7 @@ img { max-width: 100%; display: block; }
 .con-hero .navbar { position: fixed; left: 0; right: 0; background: linear-gradient(rgba(5, 20, 32, .55), transparent); }
 .con-hero .navbar.navbar--solida { background: var(--mar); box-shadow: 0 6px 24px rgba(0, 0, 0, .18); }
 
-@media (max-width: 1140px) {
+@media (max-width: 1280px) {
   .navbar__menu { display: block; }
   .navbar__lista {
     display: none;
@@ -244,7 +244,7 @@ img { max-width: 100%; display: block; }
 .pie a { color: #fff; }
 
 /* =========================================================================
-   Portada
+   Inicio
    ========================================================================= */
 .hero {
   position: relative;
@@ -808,12 +808,23 @@ img { max-width: 100%; display: block; }
 .resumen-aloj__item strong { font-family: var(--fuente-titulos); font-size: 1.7rem; color: var(--mar); }
 .resumen-aloj__item span { font-size: .85rem; color: var(--tinta-suave); }
 
+#mapa-alojamiento { width: 100%; height: 460px; background: var(--piedra); }
+.lugar__nota-foto {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  padding: 18px 12px 7px;
+  font-size: .72rem;
+  color: #fff;
+  background: linear-gradient(0deg, rgba(5, 20, 32, .75), rgba(5, 20, 32, 0));
+}
+.lugar__rank--consultar { background: var(--papel); color: var(--mar); }
+.ficha__mapa { height: 240px; border-radius: 14px; overflow: hidden; background: var(--piedra); margin-bottom: 18px; }
+
 .renta-tabla { width: 100%; border-collapse: collapse; font-size: .9rem; margin-top: 14px; }
 .renta-tabla th, .renta-tabla td { padding: 8px 12px; border-bottom: 1px solid var(--linea); text-align: left; }
 .renta-tabla th { color: var(--tinta-suave); font-weight: 700; font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
 
 /* =========================================================================
-   Cómo moverte (05): aviso de estado de Bicing sobre el mapa
+   Cómo moverte (06): aviso de estado de Bicing sobre el mapa
    ========================================================================= */
 .mapa-estado {
   position: absolute; right: 14px; top: 14px; z-index: 5;
@@ -842,7 +853,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* =========================================================================
-   Clima y ambiente (06)
+   Clima y ambiente (07)
    ========================================================================= */
 
 /* Bloque "De dónde salen estos datos" (reusa estilo de la ficha) */
@@ -932,7 +943,7 @@ img { max-width: 100%; display: block; }
 .arbol-lista li span:last-child { font-variant-numeric: tabular-nums; color: var(--tinta-suave); font-weight: 600; }
 @media (max-width: 560px) { .arbol-cols { grid-template-columns: 1fr; gap: 16px; } }
 
-/* Cómo moverte (05): panel de ruta a pie */
+/* Cómo moverte (06): panel de ruta a pie */
 #btn-ruta[aria-pressed="true"] { background: var(--terracota); border-color: var(--terracota); color: #fff; }
 .mapa-ruta { position: absolute; right: 14px; bottom: 14px; z-index: 6; max-width: 240px; }
 .mapa-ruta__panel {
@@ -987,7 +998,7 @@ img { max-width: 100%; display: block; }
   line-height: 1.1;
   margin-bottom: 4px;
 }
-.kpi-card span {
+.kpi-card > span {
   font-size: .88rem;
   color: rgba(255, 255, 255, .82);
   display: block;
@@ -1303,3 +1314,90 @@ img { max-width: 100%; display: block; }
   color: var(--tinta-suave);
   line-height: 1.55;
 }
+
+/* =========================================================================
+   Sobre Barcelona
+   ========================================================================= */
+.cifras-bcn {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+.cifra-bcn { display: flex; flex-direction: column; gap: 4px; padding: 20px; }
+.cifra-bcn__valor { font-family: var(--fuente-titulos); font-size: 1.9rem; line-height: 1.15; color: var(--mar); }
+.cifra-bcn__etiqueta { font-weight: 600; }
+.cifra-bcn__anio { font-size: .82rem; color: var(--tinta-suave); }
+.cifra-bcn__fuente { margin-top: 8px; font-size: .82rem; color: var(--tinta-suave); }
+.cifra-bcn__fuente summary { cursor: pointer; font-weight: 700; color: var(--mar-claro); }
+.cifra-bcn__fuente p { margin: 8px 0 0; overflow-wrap: anywhere; }
+
+.linea-tiempo__eras { margin-bottom: 26px; }
+.linea-tiempo {
+  --eje: 11px;
+  list-style: none;
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  max-width: 860px;
+}
+.linea-tiempo::before {
+  content: "";
+  position: absolute;
+  left: var(--eje); top: 6px; bottom: 6px;
+  width: 3px;
+  margin-left: -1.5px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--turquesa), var(--mar-claro) 45%, var(--terracota));
+}
+.hito { position: relative; padding: 0 0 22px calc(var(--eje) * 2 + 16px); }
+.hito[hidden] { display: none; }
+.hito__punto {
+  position: absolute;
+  left: var(--eje); top: 22px;
+  width: 16px; height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--sol);
+  border: 3px solid var(--papel);
+  box-shadow: 0 0 0 1px var(--linea);
+}
+.hito__tarjeta {
+  background: var(--papel);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 18px 22px;
+}
+.hito__anio { font-weight: 700; font-size: .88rem; color: var(--terracota); }
+.hito h3 { margin: 2px 0 6px; font-size: 1.3rem; }
+.hito p { margin: 0; line-height: 1.6; }
+.hito__pie { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; margin-top: 10px !important; }
+.hito__lugar { font-size: .88rem; font-weight: 700; color: var(--terracota); }
+.hito__fuente { font-size: .76rem; color: var(--tinta-suave); }
+
+@media (prefers-reduced-motion: no-preference) {
+  .linea-tiempo--animada .hito { opacity: 0; transform: translateY(18px); transition: opacity .55s ease, transform .55s ease; }
+  .linea-tiempo--animada .hito--visible { opacity: 1; transform: none; }
+}
+
+.cultura-bcn { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: 18px; }
+.cultura-bcn h3 { margin: 0 0 8px; font-size: 1.3rem; }
+.cultura-bcn p { line-height: 1.6; margin: 0 0 10px; }
+.cultura-bcn p:last-child { margin-bottom: 0; }
+.cultura-bcn__ancha { grid-column: 1 / -1; }
+
+.festivos-bcn { margin-top: 18px; }
+.festivos-bcn h3 { margin: 0 0 4px; font-size: 1.3rem; }
+.festivos-bcn > p { margin: 0; }
+.festivos-bcn__lista {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  padding: 0;
+  margin: 14px 0;
+}
+.festivos-bcn__lista li { display: flex; flex-direction: column; background: var(--piedra); border-radius: 12px; padding: 10px 14px; }
+.festivos-bcn__lista span { font-size: .85rem; color: var(--tinta-suave); }
+.festivos-bcn__lista span::first-letter { text-transform: uppercase; }

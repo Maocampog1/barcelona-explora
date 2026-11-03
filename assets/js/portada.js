@@ -1,4 +1,4 @@
-/* Portada: fotos de fondo, reloj y clima de Barcelona, dato curioso, los más buscados y accesos al sitio. */
+/* Inicio: fotos de fondo, reloj y clima de Barcelona, dato curioso, los más buscados y accesos al sitio. */
 
 const ZONA = "Europe/Madrid";
 const BCN = { lat: 41.3874, lon: 2.1686 }; // Plaça de Catalunya
@@ -179,6 +179,7 @@ const TIPOS = { icono: "Ícono", mirador: "Mirador", museo: "Museo", mercado: "M
 
 // Foto de cada página del sitio: sale de un lugar de lugares_imperdibles.json
 const FOTO_PAGINA = {
+  "sobre-barcelona.html": "Catedral de Barcelona",
   "lugares.html": "Sagrada Família",
   "mapa.html": "Búnkers del Carmel",
   "alojamiento.html": "Barrio Gótico",

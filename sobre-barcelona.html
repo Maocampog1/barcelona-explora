@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sobre Barcelona · Barcelona Explora</title>
+  <meta name="description" content="Barcelona en cifras oficiales, su historia desde Barcino hasta hoy y cómo es la vida cotidiana en la ciudad: lenguas, horarios, fiestas y convivencia.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body class="con-hero">
+  <header id="navbar"></header>
+
+  <main>
+    <section class="banner">
+      <img src="assets/img/portada/casa-batllo.jpg" alt="">
+      <div class="contenedor">
+        <h1>Sobre Barcelona</h1>
+        <p>Antes de salir a recorrerla: cuánta gente vive aquí, cómo llegó a ser lo que es y qué conviene saber sobre la vida cotidiana de quienes la habitan.</p>
+      </div>
+      <p class="banner__credito" id="banner-credito"></p>
+    </section>
+    <div class="mosaico-franja" aria-hidden="true"></div>
+
+    <div class="contenedor">
+      <section class="seccion" aria-labelledby="cifras-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="cifras-titulo">La ciudad en cifras</h2>
+            <p>Datos oficiales con su año. Toca «Fuente» en cualquier tarjeta para ver de dónde salen.</p>
+          </div>
+        </div>
+        <div class="cifras-bcn" id="cifras"></div>
+      </section>
+
+      <section class="seccion" aria-labelledby="historia-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="historia-titulo">De Barcino a hoy</h2>
+            <p>Dos mil años de historia en 14 momentos. Filtra por época y entra a los lugares donde todavía se ven.</p>
+          </div>
+        </div>
+        <div class="filtros__chips linea-tiempo__eras" id="eras" role="group" aria-label="Filtrar por época"></div>
+        <ol class="linea-tiempo" id="linea-tiempo"></ol>
+      </section>
+
+      <section class="seccion" aria-labelledby="cultura-titulo">
+        <div class="seccion__titulo">
+          <div>
+            <h2 id="cultura-titulo">Vivir la ciudad con quienes la habitan</h2>
+            <p>Lo que ayuda a entender el día a día de Barcelona y a moverse por ella con respeto.</p>
+          </div>
+        </div>
+
+        <div class="cultura-bcn">
+          <article class="tarjeta">
+            <h3>Dos lenguas en la calle</h3>
+            <p>El catalán y el castellano son oficiales, y mucha gente cambia de una a otra con naturalidad. Verás los carteles y menús sobre todo en catalán, a menudo también en castellano.</p>
+            <p>Nadie espera que hables catalán, pero un <em>bon dia</em> (buenos días), un <em>si us plau</em> (por favor) o un <em>gràcies</em> suelen recibirse bien.</p>
+            <p class="fuente-dato">Fuente: <a href="https://www.boe.es/buscar/act.php?id=BOE-A-2006-13087" target="_blank" rel="noopener">Estatuto de Autonomía de Cataluña, art. 6</a>.</p>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Otro horario para comer</h3>
+            <p>Lo habitual es almorzar entre las 14:00 y las 16:00, y cenar a partir de las 21:00. Muchas cocinas cierran entre un servicio y otro, así que conviene revisar el horario antes de ir.</p>
+            <p>Al mediodía, muchos restaurantes ofrecen un <em>menú del día</em> a precio cerrado.</p>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Fiestas que se viven en la calle</h3>
+            <p><strong>Sant Jordi (23 de abril):</strong> la ciudad se llena de puestos de libros y rosas, sobre todo en <a href="lugares.html#lugar-Q850593">La Rambla</a> y el Passeig de Gràcia.</p>
+            <p><strong>La Mercè (alrededor del 24 de septiembre):</strong> la fiesta mayor, con conciertos, teatro de calle y un espectáculo final de fuegos artificiales.</p>
+            <p class="fuente-dato">Fuentes: <a href="https://www.barcelona.cat/santjordi/en/tradition" target="_blank" rel="noopener">Sant Jordi</a> y <a href="https://www.barcelona.cat/culturapopular/en/festivals-and-traditions/festes-de-la-merce" target="_blank" rel="noopener">La Mercè</a>, Ajuntament de Barcelona.</p>
+          </article>
+
+          <article class="tarjeta">
+            <h3>Castells y sardana</h3>
+            <p>Los <strong>castells</strong> son torres humanas levantadas por grupos de aficionados, y la UNESCO los reconoció como patrimonio inmaterial en 2010. Se pueden ver durante La Mercè.</p>
+            <p>La <strong>sardana</strong> es una danza tradicional en círculo y de manos unidas. Si te invitan a sumarte, es buena idea preguntar antes de entrar en la rueda.</p>
+            <p class="fuente-dato">Fuentes: <a href="https://ich.unesco.org/en/RL/human-towers-00364" target="_blank" rel="noopener">UNESCO</a> y <a href="https://www.barcelona.cat/culturapopular/en/festivals/human-constructions/castells" target="_blank" rel="noopener">Ajuntament de Barcelona</a>.</p>
+          </article>
+
+          <article class="tarjeta cultura-bcn__ancha">
+            <h3>Vecinos y visitantes</h3>
+            <p id="convivencia-texto">Barcelona es, ante todo, el lugar donde vive su gente, y el peso del turismo sobre la vivienda y el espacio público es un debate abierto en la ciudad. Algunos gestos ayudan: bajar la voz de noche en los barrios residenciales y en los edificios de pisos, dejar el bañador para la playa, comprar en los comercios del barrio y seguir las normas de cada mercado o templo.</p>
+          </article>
+        </div>
+
+        <div class="festivos-bcn tarjeta">
+          <h3>Próximos festivos</h3>
+          <p>Ese día muchos comercios cierran o cambian de horario.</p>
+          <ul class="festivos-bcn__lista" id="festivos"></ul>
+          <p class="fuente-dato" id="festivos-fuente"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer id="pie"></footer>
+
+  <script src="assets/js/navegacion.js"></script>
+  <script src="assets/js/sobre-barcelona.js"></script>
+</body>
+</html>
