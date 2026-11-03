@@ -30,6 +30,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from catalogo import completar_fuentes
+
 RAIZ = Path(__file__).resolve().parent.parent
 RAW = RAIZ / "lago" / "raw"
 PROCESADO = RAIZ / "lago" / "procesado"
@@ -117,6 +119,7 @@ FUENTES = {
         "archivo": "lago/procesado/lugares_imperdibles.json",
     },
 }
+completar_fuentes(FUENTES)
 
 # Actividades del censo de locales que cuentan como "restaurantes y bares" para el turista.
 # Se deja fuera "serveis d'allotjament" (eso ya está en la capa de alojamiento) y "altres"/"vending".

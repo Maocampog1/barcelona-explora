@@ -34,6 +34,8 @@ import re
 from datetime import datetime, timezone
 from pathlib import Path
 
+from catalogo import completar_fuentes
+
 RAIZ = Path(__file__).resolve().parent.parent
 RAW = RAIZ / "lago" / "raw"
 PROCESADO = RAIZ / "lago" / "procesado"
@@ -94,6 +96,7 @@ FUENTES = {
         "archivo": "lago/raw/ambiente_satelite/arbrat_viari.json",
     },
 }
+completar_fuentes(FUENTES)
 
 # ---------------------------------------------------------------------------
 # Transporte: bus y metro desde los CSV de "mapa de la ciudad"

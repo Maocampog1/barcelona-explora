@@ -251,7 +251,7 @@ function pintarChips() {
 /* ---------- Ficha del punto ---------- */
 function filaFuente(f) {
   if (!f) return "";
-  return `<dt>Fuente</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
+  return `${filasTrazabilidad(f)}<dt>Fuente</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
     <dt>Archivo en el lago</dt><dd><a href="${esc(f.archivo)}" target="_blank" rel="noopener">${esc(f.archivo)}</a></dd>`;
 }
 

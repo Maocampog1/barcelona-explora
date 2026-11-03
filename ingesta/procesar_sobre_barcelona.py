@@ -26,6 +26,8 @@ from pathlib import Path
 
 import pandas as pd
 
+from catalogo import completar_fuentes
+
 RAIZ = Path(__file__).resolve().parent.parent
 RAW = RAIZ / "lago" / "raw"
 SALIDA = RAIZ / "lago" / "procesado"
@@ -55,6 +57,7 @@ FUENTES = {
         "archivo": "lago/raw/contexto/contexto_barcelona.json",
     },
 }
+completar_fuentes(FUENTES)
 
 
 def cifras_del_lago():
@@ -94,6 +97,11 @@ def main():
     orden = ["poblacion", "visitantes", "superficie", "distritos", "barrios",
              "nacidos_extranjero", "nacionalidades", "lenguas_oficiales"]
     tarjetas = [{**cifras, **del_lago}[i] for i in orden]
+    for c in tarjetas:
+        fuente = FUENTES["barrios"] if c["id"] in del_lago else FUENTES["contexto"]
+        c["id_fuente"] = fuente["id"]
+        c["vigencia"] = fuente["vigencia"] if c["id"] in del_lago else c["anio_referencia"]
+        c.setdefault("fecha_consulta", fuente["fecha_prueba"])
 
     # Un enlace a un lugar que ya no existe se vería como una ficha que no abre
     ids = {l["id"] for l in lugares["lugares"]}

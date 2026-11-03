@@ -27,6 +27,15 @@ const PAGINAS = [
     descripcion: "Metodología, fuentes, preguntas respondidas y equipo." },
 ];
 
+/* ID de la fuente (F01, F02…), vigencia y fecha de prueba. Los completa ingesta/catalogo.py desde catalogo/fuentes.csv. */
+function filasTrazabilidad(f) {
+  if (!f || !f.id) return "";
+  const limpio = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  return `<dt>ID de fuente</dt><dd>${limpio(f.id)}</dd>
+    <dt>Vigencia</dt><dd>${limpio(f.vigencia || "—")}</dd>
+    <dt>Fecha de prueba</dt><dd>${limpio(f.fecha_prueba || "—")}</dd>`;
+}
+
 function paginaActual() {
   const ruta = location.pathname.split("/").pop() || "index.html";
   const limpia = ruta.endsWith(".html") ? ruta : ruta + ".html"; // Vercel puede quitar el .html

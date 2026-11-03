@@ -13,6 +13,8 @@ Enlace: <https://barcelona-explora.vercel.app> · Repositorio: <https://github.c
 3. **Cómo protegemos los datos:** los anfitriones de Airbnb no llegan a la web, el archivo original no se publica, y la renta se muestra como promedio por barrio y solo como contexto.
 4. **Cómo tratamos lo aproximado y lo que falta:** los respaldos de Bicing muestran su fecha, las fotos de barrio dicen «Foto de la zona», y un precio que no existe abierto se declara en vez de inventarse.
 
+**Trazabilidad:** cada ficha muestra a un clic la fuente con su ID, su vigencia y la fecha de prueba. Salen de [catalogo/fuentes.csv](catalogo/fuentes.csv), y `ingesta/verificar_lago.py` comprueba que estén.
+
 ## Para quién y qué pregunta
 
 - **Usuario:** un turista autosuficiente que visita Barcelona y quiere moverse, dormir, comer y planear su día sin apps de pago.
@@ -133,6 +135,8 @@ Registro detallado en la hoja `3. Bitácora IA` del [diccionario](docs/Diccionar
 
 ## Revisión cruzada
 
+- **Tres cifras auditadas por otro grupo:** la actividad entre grupos aún no se ha hecho, por eso este punto no se llena.
+- **Ataque de otro grupo:** la actividad entre grupos aún no se ha hecho, por eso este punto no se llena.
 - **Vueltas atrás en la ruta:**
   - De las vistas al catálogo: empezamos replicando Lima sin usuario claro y volvimos a recortar el catálogo pensando en el turista.
   - De la vista de Alojamiento a la ingesta: un precio de 4 USD nos hizo volver a revisar qué significaba la columna `price`.
@@ -157,6 +161,7 @@ python ingesta/procesar_portada_y_lugares.py
 python ingesta/procesar_mapa_y_alojamiento.py
 python ingesta/procesar_sobre_barcelona.py
 python ingesta/procesar_moverte_y_clima.py
+python ingesta/verificar_lago.py                 # comprueba todo; con --publicado, también el sitio en línea
 ```
 
-Los cuatro `procesar_*` se ejecutaron el 2026-11-03 sin errores. La documentación detallada de la Entrega 2 está en [docs/entrega2-detalle.md](docs/entrega2-detalle.md).
+Los cuatro `procesar_*` y la verificación se ejecutaron el 2026-11-03 sin errores. La documentación detallada de la Entrega 2 está en [docs/entrega2-detalle.md](docs/entrega2-detalle.md).
