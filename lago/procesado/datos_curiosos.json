@@ -1,5 +1,5 @@
 {
- "generado": "2026-11-03T14:04:16+00:00",
+ "generado": "2026-11-03T14:55:34+00:00",
  "fuentes": {
   "miradores": {
    "id": null,
@@ -33,7 +33,7 @@
    "id": null,
    "nombre": "Bicing: ubicación de estaciones (GBFS)",
    "publicador": "Bicing (feed GBFS oficial)",
-   "licencia": "Datos abiertos del operador",
+   "licencia": "no declara",
    "archivo": "lago/raw/transporte/bicing_ubicacion_2026-10-01.json"
   },
   "airbnb": {
@@ -41,7 +41,8 @@
    "nombre": "Listados de Airbnb",
    "publicador": "Inside Airbnb",
    "licencia": "CC BY 4.0",
-   "archivo": "lago/raw/turismo/listings.csv"
+   "archivo": "lago/raw/turismo/listings.csv",
+   "archivo_publico": false
   },
   "wifi": {
    "id": null,

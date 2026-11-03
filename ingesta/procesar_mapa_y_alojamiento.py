@@ -72,19 +72,20 @@ FUENTES = {
         "publicador": "Inside Airbnb",
         "licencia": "CC BY 4.0",
         "archivo": "lago/raw/turismo/listings.csv",
+        "archivo_publico": False,  # Trae datos de anfitriones: no se sube al repositorio (ver .gitignore)
     },
     "bicing_estado": {
         "id": None,
         "nombre": "Bicing: estado de las estaciones (bicis y anclajes libres) — snapshot de prueba",
         "publicador": "Bicing (feed GBFS oficial)",
-        "licencia": "Datos abiertos del operador",
+        "licencia": "no declara",
         "archivo": "lago/raw/transporte/bicing_estado_2026-10-01.json",
     },
     "bicing_ubicacion": {
         "id": None,
         "nombre": "Bicing: ubicación y capacidad de las estaciones — snapshot de prueba",
         "publicador": "Bicing (feed GBFS oficial)",
-        "licencia": "Datos abiertos del operador",
+        "licencia": "no declara",
         "archivo": "lago/raw/transporte/bicing_ubicacion_2026-10-01.json",
     },
     "renta": {
@@ -388,10 +389,12 @@ def alojamiento_airbnb():
     df = df[[precio_plausible(*fila) for fila in zip(df["precio_eur"], df["accommodates"], df["corta"])]]
     ANUNCIOS_DESCARTADOS["airbnb"] = con_precio - len(df)
     salida = []
-    for _, f in df.iterrows():
+    # El id real del anuncio lleva a su página en Airbnb, donde se ve al anfitrión: aquí va un
+    # seudónimo. Solo sirve para enlazar el mapa con la ficha dentro de este mismo sitio.
+    for n, (_, f) in enumerate(df.iterrows(), start=1):
         hutb = re.search(r"HUTB-?\d+", str(f["license"]) if pd.notna(f["license"]) else "")
         salida.append({
-            "id": str(f["id"]),
+            "id": f"airbnb-{n}",
             "tipo": "airbnb",
             "nombre": f["name"],
             "tipo_propiedad": f["property_type"],

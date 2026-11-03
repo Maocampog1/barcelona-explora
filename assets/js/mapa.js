@@ -201,7 +201,9 @@ function pintarMedida() {
 /* ---------- Ficha del punto (fuente, licencia, fecha de prueba) ---------- */
 function filaFuente(f) {
   return `<dt>Fuente</dt><dd>${esc(f.nombre)} · ${esc(f.publicador)} (${esc(f.licencia)})</dd>
-    <dt>Archivo en el lago</dt><dd><a href="${esc(f.archivo)}" target="_blank" rel="noopener">${esc(f.archivo)}</a></dd>`;
+    <dt>Archivo en el lago</dt><dd>${f.archivo_publico === false
+      ? `${esc(f.archivo)}. No se publica: el archivo original trae datos de los anfitriones.`
+      : `<a href="${esc(f.archivo)}" target="_blank" rel="noopener">${esc(f.archivo)}</a>`}</dd>`;
 }
 
 function abrirFicha(capaId, p) {
